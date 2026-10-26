@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El corral de comedias · SPAN 241</title>
+<style>
+:root{
+  --bg:#0B1020; --gold:#D9B66F; --ink:#F4F1EA;
+  --mute:rgba(244,241,234,.62); --dim:rgba(244,241,234,.36);
+  --serif:"Cormorant Garamond","EB Garamond",Garamond,"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Baskerville,Georgia,serif;
+  --sans:"Helvetica Neue","Segoe UI",Inter,Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#060913}
+body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+body:not(.show){cursor:none}
+
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;overflow:hidden;
+  background:radial-gradient(ellipse 85% 75% at 62% 46%,#141b35 0%,#0B1020 58%,#080c18 100%)}
+#scenes,#fx{position:absolute;inset:0}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 70% at 50% 50%,transparent 55%,rgba(0,0,0,.42) 100%)}
+.scene{position:absolute;inset:0;will-change:opacity,clip-path}
+
+/* text column */
+.col{position:absolute;left:150px;top:110px;width:680px;height:860px;display:flex;flex-direction:column;justify-content:center}
+.label{display:flex;align-items:center;gap:18px;font:600 21px/1 var(--sans);letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
+.label i{display:block;width:56px;height:2px;background:var(--gold)}
+.period{font:400 20px/1 var(--sans);letter-spacing:.14em;color:var(--mute);margin-top:18px}
+.main{text-wrap:balance;font:400 88px/1.04 var(--serif);color:var(--ink);margin-top:52px}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.04em .03em .17em;margin-bottom:-.13em}
+.w>span{display:inline-block}
+.sub{font:400 24px/1.35 var(--sans);color:var(--mute);margin-top:18px}
+.author{font:italic 400 36px/1.2 var(--serif);color:var(--ink);margin-top:42px}
+.work{font:400 21px/1.4 var(--sans);color:var(--mute);margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:16px 30px;margin-top:40px}
+.chip{display:flex;align-items:center;gap:12px;font:600 19px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+
+/* visual region */
+.vis{position:absolute;left:880px;top:90px;width:900px;height:900px}
+.vis>svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+svg.full{position:absolute;inset:0;width:100%;height:100%}
+.fb{transform-box:fill-box;transform-origin:center}
+.sv-serif{font-family:var(--serif)}
+.sv-serif-i{font-family:var(--serif);font-style:italic}
+.sv-sans{font-family:var(--sans)}
+.sv-sans-b{font-family:var(--sans);font-weight:600}
+
+.quote{font:italic 400 30px/1.35 var(--serif);color:var(--ink);margin-top:26px;padding-left:22px;border-left:2px solid var(--gold)}
+.work i{font-style:italic}
+/* scene 5 tokens */
+.toks{position:absolute;inset:0}
+.tok{position:absolute;left:0;top:0;font:600 18px/1 var(--sans);letter-spacing:.1em;color:var(--ink);white-space:nowrap;transform-origin:50% 50%}
+
+/* scene 6 */
+.s6lab{position:absolute;top:150px;left:0;right:0;justify-content:center}
+.s6n{position:absolute;top:318px;transform:translateX(-50%);font:600 21px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.s6k{position:absolute;top:420px;transform:translateX(-50%);font:400 40px/1 var(--serif);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.s6c{position:absolute;top:540px;left:210px;width:1500px;text-align:center;text-wrap:balance;font:400 60px/1.12 var(--serif);color:var(--ink)}
+.s6q{position:absolute;top:782px;left:0;right:0;justify-content:center;font-size:17px}
+.s6qq{position:absolute;top:830px;left:260px;width:1400px;text-align:center;text-wrap:balance;font:italic 400 46px/1.2 var(--serif);color:var(--ink)}
+.s6qq .w{padding-right:.1em;margin-right:-.07em}
+
+/* transitions */
+.sweep{position:absolute;left:0;top:0;background:var(--gold);box-shadow:0 0 28px 5px rgba(217,182,111,.5);opacity:0}
+.sweep.v{width:2px;height:1080px}
+.sweep.h{width:1920px;height:2px}
+
+/* movement nav */
+#nav{position:absolute;top:58px;right:84px;display:flex;gap:28px;font:600 12.5px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase}
+
+/* controls */
+#ui{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;
+  background:rgba(11,16,32,.78);border:1px solid rgba(217,182,111,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  opacity:0;transition:opacity .45s;z-index:10;font:500 11px/1 var(--sans);color:var(--mute)}
+body.show #ui{opacity:1}
+#ui button{all:unset;cursor:pointer;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:var(--ink)}
+#ui button:hover,#ui button:focus-visible{background:rgba(217,182,111,.16);color:var(--gold)}
+#ui svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#bar{position:relative;width:240px;height:3px;margin:0 10px;background:rgba(244,241,234,.16);border-radius:2px;cursor:pointer}
+#bar::after{content:"";position:absolute;inset:-10px 0}
+#fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold);border-radius:2px}
+.tick{position:absolute;top:-3px;width:1px;height:9px;background:rgba(244,241,234,.35)}
+#sname{min-width:150px;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body class="show">
+<div id="stage">
+  <div id="scenes"></div>
+  <div id="fx"></div>
+  <div id="nav"></div>
+  <div class="vignette"></div>
+</div>
+
+<div id="ui">
+  <button id="bRestart" title="Reiniciar (R)" aria-label="Reiniciar"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v4.5H9"/></svg></button>
+  <button id="bPrev" title="Escena anterior (←)" aria-label="Escena anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button id="bPlay" title="Pausar / reproducir (espacio)" aria-label="Pausar o reproducir"><svg viewBox="0 0 24 24"><g id="icPause"><path d="M9 6v12M15 6v12"/></g><g id="icPlay" style="display:none"><path d="M8 5.5l10.5 6.5L8 18.5z" fill="currentColor"/></g></svg></button>
+  <button id="bNext" title="Escena siguiente (→)" aria-label="Escena siguiente"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div id="bar"><div id="fill"></div></div>
+  <span id="sname"></span>
+  <button id="bFull" title="Pantalla completa (F)" aria-label="Pantalla completa"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</div>
+
+<script>
+(() => {
+const NS = 'http://www.w3.org/2000/svg';
+const GOLD = '#D9B66F', INK = '#F4F1EA', BG = '#0B1020';
+const TOTAL = 63;
+const STARTS = [0, 10, 20, 30, 40, 50];
+const NAMES = ['El corral', 'El escenario', 'El público', 'La función', 'La comedia nueva', 'Síntesis'];
+const EO = 'cubic-bezier(.22,.61,.36,1)', EIO = 'cubic-bezier(.65,0,.35,1)',
+      EI = 'cubic-bezier(.55,.05,.75,.3)', LIN = 'linear', POP = 'cubic-bezier(.34,1.56,.64,1)';
+
+const anims = [];
+const stage = document.getElementById('stage');
+const scenesEl = document.getElementById('scenes');
+const fxEl = document.getElementById('fx');
+
+/* ---------- helpers ---------- */
+function S(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function H(tag, cls, parent, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+/* One animation per element/property-set on a single global timeline.
+   frames: [[time, {props}, easingToNext], ...]; base = scene start. */
+function K(el, frames, base = 0) {
+  const ts = frames.map(f => f[0] + base);
+  const t0 = ts[0], t1 = ts[ts.length - 1], dur = Math.max(t1 - t0, 0.01);
+  const kf = frames.map((f, i) => Object.assign({}, f[1], { offset: (ts[i] - t0) / dur, easing: f[2] || EO }));
+  const a = el.animate(kf, {
+    delay: t0 * 1000, duration: dur * 1000,
+    endDelay: Math.max(0, (TOTAL - t1) * 1000), fill: 'both'
+  });
+  a.pause(); anims.push(a); return a;
+}
+function draw(el, t0, t1, base, ease = EO) {
+  el.setAttribute('pathLength', 1);
+  el.setAttribute('stroke-dasharray', '1 1');
+  K(el, [[t0, { strokeDashoffset: 1 }, ease], [t1, { strokeDashoffset: 0 }]], base);
+}
+function rise(el, t, base, d = 1, dy = 24) {
+  K(el, [[t, { opacity: 0, transform: `translateY(${dy}px)` }], [t + d, { opacity: 1, transform: 'translateY(0px)' }]], base);
+}
+function words(el, text) {
+  el.innerHTML = '';
+  const spans = [];
+  text.split(' ').forEach(w => {
+    const o = H('span', 'w', el);
+    spans.push(H('span', '', o, w));
+    el.appendChild(document.createTextNode(' '));
+  });
+  return spans;
+}
+function revealWords(spans, t, base, step = .14) {
+  spans.forEach((s, i) => K(s, [
+    [t + i * step, { opacity: 0, transform: 'translateY(105%)' }],
+    [t + i * step + .9, { opacity: 1, transform: 'translateY(0%)' }]
+  ], base));
+}
+function svgIn(parent, vb = '0 0 900 900') {
+  const s = S('svg', { viewBox: vb }, parent);
+  return [s, S('defs', null, s)];
+}
+function glow(defs, id, std) {
+  const f = S('filter', { id, x: '-60%', y: '-60%', width: '220%', height: '220%' }, defs);
+  S('feGaussianBlur', { stdDeviation: std, result: 'b' }, f);
+  const m = S('feMerge', null, f);
+  S('feMergeNode', { in: 'b' }, m); S('feMergeNode', { in: 'SourceGraphic' }, m);
+}
+function grad(defs, id, type, stops, attrs = {}) {
+  const g = S(type, Object.assign({ id }, attrs), defs);
+  stops.forEach(([o, c, op]) => S('stop', { offset: o, 'stop-color': c, 'stop-opacity': op == null ? 1 : op }, g));
+}
+function stxt(svg, x, y, txt, cls, size, fill, extra = {}) {
+  const t = S('text', Object.assign({ x, y, 'text-anchor': 'middle', class: cls, 'font-size': size, fill }, extra), svg);
+  t.textContent = txt; return t;
+}
+let seed = 11;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+/* scene container: mask in, blur/fade out */
+function scene(i, hid, shown, op0 = 1) {
+  const el = H('div', 'scene', scenesEl);
+  const s = STARTS[i], n = STARTS[i + 1];
+  const on = { opacity: 1, filter: 'blur(0px)', transform: 'scale(1)', clipPath: shown };
+  const f = [[s, { opacity: op0, filter: 'blur(0px)', transform: 'scale(1)', clipPath: hid }, EIO], [s + 1, on]];
+  if (n != null) {
+    f.push([n, on, EIO]);
+    f.push([n + .8, { opacity: 0, filter: 'blur(10px)', transform: 'scale(1.035)', clipPath: shown }]);
+  }
+  K(el, f);
+  return el;
+}
+function sweep(t, dir) {
+  const e = H('div', 'sweep ' + (dir === 'up' ? 'h' : 'v'), fxEl);
+  const A = { right: ['translateX(0px)', 'translateX(1920px)'], left: ['translateX(1920px)', 'translateX(0px)'], up: ['translateY(1080px)', 'translateY(0px)'] }[dir];
+  K(e, [[t, { transform: A[0] }, EIO], [t + 1, { transform: A[1] }]]);
+  K(e, [[t, { opacity: 0 }], [t + .06, { opacity: 1 }], [t + .9, { opacity: 1 }], [t + 1.05, { opacity: 0 }]]);
+}
+/* left text column shared by scenes 1–5 */
+function column(sc, o, b) {
+  const col = H('div', 'col', sc);
+  const lab = H('div', 'label', col, `<i></i>${o.num} · ${o.mov}`);
+  const per = H('div', 'period', col, o.period);
+  const main = H('div', 'main', col);
+  const ws = words(main, o.main);
+  const sub = o.sub ? H('div', 'sub', col, o.sub) : null;
+  const qt = o.quote ? H('div', 'quote', col, o.quote) : null;
+  const au = H('div', 'author', col, o.author);
+  const wk = o.work ? H('div', 'work', col, o.work) : null;
+  const chips = H('div', 'chips', col);
+  const cs = (o.chips || []).map(c => H('div', 'chip', chips, c));
+  rise(lab, .25, b); rise(per, .5, b);
+  rise(au, o.tAuthor, b); if (wk) rise(wk, o.tAuthor + .25, b);
+  revealWords(ws, o.tMain, b);
+  if (sub) rise(sub, o.tSub, b);
+  if (qt) rise(qt, o.tQuote, b);
+  cs.forEach((c, i) => rise(c, o.tChips[i], b, .8, 16));
+}
+
+
+/* label with dark pill, for SVG diagrams */
+function tag(svg, x, y, title, desc) {
+  const g = S('g', null, svg);
+  const t = S('text', { x, y, 'text-anchor': 'middle', class: 'sv-sans-b', 'font-size': 17, 'letter-spacing': 2.5, fill: GOLD }, g);
+  t.textContent = title.toUpperCase();
+  if (desc) { const dd = S('text', { x, y: y + 27, 'text-anchor': 'middle', class: 'sv-serif-i', 'font-size': 22, fill: INK }, g); dd.textContent = desc; }
+  const bb = g.getBBox();
+  const r = S('rect', { x: bb.x - 14, y: bb.y - 9, width: bb.width + 28, height: bb.height + 18, rx: 9, fill: 'rgba(11,16,32,.96)', stroke: 'rgba(217,182,111,.4)', 'stroke-width': 1 });
+  g.insertBefore(r, g.firstChild);
+  return g;
+}
+function pop(el, tin, b, tout) {
+  const f = [[tin, { opacity: 0, transform: 'translateY(10px)' }], [tin + .6, { opacity: 1, transform: 'translateY(0px)' }]];
+  if (tout != null) { f.push([tout, { opacity: 1, transform: 'translateY(0px)' }]); f.push([tout + .5, { opacity: 0, transform: 'translateY(0px)' }]); }
+  K(el, f, b);
+}
+const pts = a => a.map(p => p.map(n => n.toFixed(1)).join(',')).join(' ');
+
+/* =========================================================
+   ESCENA 1 — EL CORRAL
+   ========================================================= */
+function s1() {
+  const b = STARTS[0];
+  const sc = scene(0, 'inset(0% 0% 0% 0%)', 'inset(0% 0% 0% 0%)', 0);
+  column(sc, {
+    num: '01', mov: 'El corral', period: 'Siglo de Oro · siglos XVI y XVII',
+    main: 'Un patio se convierte en teatro.', tMain: 2.4,
+    author: 'El corral de comedias', work: 'En Madrid, el Corral de la Cruz y el del Príncipe.<br>Almagro conserva uno del siglo XVII.', tAuthor: 1.0,
+    chips: ['Patio entre casas', 'Luz natural', 'Funciones de tarde', 'Toldo contra el sol'], tChips: [3.0, 3.8, 4.6, 5.6]
+  }, b);
+
+  const v = H('div', 'vis', sc);
+  const [s, d] = svgIn(v);
+  glow(d, 'g1', 9);
+
+  // patio
+  const patio = S('rect', { x: 250, y: 180, width: 400, height: 575, fill: GOLD, stroke: GOLD, 'stroke-width': 1.5, 'stroke-dasharray': '6 8', 'fill-opacity': .06 }, s);
+  K(patio, [[1.6, { opacity: 0, fillOpacity: .02 }], [2.4, { opacity: 1, fillOpacity: .06 }], [5.0, { opacity: 1, fillOpacity: .17 }, EIO], [9.0, { opacity: 1, fillOpacity: .07 }]], b);
+
+  // houses (hip roofs, seen from above)
+  const H_ = [[90, 60, 250, 105], [350, 60, 200, 105], [560, 60, 250, 105],
+              [90, 180, 145, 190], [90, 380, 145, 190], [90, 580, 145, 175],
+              [665, 180, 145, 190], [665, 380, 145, 190], [665, 580, 145, 175],
+              [90, 770, 250, 90], [350, 770, 200, 90], [560, 770, 250, 90]];
+  H_.forEach(([x, y, w, h], k) => {
+    let p = `M${x},${y} h${w} v${h} h${-w} Z `;
+    if (w >= h) { const r = h / 2; p += `M${x},${y} L${x + r},${y + r} L${x + w - r},${y + r} L${x + w},${y} M${x},${y + h} L${x + r},${y + r} M${x + w - r},${y + r} L${x + w},${y + h}`; }
+    else { const r = w / 2; p += `M${x},${y} L${x + r},${y + r} L${x + r},${y + h - r} L${x},${y + h} M${x + w},${y} L${x + r},${y + r} M${x + r},${y + h - r} L${x + w},${y + h}`; }
+    const e = S('path', { d: p, fill: 'rgba(244,241,234,.035)', stroke: 'rgba(244,241,234,.55)', 'stroke-width': 1.3, 'stroke-linejoin': 'round' }, s);
+    draw(e, .3 + k * .07, 1.5 + k * .07, b);
+  });
+
+  // sun crossing the afternoon
+  const sun = S('g', null, s);
+  S('circle', { r: 26, fill: '#F6E6B8', filter: 'url(#g1)' }, sun);
+  for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; S('path', { d: `M${Math.cos(a) * 36},${Math.sin(a) * 36} L${Math.cos(a) * 48},${Math.sin(a) * 48}`, stroke: GOLD, 'stroke-width': 2, 'stroke-linecap': 'round' }, sun); }
+  const sf = [];
+  for (let k = 0; k <= 10; k++) {
+    const th = Math.PI * k / 10, x = 450 - 360 * Math.cos(th), y = 330 - 250 * Math.sin(th);
+    const t = .8 + k * .88;
+    sf.push([t, { opacity: k === 0 ? 0 : 1, transform: `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)` }, LIN]);
+  }
+  K(sun, sf, b);
+
+  // toldo
+  const toldo = S('g', { class: 'fb', style: 'transform-origin:0% 50%' }, s);
+  S('rect', { x: 250, y: 330, width: 400, height: 250, fill: 'rgba(244,241,234,.10)', stroke: 'rgba(244,241,234,.55)', 'stroke-width': 1.4 }, toldo);
+  for (let k = 1; k < 6; k++) S('path', { d: `M${250 + k * 400 / 6},330 v250`, stroke: 'rgba(244,241,234,.18)', 'stroke-width': 1 }, toldo);
+  K(toldo, [[5.2, { opacity: 0, transform: 'scaleX(0)' }, EIO], [6.2, { opacity: 1, transform: 'scaleX(1)' }]], b);
+  const ropes = S('path', { d: 'M250,330 L170,290 M650,330 L730,290 M250,580 L170,620 M650,580 L730,620', stroke: 'rgba(244,241,234,.5)', 'stroke-width': 1.2, fill: 'none' }, s);
+  K(ropes, [[6.0, { opacity: 0 }], [6.5, { opacity: 1 }]], b);
+
+  // tablado
+  const tab = S('rect', { x: 265, y: 192, width: 370, height: 105, fill: 'rgba(217,182,111,.22)', stroke: GOLD, 'stroke-width': 2, class: 'fb', style: 'transform-origin:50% 0%' }, s);
+  K(tab, [[6.8, { opacity: 0, transform: 'scaleY(0)' }, EO], [7.6, { opacity: 1, transform: 'scaleY(1)' }]], b);
+
+  pop(tag(s, 162, 470, 'Casas', 'alrededor'), 1.5, b);
+  pop(tag(s, 450, 680, 'Patio', 'a cielo abierto'), 2.4, b);
+  pop(tag(s, 450, 448, 'Toldo', 'sombra para el público'), 6.0, b);
+  pop(tag(s, 450, 238, 'Tablado', 'el escenario'), 7.4, b);
+}
+
+/* =========================================================
+   ESCENA 2 — EL ESCENARIO
+   ========================================================= */
+function s2() {
+  const b = STARTS[1];
+  const sc = scene(1, 'inset(0% 100% 0% 0%)', 'inset(0% 0% 0% 0%)');
+  sweep(b, 'right');
+  column(sc, {
+    num: '02', mov: 'El escenario', period: 'Poca escenografía, mucha palabra',
+    main: 'La palabra construye el espacio.', tMain: 6.6,
+    author: 'El tablado', work: 'Sin telón de boca: el público rodea la escena.', tAuthor: .9,
+    chips: ['Tablado', 'Vestuario', 'Foso y escotillón', 'Tramoya', 'Decorado verbal'], tChips: [1.4, 2.6, 3.8, 5.0, 6.9]
+  }, b);
+
+  const v = H('div', 'vis', sc);
+  const [s, d] = svgIn(v);
+  glow(d, 'g2', 8);
+  grad(d, 'cu2', 'linearGradient', [[0, GOLD, .34], [1, GOLD, .12]], { x1: 0, y1: 0, x2: 0, y2: 1 });
+
+  // foso (cut-away under the stage)
+  const foso = S('rect', { x: 100, y: 700, width: 700, height: 115, fill: 'rgba(0,0,0,.25)', stroke: 'rgba(244,241,234,.35)', 'stroke-width': 1.2, 'stroke-dasharray': '5 7' }, s);
+  K(foso, [[1.0, { opacity: 0 }], [1.8, { opacity: 1 }]], b);
+
+  // dark openings (vestuario behind curtains, upper gallery)
+  const bays = [[150, 333], [363, 537], [567, 750]];
+  bays.forEach(([x1, x2]) => S('rect', { x: x1, y: 420, width: x2 - x1, height: 200, fill: '#060915' }, s));
+  S('rect', { x: 130, y: 170, width: 640, height: 230, fill: 'rgba(6,9,21,.6)' }, s);
+
+  // façade lines
+  let f = 'M130,620 V150 H770 V620 M130,400 H770 M130,340 H770 M343,150 V620 M557,150 V620';
+  for (let x = 150; x <= 750; x += 30) f += ` M${x},340 V400`;
+  const fac = S('path', { d: f, fill: 'none', stroke: 'rgba(244,241,234,.6)', 'stroke-width': 1.4 }, s);
+  draw(fac, .3, 1.8, b);
+
+  // curtains
+  const curt = [];
+  bays.forEach(([x1, x2]) => {
+    const w = (x2 - x1) / 2;
+    [[x1, '0% 50%'], [x1 + w, '100% 50%']].forEach(([x, o]) => {
+      const g = S('g', { class: 'fb', style: `transform-origin:${o}` }, s);
+      S('rect', { x, y: 420, width: w, height: 200, fill: 'url(#cu2)', stroke: 'rgba(217,182,111,.55)', 'stroke-width': 1 }, g);
+      for (let k = 1; k < 4; k++) S('path', { d: `M${x + k * w / 4},424 V616`, stroke: 'rgba(217,182,111,.35)', 'stroke-width': 1 }, g);
+      curt.push(g);
+    });
+  });
+  curt.forEach(g => K(g, [[1.2, { opacity: 0, transform: 'scaleX(1)' }], [1.8, { opacity: 1, transform: 'scaleX(1)' }, EIO], [2.4, { opacity: 1, transform: 'scaleX(1)' }, EIO], [3.3, { opacity: 1, transform: 'scaleX(.14)' }]], b));
+
+  // rising actor (escotillón)
+  const actor = S('g', null, s);
+  S('circle', { cx: 450, cy: -100, r: 15, fill: INK }, actor);
+  S('path', { d: 'M436,-82 C426,-60 422,-30 420,0 L480,0 C478,-30 474,-60 464,-82 Z', fill: INK }, actor);
+  K(actor, [[3.6, { opacity: 0, transform: 'translateY(800px)' }, EO], [3.8, { opacity: .9, transform: 'translateY(790px)' }, EO], [4.9, { opacity: .95, transform: 'translateY(620px)' }],
+            [5.9, { opacity: .95, transform: 'translateY(620px)' }], [6.4, { opacity: 0, transform: 'translateY(620px)' }]], b);
+
+  // tablado (drawn over the actor so he passes "through" the trapdoor)
+  const tb = S('g', null, s);
+  S('rect', { x: 60, y: 620, width: 780, height: 80, fill: 'rgba(217,182,111,.13)', stroke: GOLD, 'stroke-width': 2 }, tb);
+  for (let x = 120; x < 840; x += 60) S('path', { d: `M${x},622 V698`, stroke: 'rgba(217,182,111,.3)', 'stroke-width': 1 }, tb);
+  K(tb, [[.6, { opacity: 0, transform: 'translateY(20px)' }], [1.4, { opacity: 1, transform: 'translateY(0px)' }]], b);
+  const trap = S('path', { d: 'M412,620 H488', stroke: '#060915', 'stroke-width': 5 }, s);
+  K(trap, [[3.5, { opacity: 0 }], [3.7, { opacity: 1 }], [5.0, { opacity: 1 }], [5.3, { opacity: 0 }]], b);
+
+  // tramoya
+  const tr = S('g', null, s);
+  S('path', { d: 'M660,-420 V214', stroke: 'rgba(244,241,234,.7)', 'stroke-width': 1.6 }, tr);
+  S('path', { d: 'M605,262 C590,262 584,240 602,232 C600,210 628,202 640,216 C648,196 682,198 686,220 C706,214 722,236 708,250 C716,262 702,272 690,266 Z', fill: 'rgba(244,241,234,.16)', stroke: INK, 'stroke-width': 1.6, filter: 'url(#g2)' }, tr);
+  K(tr, [[4.9, { opacity: 0, transform: 'translateY(-300px)' }, EIO], [5.1, { opacity: 1, transform: 'translateY(-290px)' }, EIO], [6.4, { opacity: 1, transform: 'translateY(0px)' }]], b);
+
+  const tV = tag(s, 241, 520, 'Vestuario', 'entradas y salidas');
+  pop(tV, 2.8, b, 6.3);
+  pop(tag(s, 450, 255, 'Lo alto', 'balcones y murallas'), 3.4, b);
+  pop(tag(s, 260, 760, 'Foso', 'escotillón'), 4.0, b);
+  pop(tag(s, 660, 90, 'Tramoya', 'efectos desde arriba'), 5.4, b);
+  pop(tag(s, 700, 662, 'Tablado', 'sin telón de boca'), 1.6, b);
+
+  // decorado verbal: words make the place
+  [['un bosque', 241, 6.9], ['un palacio', 450, 7.5], ['la noche', 658, 8.1]].forEach(([w, x, t]) => {
+    const e = stxt(s, x, 530, w, 'sv-serif-i', 40, INK, { filter: 'url(#g2)' });
+    K(e, [[t, { opacity: 0, letterSpacing: '10px' }], [t + .9, { opacity: 1, letterSpacing: '0px' }]], b);
+  });
+}
+
+/* =========================================================
+   ESCENA 3 — EL PÚBLICO
+   ========================================================= */
+function s3() {
+  const b = STARTS[2];
+  const sc = scene(2, 'circle(0% at 70% 55%)', 'circle(100% at 70% 55%)');
+  column(sc, {
+    num: '03', mov: 'El público', period: 'Toda la ciudad, en un solo lugar',
+    main: 'Cada grupo en su lugar.', tMain: 2.8,
+    sub: 'El espacio repite la jerarquía social.', tSub: 7.6,
+    author: 'Patio, gradas, aposentos, cazuela y desván', tAuthor: .9,
+    work: 'Hombres, mujeres, nobles y clero: juntos, pero separados.'
+  }, b);
+
+  const v = H('div', 'vis', sc);
+  const [s] = svgIn(v);
+  const L = (u, vv) => { const yb = 810 - 230 * u, yt = 90 + 210 * u; return [90 + 220 * u, yb - vv * (yb - yt)]; };
+  const R = (u, vv) => { const p = L(u, vv); return [900 - p[0], p[1]]; };
+  const quad = (F, u1, u2, v1, v2) => [F(u1, v1), F(u2, v1), F(u2, v2), F(u1, v2)];
+
+  const cap = stxt(s, 450, 55, 'VISTA DESDE EL TABLADO', 'sv-sans-b', 15, 'rgba(244,241,234,.55)', { 'letter-spacing': 4 });
+  K(cap, [[.4, { opacity: 0 }], [1.2, { opacity: 1 }]], b);
+
+  // zones (highlight fills)
+  const zone = (polys, t, tn) => {
+    const g = S('g', null, s);
+    polys.forEach(p => S('polygon', { points: pts(p), fill: GOLD, 'fill-opacity': .3 }, g));
+    const fr = [[t, { opacity: 0 }], [t + .6, { opacity: 1 }]];
+    if (tn) { fr.push([tn, { opacity: 1 }]); fr.push([tn + .6, { opacity: .35 }]); }
+    K(g, fr, b);
+  };
+  zone([[[90, 810], [810, 810], [590, 580], [310, 580]]], 2.2, 3.3);
+  zone([quad(L, 0, 1, 0, .2), quad(R, 0, 1, 0, .2)], 3.3, 4.4);
+  const win = [];
+  [[.34, .5], [.58, .74]].forEach(([v1, v2]) => [[.06, .26], [.34, .54], [.62, .82]].forEach(([u1, u2]) => { win.push(quad(L, u1, u2, v1, v2)); win.push(quad(R, u1, u2, v1, v2)); }));
+  zone(win, 4.4, 5.5);
+  zone([[[310, 395], [590, 395], [590, 492], [310, 492]]], 5.5, 6.6);
+  zone([[[310, 300], [590, 300], [590, 390], [310, 390]]], 6.6, null);
+
+  // drawing
+  let p = 'M90,90 H810 V810 H90 Z M310,300 H590 V580 H310 Z M90,90 L310,300 M810,90 L590,300 M90,810 L310,580 M810,810 L590,580';
+  [.067, .133, .2].forEach(vv => { const a = L(0, vv), c = L(1, vv), e = R(0, vv), g = R(1, vv); p += ` M${a[0]},${a[1].toFixed(1)} L${c[0]},${c[1].toFixed(1)} M${e[0]},${e[1].toFixed(1)} L${g[0]},${g[1].toFixed(1)}`; });
+  win.forEach(q => { p += ' M' + q.map(c => c[0].toFixed(1) + ',' + c[1].toFixed(1)).join(' L') + ' Z'; });
+  p += ' M310,392 H590 M310,494 H590';
+  for (let x = 322; x < 590; x += 18) p += ` M${x},470 V492`;
+  p += ' M310,470 H590';
+  for (let x = 330; x < 590; x += 70) p += ` M${x},318 h30 v40 h-30 Z`;
+  p += ' M425,580 V528 Q450,508 475,528 V580';
+  const lines = S('path', { d: p, fill: 'none', stroke: 'rgba(244,241,234,.6)', 'stroke-width': 1.3, 'stroke-linejoin': 'round' }, s);
+  draw(lines, .3, 2.1, b);
+
+  // mosqueteros
+  const crowd = S('g', null, s);
+  seed = 5;
+  for (let k = 0; k < 26; k++) {
+    const yy = 600 + rnd() * 190, half = 140 + (yy - 580) / 230 * 220;
+    const xx = 450 + (rnd() * 2 - 1) * (half - 30), sc_ = .7 + (yy - 600) / 190 * .6;
+    const g = S('g', { transform: `translate(${xx.toFixed(1)},${yy.toFixed(1)}) scale(${sc_.toFixed(2)})` }, crowd);
+    S('circle', { cx: 0, cy: -26, r: 6, fill: INK }, g);
+    S('path', { d: 'M-7,-17 Q0,-21 7,-17 L9,0 L-9,0 Z', fill: INK }, g);
+  }
+  K(crowd, [[2.3, { opacity: 0, transform: 'translateY(16px)' }], [3.0, { opacity: .85, transform: 'translateY(0px)' }]], b);
+
+  pop(tag(s, 450, 735, 'Patio', 'mosqueteros, de pie'), 2.4, b);
+  pop(tag(s, 708, 668, 'Gradas', 'asientos en escalones'), 3.5, b);
+  pop(tag(s, 196, 420, 'Aposentos', 'nobles y adinerados'), 4.6, b);
+  pop(tag(s, 450, 436, 'Cazuela', 'las mujeres'), 5.7, b);
+  pop(tag(s, 450, 338, 'Desván', 'clérigos e intelectuales'), 6.8, b);
+}
+
+/* =========================================================
+   ESCENA 4 — LA FUNCIÓN
+   ========================================================= */
+function s4() {
+  const b = STARTS[3];
+  const sc = scene(3, 'inset(100% 0% 0% 0%)', 'inset(0% 0% 0% 0%)');
+  sweep(b, 'up');
+  column(sc, {
+    num: '04', mov: 'La función', period: 'Una tarde de teatro',
+    main: 'La comedia era parte de una fiesta.', tMain: 2.4,
+    author: 'Orden habitual', work: 'Funciones de tarde, con luz natural.', tAuthor: .9,
+    chips: ['Comedia en tres jornadas', 'Piezas breves', 'Música y baile'], tChips: [3.4, 4.6, 5.8]
+  }, b);
+
+  const v = H('div', 'vis', sc);
+  const [s, d] = svgIn(v);
+  glow(d, 'g4', 9);
+
+  const spine = S('path', { d: 'M120,112 V796', stroke: 'rgba(217,182,111,.5)', 'stroke-width': 1.6, fill: 'none' }, s);
+  draw(spine, .8, 7.6, b, LIN);
+
+  const items = [
+    ['Loa', 'presentación y elogio', 0], ['Jornada I', 'planteamiento', 1], ['Entremés', 'pieza cómica breve', 0],
+    ['Jornada II', 'nudo', 1], ['Baile', 'música y danza', 0], ['Jornada III', 'desenlace', 1], ['Fin de fiesta', 'mojiganga o baile', 0]
+  ];
+  items.forEach(([t, ds, j], k) => {
+    const y = 120 + k * 112, tk = 1.0 + k * 1.05;
+    const n = S('circle', j ? { cx: 120, cy: y, r: 9, fill: GOLD, class: 'fb' } : { cx: 120, cy: y, r: 7, fill: BG, stroke: INK, 'stroke-width': 1.6, class: 'fb' }, s);
+    K(n, [[tk - .05, { opacity: 0, transform: 'scale(0)' }, POP], [tk + .45, { opacity: 1, transform: 'scale(1)' }]], b);
+    const g = S('g', null, s);
+    const tt = S('text', j ? { x: 158, y: y + 4, class: 'sv-serif', 'font-size': 40, fill: GOLD, 'dominant-baseline': 'central' }
+                          : { x: 158, y: y - 6, class: 'sv-sans-b', 'font-size': 19, 'letter-spacing': 3.5, fill: INK, 'dominant-baseline': 'central' }, g);
+    tt.textContent = j ? t : t.toUpperCase();
+    const dt = S('text', j ? { x: 380, y: y + 6, class: 'sv-serif-i', 'font-size': 23, fill: 'rgba(244,241,234,.62)', 'dominant-baseline': 'central' }
+                          : { x: 158, y: y + 22, class: 'sv-serif-i', 'font-size': 22, fill: 'rgba(244,241,234,.62)', 'dominant-baseline': 'central' }, g);
+    dt.textContent = ds;
+    K(g, [[tk, { opacity: 0, transform: 'translateX(-16px)' }], [tk + .7, { opacity: 1, transform: 'translateX(0px)' }]], b);
+  });
+
+  // the afternoon light moves down to the horizon
+  const hz = S('path', { d: 'M640,800 H880', stroke: 'rgba(217,182,111,.5)', 'stroke-width': 1.5 }, s);
+  K(hz, [[.6, { opacity: 0 }], [1.4, { opacity: 1 }]], b);
+  const trail = S('path', { d: 'M700,150 Q860,330 800,790', fill: 'none', stroke: 'rgba(217,182,111,.28)', 'stroke-width': 1.4, 'stroke-dasharray': '3 9' }, s);
+  K(trail, [[.6, { opacity: 0 }], [1.4, { opacity: 1 }]], b);
+  const sun = S('g', null, s);
+  S('circle', { r: 28, fill: '#F6E6B8', filter: 'url(#g4)' }, sun);
+  const sf = [];
+  for (let k = 0; k <= 10; k++) {
+    const t = k / 10, x = (1 - t) ** 2 * 700 + 2 * (1 - t) * t * 860 + t * t * 800, y = (1 - t) ** 2 * 150 + 2 * (1 - t) * t * 330 + t * t * 790;
+    sf.push([.8 + k * .8, { opacity: k === 0 ? 0 : (k === 10 ? .55 : 1), transform: `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)` }, LIN]);
+  }
+  K(sun, sf, b);
+  const lt = stxt(s, 760, 852, 'de la tarde al anochecer', 'sv-serif-i', 21, 'rgba(244,241,234,.55)');
+  K(lt, [[1.2, { opacity: 0 }], [2.0, { opacity: 1 }]], b);
+}
+
+/* =========================================================
+   ESCENA 5 — LA COMEDIA NUEVA
+   ========================================================= */
+function s5() {
+  const b = STARTS[4];
+  const sc = scene(4, 'inset(0% 0% 0% 100%)', 'inset(0% 0% 0% 0%)');
+  sweep(b, 'left');
+  column(sc, {
+    num: '05', mov: 'La comedia nueva', period: 'Siglo XVII',
+    main: 'Escribir para el público.', tMain: 2.4,
+    quote: '«como las paga el vulgo, es justo<br>hablarle en necio para darle gusto»', tQuote: 3.4,
+    author: 'Lope de Vega', work: '<i>Arte nuevo de hacer comedias en este tiempo</i> (1609)', tAuthor: .9,
+    chips: ['Tres jornadas', 'Lo trágico y lo cómico', 'Polimetría', 'El gracioso', 'El honor'], tChips: [4.6, 5.2, 5.8, 6.6, 7.2]
+  }, b);
+
+  const v = H('div', 'vis', sc);
+  const [s] = svgIn(v);
+  const MASK = 'M0,-110 C70,-110 95,-60 90,0 C85,70 45,115 0,120 C-45,115 -85,70 -90,0 C-95,-60 -70,-110 0,-110Z';
+  function mask(x, comic) {
+    const o = S('g', { transform: `translate(${x},235) scale(1.05)` }, s);
+    const g = S('g', null, o);
+    S('path', { d: MASK, fill: comic ? 'rgba(217,182,111,.22)' : 'rgba(244,241,234,.10)', stroke: comic ? GOLD : INK, 'stroke-width': 2.2 }, g);
+    const ink = comic ? GOLD : INK;
+    if (comic) {
+      S('path', { d: 'M-56,-22 Q-34,-50 -12,-22 Q-34,-34 -56,-22Z M12,-22 Q34,-50 56,-22 Q34,-34 12,-22Z', fill: ink }, g);
+      S('path', { d: 'M-46,40 Q0,98 46,40 Q0,66 -46,40Z', fill: ink }, g);
+    } else {
+      S('path', { d: 'M-56,-30 Q-34,-6 -12,-30 Q-34,-18 -56,-30Z M12,-30 Q34,-6 56,-30 Q34,-18 12,-30Z', fill: ink }, g);
+      S('path', { d: 'M-58,-52 L-16,-44 M58,-52 L16,-44', stroke: ink, 'stroke-width': 2.2, 'stroke-linecap': 'round' }, g);
+      S('path', { d: 'M-40,84 Q0,36 40,84 Q0,62 -40,84Z', fill: ink }, g);
+    }
+    return g;
+  }
+  const tragic = mask(505, false), comic = mask(395, true);
+  K(comic, [[.4, { opacity: 0, transform: 'translateX(-150px) rotate(-8deg)' }], [1.2, { opacity: 1, transform: 'translateX(-150px) rotate(-8deg)' }, EIO], [1.8, { opacity: 1, transform: 'translateX(-150px) rotate(-8deg)' }, EIO], [3.2, { opacity: 1, transform: 'translateX(0px) rotate(-4deg)' }]], b);
+  K(tragic, [[.6, { opacity: 0, transform: 'translateX(150px) rotate(8deg)' }], [1.4, { opacity: 1, transform: 'translateX(150px) rotate(8deg)' }, EIO], [1.8, { opacity: 1, transform: 'translateX(150px) rotate(8deg)' }, EIO], [3.2, { opacity: 1, transform: 'translateX(0px) rotate(4deg)' }]], b);
+  const mix = stxt(s, 450, 410, 'lo trágico + lo cómico', 'sv-serif-i', 28, INK);
+  K(mix, [[3.2, { opacity: 0, letterSpacing: '8px' }], [4.0, { opacity: 1, letterSpacing: '0px' }]], b);
+
+  const hd = stxt(s, 450, 490, 'POLIMETRÍA SEGÚN EL ARTE NUEVO', 'sv-sans-b', 16, GOLD, { 'letter-spacing': 4 });
+  K(hd, [[4.3, { opacity: 0 }], [4.9, { opacity: 1 }]], b);
+  const rule = S('path', { d: 'M300,510 H600', stroke: 'rgba(217,182,111,.4)', 'stroke-width': 1 }, s);
+  draw(rule, 4.4, 5.0, b);
+  [['DÉCIMAS', '«para quejas»'], ['SONETO', '«en los que aguardan»'], ['ROMANCES', '«las relaciones»'],
+   ['TERCETOS', '«para cosas graves»'], ['REDONDILLAS', '«para las de amor»']].forEach(([a, c], k) => {
+    const y = 560 + k * 58, t = 4.9 + k * .5;
+    const g = S('g', null, s);
+    S('text', { x: 410, y, 'text-anchor': 'end', class: 'sv-sans-b', 'font-size': 20, 'letter-spacing': 3, fill: INK, 'dominant-baseline': 'central' }, g).textContent = a;
+    S('path', { d: `M428,${y} H470`, stroke: GOLD, 'stroke-width': 1.5 }, g);
+    S('text', { x: 488, y: y + 2, class: 'sv-serif-i', 'font-size': 27, fill: 'rgba(244,241,234,.75)', 'dominant-baseline': 'central' }, g).textContent = c;
+    K(g, [[t, { opacity: 0, transform: 'translateY(12px)' }], [t + .6, { opacity: 1, transform: 'translateY(0px)' }]], b);
+  });
+}
+
+/* =========================================================
+   ESCENA 6 — SÍNTESIS
+   ========================================================= */
+function s6() {
+  const b = STARTS[5];
+  const sc = scene(5, 'circle(0% at 50% 45%)', 'circle(80% at 50% 45%)');
+  const lab = H('div', 'label s6lab', sc, '<i></i>06 · Síntesis<i></i>');
+  rise(lab, .3, b);
+
+  const [s] = svgIn(sc, '0 0 1920 1080');
+  s.setAttribute('class', 'full');
+  const xs = [200, 580, 960, 1340, 1720], Y = 380;
+  const line = S('path', { d: `M${xs[0]},${Y} L${xs[4]},${Y}`, stroke: GOLD, 'stroke-width': 2, fill: 'none', 'stroke-opacity': .85 }, s);
+  draw(line, .8, 3.8, b, LIN);
+  const MOV = ['El corral', 'El escenario', 'El público', 'La función', 'La comedia nueva'];
+  const KW = ['Patio', 'Palabra', 'Jerarquía', 'Fiesta', 'Mezcla'];
+  xs.forEach((x, k) => {
+    const tn = .8 + 3.0 * k / 4;
+    const o = S('g', { transform: `translate(${x},${Y})` }, s);
+    const g = S('g', { class: 'fb' }, o);
+    S('circle', { r: 13, fill: BG, stroke: GOLD, 'stroke-width': 2 }, g);
+    S('circle', { r: 5, fill: GOLD }, g);
+    K(g, [[tn - .05, { opacity: 0, transform: 'scale(0)' }, POP], [tn + .5, { opacity: 1, transform: 'scale(1)' }]], b);
+    if (k < 4) {
+      const m = x + 190;
+      const ch = S('path', { d: `M${m - 5},${Y - 8} L${m + 5},${Y} L${m - 5},${Y + 8}`, stroke: GOLD, 'stroke-width': 2, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, s);
+      K(ch, [[tn + .35, { opacity: 0 }], [tn + .7, { opacity: 1 }]], b);
+    }
+    const n = H('div', 's6n', sc); n.style.left = x + 'px';
+    const ni = H('div', '', n, MOV[k]);
+    const kd = H('div', 's6k', sc); kd.style.left = x + 'px';
+    const ki = H('div', '', kd, KW[k]);
+    rise(ni, tn, b, .7, 14);
+    K(ki, [[tn + .35, { opacity: 0, transform: 'translateY(-14px)', filter: 'blur(6px)' }], [tn + 1.2, { opacity: 1, transform: 'translateY(0px)', filter: 'blur(0px)' }]], b);
+  });
+
+  const con = H('div', 's6c', sc);
+  revealWords(words(con, 'El corral reunía a toda la sociedad, pero no en el mismo lugar.'), 4.6, b, .1);
+  const ql = H('div', 'label s6q', sc, '<i></i>Para discutir en clase<i></i>');
+  rise(ql, 7.0, b);
+  const q = H('div', 's6qq', sc);
+  const qs = words(q, '¿Qué espacio de hoy nos reúne a todos, pero separa a cada grupo?');
+  [4, 5, 6, 7, 9, 10, 11, 12].forEach(i => qs[i].style.color = GOLD);
+  revealWords(qs, 7.4, b, .09);
+}
+
+
+/* movement indicator (top right) */
+function nav() {
+  const navEl = document.getElementById('nav');
+  NAMES.slice(0, 5).forEach((n, k) => {
+    const e = H('span', '', navEl, n);
+    const a = STARTS[k], z = STARTS[k + 1];
+    const off = { opacity: .32, color: 'rgb(244,241,234)' }, on = { opacity: 1, color: 'rgb(217,182,111)' };
+    K(e, [[a, off], [a + .8, on], [z, on], [z + .8, off]]);
+  });
+  K(navEl, [[0, { opacity: 0 }], [1, { opacity: 1 }], [50, { opacity: 1 }], [50.8, { opacity: 0 }]]);
+}
+
+/* ---------- playback ---------- */
+let master, playing = false, hideT;
+const $ = id => document.getElementById(id);
+const now = () => (master.currentTime || 0) / 1000;
+function setT(t) { t = Math.max(0, Math.min(TOTAL, t)); for (const a of anims) a.currentTime = t * 1000; }
+function play() { let t = now(); if (t >= TOTAL - .05) t = 0; setT(t); for (const a of anims) a.play(); playing = true; ui(); }
+function pause() { const t = now(); for (const a of anims) a.pause(); setT(t); playing = false; ui(); poke(); }
+function jump(t) { setT(t); if (playing) for (const a of anims) a.play(); }
+function cur() { const t = now(); let k = 0; STARTS.forEach((s, j) => { if (t >= s - .001) k = j; }); return k; }
+function next() { const k = cur(); jump(k < 5 ? STARTS[k + 1] + 1 : TOTAL); }
+function prev() { const t = now(), k = cur(); if (k === 0) jump(0); else if (t - STARTS[k] > 2.5) jump(STARTS[k] + 1); else jump(k - 1 === 0 ? 0 : STARTS[k - 1] + 1); }
+function restart() { jump(0); if (!playing) play(); }
+function toggle() { playing ? pause() : play(); }
+function full() { if (document.fullscreenElement) document.exitFullscreen(); else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); }
+function ui() { $('icPause').style.display = playing ? '' : 'none'; $('icPlay').style.display = playing ? 'none' : ''; }
+function poke() {
+  document.body.classList.add('show');
+  clearTimeout(hideT);
+  hideT = setTimeout(() => { if (playing) document.body.classList.remove('show'); }, 2600);
+}
+function fit() {
+  const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+  stage.style.transform = `translate(${((innerWidth - 1920 * k) / 2).toFixed(2)}px,${((innerHeight - 1080 * k) / 2).toFixed(2)}px) scale(${k})`;
+}
+function loop() {
+  const t = now();
+  $('fill').style.width = (t / TOTAL * 100) + '%';
+  const k = cur();
+  $('sname').textContent = `${k + 1} / 6 · ${NAMES[k]}`;
+  if (playing && t >= TOTAL - .001) { playing = false; ui(); poke(); }
+  requestAnimationFrame(loop);
+}
+
+function init() {
+  fit();
+  s1(); s2(); s3(); s4(); s5(); s6(); nav();
+  master = stage.animate([{ opacity: 1 }, { opacity: 1 }], { duration: TOTAL * 1000, fill: 'forwards' });
+  master.pause(); anims.push(master);
+
+  const bar = $('bar');
+  STARTS.slice(1).forEach(s => { const t = H('div', 'tick', bar); t.style.left = (s / TOTAL * 100) + '%'; });
+  bar.addEventListener('click', e => { const r = bar.getBoundingClientRect(); jump((e.clientX - r.left) / r.width * TOTAL); });
+  $('bPlay').onclick = toggle; $('bNext').onclick = next; $('bPrev').onclick = prev;
+  $('bRestart').onclick = restart; $('bFull').onclick = full;
+  addEventListener('resize', fit);
+  addEventListener('mousemove', poke);
+  addEventListener('touchstart', poke, { passive: true });
+  addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); toggle(); }
+    else if (e.key === 'ArrowRight') next();
+    else if (e.key === 'ArrowLeft') prev();
+    else if (e.key === 'r' || e.key === 'R') restart();
+    else if (e.key === 'f' || e.key === 'F') full();
+    else return;
+    poke();
+  });
+  window.__seek = t => { for (const a of anims) a.pause(); playing = false; ui(); setT(t); };
+
+  play(); poke(); loop();
+}
+(document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(init);
+})();
+</script>
+</body>
+</html>
