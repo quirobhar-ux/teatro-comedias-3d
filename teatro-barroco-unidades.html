@@ -1,0 +1,3991 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tres reglas, un tablado, una rebelión · Teatro barroco</title>
+<meta name="description" content="Guía visual e interactiva sobre las unidades aristotélicas, el corral de comedias y la ruptura del teatro barroco español: Lope de Vega, el Arte nuevo de hacer comedias y la comedia nueva.">
+<meta name="author" content="Material didáctico de Introducción a la Literatura">
+<meta name="theme-color" content="#16110e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tres reglas, un tablado, una rebelión">
+<meta property="og:description" content="Las unidades aristotélicas, el corral de comedias y el día que Lope de Vega decidió que el público mandaba más que Aristóteles.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316110e'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23e5a93c' stroke-width='2'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='32' font-style='italic' fill='%23e5a93c' text-anchor='middle'%3E3%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   TEATRO BARROCO · LAS TRES UNIDADES
+   Sistema visual: editorial de Siglo de Oro + interfaz contemporánea.
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  --ink: #16110e;
+  --ink-2: #211915;
+  --ink-3: #2c211b;
+  --paper: #f4e8d3;
+  --paper-2: #ecdcbe;
+  --paper-3: #e2cda8;
+  --cream: #fbf4e7;
+  --red: #c92f27;
+  --red-2: #a8231d;
+  --wine: #4b1215;
+  --gold: #e5a93c;
+  --gold-2: #f3c76f;
+  --teal: #2f7f70;
+  --text: #211813;
+  --muted: #6d5b4b;
+  --border: rgba(33, 24, 19, 0.18);
+  --border-strong: rgba(33, 24, 19, 0.55);
+
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "SFMono-Regular", ui-monospace, "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+
+  --shadow: 6px 6px 0 rgba(33, 24, 19, 0.12);
+  --shadow-lg: 14px 16px 0 rgba(33, 24, 19, 0.16);
+  --radius: 20px;
+  --radius-sm: 12px;
+
+  --container: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 86px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(229, 169, 60, 0.16), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(201, 47, 39, 0.07), transparent 55%),
+    var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; }
+svg { display: block; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 620;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--red); }
+
+strong { font-weight: 750; }
+em { font-style: italic; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+::selection { background: var(--gold); color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.section--dark :focus-visible,
+.section--wine :focus-visible,
+.hero :focus-visible,
+.quiz :focus-visible {
+  outline-color: var(--gold);
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: min(var(--container), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding: clamp(4.25rem, 8vw, 7.5rem) 0;
+}
+section[id] { scroll-margin-top: 84px; }
+
+.section.is-targeted { animation: targetPulse 1.4s ease; }
+@keyframes targetPulse {
+  0% { box-shadow: inset 0 0 0 0 rgba(229, 169, 60, 0); }
+  22% { box-shadow: inset 0 0 0 7px rgba(229, 169, 60, 0.85); }
+  100% { box-shadow: inset 0 0 0 0 rgba(229, 169, 60, 0); }
+}
+
+.section--paper2 { background: var(--paper-2); }
+
+.section--dark {
+  --text: #f4e8d3;
+  --muted: #c5b096;
+  --border: rgba(244, 232, 211, 0.17);
+  --border-strong: rgba(244, 232, 211, 0.45);
+  background:
+    radial-gradient(900px 420px at 100% 0%, rgba(201, 47, 39, 0.14), transparent 65%),
+    var(--ink);
+  color: var(--text);
+}
+
+.section--wine {
+  --text: #fbeedd;
+  --muted: #e2b9a2;
+  --border: rgba(251, 238, 221, 0.19);
+  --border-strong: rgba(251, 238, 221, 0.45);
+  background:
+    radial-gradient(1000px 500px at 15% -20%, rgba(229, 169, 60, 0.2), transparent 60%),
+    linear-gradient(160deg, #541417 0%, #3a0e10 100%);
+  color: var(--text);
+}
+
+.section--dark .card,
+.section--wine .card {
+  background: var(--ink-2);
+  color: var(--text);
+  border-color: var(--border-strong);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.28);
+}
+
+/* ---------- Tipografía editorial ---------- */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+  flex: none;
+}
+.section--dark .eyebrow,
+.section--wine .eyebrow { color: var(--gold); }
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+.section-head h2 {
+  font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+  max-width: 18ch;
+}
+.section-head .lead {
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+}
+.section-head--stack { grid-template-columns: 1fr; gap: 0.85rem; }
+.section-head--stack .lead { max-width: 70ch; }
+
+.lead { color: var(--muted); }
+
+.section-title--xl { font-size: clamp(2.6rem, 6vw, 5rem); }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 0.83rem; line-height: 1.55; }
+.mono { font-family: var(--mono); }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 46px;
+  padding: 0.78em 1.35em;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.btn--gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+.btn--gold:hover { background: var(--gold-2); border-color: var(--gold-2); color: var(--ink); }
+.btn--ghost {
+  background: transparent;
+  color: currentColor;
+  border-color: currentColor;
+}
+.btn--ghost:hover { background: currentColor; color: var(--ink); }
+.btn--sm { min-height: 36px; padding: 0.5em 0.95em; font-size: 0.66rem; }
+.btn--wide { width: 100%; }
+
+.arrow { font-family: var(--font-body); font-size: 1.05em; line-height: 1; }
+.arrow--down { display: inline-block; transform: rotate(90deg); }
+
+/* ---------- Barra de progreso y navegación ---------- */
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 3px;
+  z-index: 80;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  transition: width 0.08s linear;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  background: rgba(22, 17, 14, 0.9);
+  border-bottom: 1px solid rgba(244, 232, 211, 0.13);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--paper);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 64px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  flex: none;
+}
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+}
+.brand__text {
+  font-family: var(--mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.18em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.brand__text span { display: block; color: var(--muted); font-size: 0.58rem; }
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav__links::-webkit-scrollbar { display: none; }
+.nav__links a {
+  display: block;
+  padding: 0.48rem 0.6rem;
+  border-radius: 999px;
+  color: #d8c7ae;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.nav__links a:hover { background: rgba(244, 232, 211, 0.1); color: var(--paper); }
+.nav__links a[aria-current="location"] {
+  background: rgba(229, 169, 60, 0.16);
+  color: var(--gold-2);
+}
+
+.nav__tools { display: flex; align-items: center; gap: 0.5rem; flex: none; }
+.translate-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(244, 232, 211, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.translate-toggle:hover { border-color: var(--gold); color: var(--gold); }
+.translate-toggle .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(229, 169, 60, 0.18);
+}
+.translate-toggle[aria-pressed="false"] .dot { background: #7c6a57; box-shadow: none; }
+
+.nav__menu {
+  display: none;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(244, 232, 211, 0.3);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 128px 0 0;
+  background: var(--ink);
+  color: var(--paper);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 60% at 82% 6%, rgba(201, 47, 39, 0.3), transparent 62%),
+    radial-gradient(50% 50% at 4% 82%, rgba(229, 169, 60, 0.13), transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244, 232, 211, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 232, 211, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, #000 10%, transparent 75%);
+  mask-image: radial-gradient(80% 70% at 50% 40%, #000 10%, transparent 75%);
+  pointer-events: none;
+}
+.hero__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.82fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+.hero__copy { position: relative; }
+.hero .kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.4rem;
+  color: var(--gold-2);
+}
+.hero .kicker::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero h1 {
+  margin: 0 0 1.4rem;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  word-spacing: 0.07em;
+  font-weight: 560;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+}
+.hero h1 .line { display: block; }
+.hero h1 .line--accent {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 420;
+  letter-spacing: -0.03em;
+}
+.hero h1 .line--accent::after {
+  content: "";
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  margin-left: 0.08em;
+  border-radius: 50%;
+  background: var(--red);
+  vertical-align: baseline;
+}
+.hero__dek {
+  max-width: 52ch;
+  margin-bottom: 1.9rem;
+  color: #d4c2a8;
+  font-size: clamp(1rem, 1.5vw, 1.14rem);
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.8rem; }
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #a99278;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero__meta li { display: flex; align-items: center; gap: 0.45rem; }
+.hero__meta li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+
+/* Decreto */
+.decree-wrap { position: relative; display: flex; justify-content: center; }
+.decree {
+  position: relative;
+  width: min(410px, 100%);
+  padding: clamp(1.4rem, 3vw, 2rem);
+  transform: rotate(2.2deg);
+  background:
+    linear-gradient(rgba(33, 24, 19, 0.035) 1px, transparent 1px) 0 0 / 100% 26px,
+    #f8ecd7;
+  color: var(--ink);
+  border: 1px solid #cdb58e;
+  box-shadow: 18px 22px 0 rgba(0, 0, 0, 0.35);
+  clip-path: polygon(0 0, 100% 0, 100% 96.5%, 97% 98.4%, 94% 96.6%, 91% 99%, 88% 97%, 85% 99.2%, 82% 97.3%, 79% 99.4%, 76% 97.2%, 73% 99.3%, 70% 97.4%, 67% 99.5%, 64% 97.4%, 61% 99.2%, 58% 97.3%, 55% 99.4%, 52% 97.2%, 49% 99.3%, 46% 97.3%, 43% 99.4%, 40% 97.2%, 37% 99.3%, 34% 97.4%, 31% 99.2%, 28% 97.3%, 25% 99.4%, 22% 97.2%, 19% 99.3%, 16% 97.3%, 13% 99.4%, 10% 97.2%, 7% 99.3%, 4% 97.3%, 0 98%);
+}
+.decree__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(33, 24, 19, 0.3);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.decree__title {
+  margin: 0.9rem 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
+  font-weight: 650;
+  line-height: 1;
+}
+.decree__sub {
+  margin: 0 0 1rem;
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6c5946;
+}
+.decree__rule {
+  display: grid;
+  grid-template-columns: 2.1rem 1fr;
+  gap: 0.55rem;
+  align-items: baseline;
+  padding: 0.44rem 0;
+  border-top: 1px solid rgba(33, 24, 19, 0.16);
+}
+.decree__rule b {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--red);
+}
+.decree__rule span { font-size: 0.82rem; line-height: 1.35; }
+.decree__rule small { display: block; color: #7a6651; font-size: 0.62rem; }
+.decree__stamp {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 4.3rem;
+  padding: 0.42rem 0.6rem;
+  transform: rotate(-11deg);
+  border: 3px double var(--red);
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  opacity: 0.86;
+}
+.decree__note {
+  margin-top: 0.9rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed rgba(33, 24, 19, 0.3);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #4e3e30;
+}
+.decree__seal {
+  position: absolute;
+  right: 1.35rem;
+  bottom: 0.95rem;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d24a3c, #8f1d18 65%, #6c1310);
+  color: #f8d9b0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  box-shadow: inset 0 0 0 3px rgba(255, 220, 170, 0.22), inset 0 0 0 5px rgba(90, 10, 8, 0.5);
+}
+.decree-annotation {
+  position: absolute;
+  left: -1.1rem;
+  bottom: -1.4rem;
+  font-family: var(--mono);
+  font-size: 0.57rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9b8368;
+  transform: rotate(-4deg);
+}
+
+/* Ticker */
+.ticker {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border-top: 1px solid rgba(22, 17, 14, 0.35);
+  border-bottom: 1px solid rgba(22, 17, 14, 0.35);
+  background: var(--gold);
+  color: var(--ink);
+}
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker 42s linear infinite;
+}
+.ticker:hover .ticker__track,
+.ticker:focus-within .ticker__track { animation-play-state: paused; }
+.ticker__group { display: flex; flex: none; }
+.ticker span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.7rem 1.15rem;
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ticker span::after { content: "✶"; font-size: 0.8em; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+/* ---------- Tarjetas y piezas ---------- */
+.card {
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card--flat { box-shadow: none; }
+.card--pad { padding: clamp(1.3rem, 2.4vw, 1.9rem); }
+
+.sticker {
+  display: inline-block;
+  padding: 0.3em 0.65em;
+  transform: rotate(-2deg);
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 rgba(33, 24, 19, 0.2);
+}
+.sticker--red { background: var(--red); color: #fff; border-color: var(--red-2); }
+.sticker--paper { background: var(--cream); }
+.sticker--dark { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.quote {
+  position: relative;
+  margin: 1.1rem 0;
+  padding-left: 1.05rem;
+  border-left: 3px solid var(--red);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: #3c2d23;
+}
+.quote cite {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.59rem;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7d6853;
+}
+.section--dark .quote,
+.section--wine .quote { color: var(--text); border-left-color: var(--gold); }
+.section--dark .quote cite,
+.section--wine .quote cite { color: var(--muted); }
+
+.callout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 1.3rem 1.4rem;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--paper-2);
+  box-shadow: 4px 4px 0 rgba(33, 24, 19, 0.1);
+}
+.callout__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+.callout h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.callout p { font-size: 0.92rem; }
+
+.twist {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  margin: 2rem 0 0;
+  padding: clamp(1.2rem, 2.5vw, 1.7rem);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 8px 8px 0 rgba(33, 24, 19, 0.16);
+}
+.twist__tag {
+  align-self: start;
+  justify-self: start;
+  padding: 0.35em 0.6em;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.twist p { font-size: 0.95rem; color: #e0cfb6; }
+.twist strong { color: var(--gold-2); }
+
+/* ---------- Unidades ---------- */
+.unities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-top: 2rem;
+}
+.unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.35rem, 2.4vw, 1.9rem);
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.unit::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(33, 24, 19, 0.1);
+  border-radius: 13px;
+  pointer-events: none;
+}
+.unit__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.unit__num {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 380;
+  line-height: 0.8;
+  color: var(--red);
+}
+.unit__icon { width: 46px; height: 46px; flex: none; color: var(--ink); }
+.unit__icon circle, .unit__icon path, .unit__icon line, .unit__icon rect {
+  vector-effect: non-scaling-stroke;
+}
+.unit h3 {
+  margin: 1.1rem 0 0.2rem;
+  font-size: clamp(1.45rem, 2.3vw, 1.8rem);
+}
+.unit__sub {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.59rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #7e6954;
+}
+.unit__body { font-size: 0.93rem; }
+.unit__body p { margin-bottom: 0.85rem; }
+.unit__example {
+  margin: 0 0 0.9rem;
+  padding: 0.55rem 0.65rem;
+  border-left: 3px solid var(--gold);
+  background: var(--paper-2);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #4a382b;
+}
+.unit__example b {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.unit__checks {
+  margin: auto 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px dashed rgba(33, 24, 19, 0.25);
+  list-style: none;
+  font-size: 0.8rem;
+}
+.unit__checks li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.45;
+}
+.unit__checks li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-weight: 700;
+}
+.unit__tag {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+}
+.unit__badge {
+  position: absolute;
+  top: -0.7rem;
+  right: 1rem;
+  transform: rotate(3deg);
+}
+.unities-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: 1.6rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.unities-note b { color: var(--red); }
+
+/* ---------- Simulador ---------- */
+.sim { overflow: hidden; }
+.sim__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  border: 1px solid rgba(244, 232, 211, 0.2);
+  border-radius: 26px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(244, 232, 211, 0.035) 1px, transparent 1px) 0 0 / 100% 38px,
+    #1b1411;
+}
+.sim__controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 3.6vw, 2.9rem);
+}
+.sim__controls h2 { font-size: clamp(2rem, 3.6vw, 3rem); margin-bottom: 0.6rem; }
+.sim__controls > p { color: #c9b69c; max-width: 46ch; font-size: 0.95rem; }
+.controls { display: grid; gap: 1.35rem; margin: 1.8rem 0 1.5rem; }
+.control__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+}
+.control__top label {
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #d9c6ab;
+}
+.control__top output {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold-2);
+  font-style: italic;
+}
+.control input[type="range"] {
+  width: 100%;
+  height: 26px;
+  margin: 0;
+  background: transparent;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.control__scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -0.15rem;
+  color: #8e7a62;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.presets { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.2rem; }
+.presets .btn {
+  border-color: rgba(244, 232, 211, 0.35);
+  color: #e6d4ba;
+  background: transparent;
+  padding: 0.45em 0.72em;
+  font-size: 0.62rem;
+}
+.presets .btn:hover { border-color: var(--gold); background: var(--gold); color: var(--ink); }
+.sim__live {
+  display: none;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(244, 232, 211, 0.22);
+  border-radius: 6px;
+  background: rgba(244, 232, 211, 0.05);
+}
+.sim__live span {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a99076;
+}
+.sim__live strong {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  color: var(--gold);
+}
+.sim__live strong[data-mode="ok"] { color: #8fd6a4; }
+.sim__live strong[data-mode="mid"] { color: var(--gold); }
+.sim__live strong[data-mode="corral"] { color: #f08a7d; }
+.sim__live strong[data-mode="bad"] { color: #f08a7d; }
+.sim__foot {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 232, 211, 0.15);
+  color: #9f8a70;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.sim__cert-wrap {
+  display: grid;
+  place-items: center;
+  padding: clamp(1.1rem, 3vw, 2.4rem);
+  background:
+    radial-gradient(60% 60% at 70% 20%, rgba(201, 47, 39, 0.18), transparent 70%),
+    #120d0b;
+}
+.cert {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+  padding: clamp(1.2rem, 2.6vw, 1.8rem);
+  background:
+    linear-gradient(rgba(33, 24, 19, 0.03) 1px, transparent 1px) 0 0 / 100% 24px,
+    #f7ecd8;
+  color: var(--ink);
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  transform: rotate(-1.2deg);
+}
+.cert::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(33, 24, 19, 0.32);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.cert__head {
+  padding-bottom: 0.7rem;
+  border-bottom: 1.5px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.cert__head span { display: block; color: #796550; font-size: 0.5rem; letter-spacing: 0.06em; }
+.cert__title {
+  margin: 0.8rem 0 0.9rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  line-height: 1.02;
+}
+.metric { margin-bottom: 0.65rem; }
+.metric__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.metric__status { color: #6f5a44; }
+.metric__status[data-state="ok"] { color: #2e6b3d; }
+.metric__status[data-state="mid"] { color: #a06b12; }
+.metric__status[data-state="bad"] { color: #a52a20; }
+.metric__track {
+  height: 7px;
+  border: 1px solid rgba(33, 24, 19, 0.35);
+  background: rgba(33, 24, 19, 0.08);
+  overflow: hidden;
+}
+.metric__fill {
+  height: 100%;
+  width: 0;
+  background: var(--red);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+.metric__fill[data-state="ok"] { background: #3f7d50; }
+.metric__fill[data-state="mid"] { background: #c58a1f; }
+.metric__fill[data-state="bad"] { background: var(--red); }
+.cert__verdict {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(33, 24, 19, 0.35);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.cert__verdict strong { display: block; margin-bottom: 0.25rem; font-family: var(--font-display); font-size: 1rem; }
+.cert__stamp {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  transform: rotate(-8deg);
+  border: 2px solid var(--red);
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.cert[data-mode="ok"] .cert__stamp { color: #2e6b3d; border-color: #2e6b3d; }
+.cert[data-mode="mid"] .cert__stamp { color: #a06b12; border-color: #a06b12; }
+.cert__foot {
+  margin-top: 0.9rem;
+  padding-right: 4.6rem;
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.04em;
+  color: #7c6852;
+  text-transform: uppercase;
+}
+
+/* ---------- Corral ---------- */
+.corral__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: clamp(1.2rem, 2.6vw, 2rem);
+  align-items: start;
+  min-width: 0;
+}
+.corral__grid > * { min-width: 0; }
+.corral__stage {
+  position: relative;
+  min-width: 0;
+  padding: 0.65rem;
+  border-radius: 22px;
+  background: #0f0b09;
+  border: 1px solid #433226;
+  box-shadow: 0 22px 50px rgba(33, 24, 19, 0.18);
+}
+.corral__scroll { min-width: 0; max-width: 100%; border-radius: 16px; }
+.corral__stage svg { width: 100%; height: auto; border-radius: 16px; }
+.corral__caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.5rem 0.2rem;
+  color: #9f8a70;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.corral__panel {
+  position: sticky;
+  top: 88px;
+  min-height: 380px;
+  padding: clamp(1.3rem, 2.4vw, 1.8rem);
+  background: var(--cream);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.corral__panel-top {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.6rem;
+}
+.panel-num {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.corral__panel h3 { font-size: clamp(1.3rem, 2.2vw, 1.6rem); }
+.corral__panel .tag {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #806b55;
+}
+.corral__panel p { font-size: 0.92rem; }
+.corral__why {
+  margin-top: 1rem;
+  padding: 0.8rem 0.9rem;
+  border-left: 3px solid var(--gold);
+  background: var(--paper-2);
+  font-size: 0.84rem;
+}
+.corral__why b {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.corral__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.62rem;
+  border: 1px solid rgba(33, 24, 19, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.chip b { color: var(--red); font-weight: 700; }
+.chip:hover { border-color: var(--ink); background: rgba(33, 24, 19, 0.06); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip[aria-pressed="true"] b { color: var(--gold); }
+
+.hotspot { cursor: pointer; }
+.hotspot .dot {
+  fill: var(--red);
+  stroke: #f5e7cf;
+  stroke-width: 2;
+  transition: fill 0.18s ease, r 0.18s ease;
+}
+.hotspot .halo {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.5;
+  opacity: 0.55;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 3s ease-out infinite;
+}
+.hotspot .num {
+  fill: #fff;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  pointer-events: none;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.hotspot:hover .dot { fill: var(--gold); }
+.hotspot.is-active .dot { fill: var(--gold); }
+.hotspot.is-active .halo { stroke: var(--gold); opacity: 0.9; animation: none; }
+.hotspot:focus { outline: none; }
+.hotspot:focus-visible .dot { stroke: var(--gold); stroke-width: 4; }
+@keyframes pulse {
+  0% { transform: scale(0.75); opacity: 0.65; }
+  70% { transform: scale(1.7); opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.blueprint-label {
+  fill: #c7ae86;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.blueprint-label--dim { fill: #8f7a60; font-size: 9.5px; }
+
+.corral-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.corral-card {
+  padding: 1.2rem 1.25rem;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  box-shadow: 4px 4px 0 rgba(33, 24, 19, 0.1);
+}
+.corral-card .kicker { color: var(--red); font-size: 0.55rem; }
+.corral-card h3 { margin: 0.45rem 0 0.4rem; font-size: 1.25rem; }
+.corral-card p { font-size: 0.84rem; }
+
+.corral-quote {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.4rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.corral-quote span {
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- Lope ---------- */
+.lope-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+.lope-head h2 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); }
+.lope-tools { display: flex; align-items: center; gap: 0.7rem; padding-bottom: 0.5rem; }
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.toggle .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(229, 169, 60, 0.16);
+}
+.toggle[aria-pressed="false"] .dot { background: #8a7560; box-shadow: none; }
+
+.lope-context {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(1.4rem, 3vw, 2.6rem);
+  margin-bottom: 2.2rem;
+}
+.lope-context p { color: #efd9c2; }
+.fact-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.55rem; }
+.fact-list li {
+  display: grid;
+  grid-template-columns: 6.4rem 1fr;
+  gap: 0.7rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(251, 238, 221, 0.16);
+  font-size: 0.82rem;
+}
+.fact-list b {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+.timeline-wrap {
+  margin: 0 0 2rem;
+  padding: 1.2rem 1.3rem 1rem;
+  border: 1px solid rgba(251, 238, 221, 0.25);
+  border-radius: var(--radius-sm);
+  background: rgba(22, 17, 14, 0.26);
+}
+.timeline-wrap .kicker { color: var(--gold); font-size: 0.55rem; margin-bottom: 0.9rem; }
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid rgba(251, 238, 221, 0.3);
+}
+.timeline__item {
+  position: relative;
+  padding: 1rem 0.9rem 0 0.9rem;
+  border-left: 1px solid rgba(251, 238, 221, 0.18);
+}
+.timeline__item:first-child { border-left: 0; padding-left: 0; }
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -3.5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.timeline__item:first-child::before { left: 0; }
+.timeline__item b {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--gold-2);
+}
+.timeline__item span {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #dfc3a8;
+}
+.lope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.move {
+  position: relative;
+  padding: 1.35rem 1.4rem;
+  border: 1px solid rgba(251, 238, 221, 0.28);
+  border-radius: var(--radius-sm);
+  background: rgba(22, 17, 14, 0.3);
+}
+.move__num {
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(229, 169, 60, 0.45);
+}
+.move h3 { margin-bottom: 0.55rem; font-size: 1.28rem; padding-right: 2rem; }
+.move .quote {
+  margin: 0.7rem 0;
+  padding-left: 0.8rem;
+  border-left-color: var(--gold);
+  font-size: 0.93rem;
+  color: #fbeedd;
+}
+.move .quote cite { color: #d3b299; }
+.move .translation {
+  margin-top: 0.55rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(229, 169, 60, 0.1);
+  font-size: 0.79rem;
+  line-height: 1.45;
+  color: #f0dcc4;
+}
+.translation b {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.move__effect {
+  display: inline-block;
+  margin-top: 0.7rem;
+  padding: 0.22em 0.5em;
+  border: 1px solid rgba(251, 238, 221, 0.35);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #e8cbb0;
+}
+.no-translations .translation { display: none; }
+
+.polymetry {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.6rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid rgba(251, 238, 221, 0.28);
+  border-radius: var(--radius-sm);
+  background: rgba(22, 17, 14, 0.28);
+}
+.polymetry h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.polymetry p { font-size: 0.84rem; color: #e9d2ba; }
+.verse-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.45rem; }
+.verse {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.42rem 0.55rem;
+  border-bottom: 1px solid rgba(251, 238, 221, 0.14);
+  font-size: 0.74rem;
+}
+.verse b { color: var(--gold-2); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.verse span { color: #d8bfa6; text-align: right; }
+
+.not-broken {
+  margin-top: 1.6rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid rgba(251, 238, 221, 0.3);
+  border-radius: var(--radius-sm);
+  background: rgba(251, 238, 221, 0.06);
+}
+.not-broken h3 { font-size: 1.2rem; margin-bottom: 0.65rem; }
+.not-broken h3 span { color: var(--gold); font-style: italic; }
+.pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.33em 0.62em;
+  border: 1px solid rgba(251, 238, 221, 0.3);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #f0dcc4;
+}
+.pill b { color: var(--gold); }
+.lope-nuance { margin-top: 1rem; font-size: 0.84rem; color: #e2c6ad; }
+
+/* ---------- Comparación ---------- */
+.vs-head {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+.vs-card {
+  padding: 1.15rem 1.3rem;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  box-shadow: 4px 4px 0 rgba(33, 24, 19, 0.1);
+}
+.vs-card--lope { text-align: right; }
+.vs-card .kicker { color: var(--red); font-size: 0.55rem; }
+.vs-card h3 { font-size: 1.5rem; margin: 0.25rem 0; }
+.vs-card p { font-size: 0.78rem; margin: 0; color: var(--muted); }
+.vs-badge {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px var(--ink);
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+  -webkit-overflow-scrolling: touch;
+}
+table.compare { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 0.86rem; }
+table.compare caption {
+  padding: 0.85rem 1rem;
+  border-bottom: 1.5px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 0.57rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--muted);
+}
+table.compare th, table.compare td {
+  padding: 0.9rem 1rem;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid rgba(33, 24, 19, 0.14);
+}
+table.compare thead th {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 0;
+}
+table.compare tbody th {
+  width: 16%;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+table.compare tbody tr:last-child td,
+table.compare tbody tr:last-child th { border-bottom: 0; }
+table.compare tbody tr:hover { background: rgba(229, 169, 60, 0.07); }
+.table-hint {
+  display: none;
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.table-note { margin-top: 1rem; font-size: 0.86rem; color: var(--muted); }
+
+/* ---------- Casos ---------- */
+.cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.case {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.case__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.35rem 0.95rem;
+  border-bottom: 1.5px dashed rgba(33, 24, 19, 0.3);
+  background: var(--paper-2);
+}
+.case__num {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.case__date { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.05em; color: var(--muted); }
+.case__body { padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; height: 100%; }
+.case h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 0.15rem; }
+.case__author { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.8rem; }
+.case__coords { display: grid; gap: 0.3rem; margin-bottom: 0.85rem; font-size: 0.78rem; }
+.case__coords span { display: grid; grid-template-columns: 4.3rem 1fr; gap: 0.5rem; }
+.case__coords b { font-family: var(--mono); font-size: 0.53rem; letter-spacing: 0.06em; text-transform: uppercase; color: #806b55; font-weight: 600; padding-top: 0.15rem; }
+.case__pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.8rem; }
+.unit-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  padding: 0.25em 0.5em;
+  border: 1px solid;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.unit-pill b { font-size: 0.6rem; }
+.unit-pill--ok { background: #dfeedd; color: #235c32; border-color: #b5d3b1; }
+.unit-pill--mid { background: #f7e8c7; color: #855c12; border-color: #e6c98e; }
+.unit-pill--no { background: #f7dcd7; color: #8a241c; border-color: #e6b4ac; }
+.case__why { font-size: 0.84rem; margin-bottom: 0.8rem; }
+.case__quote {
+  margin-top: auto;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(33, 24, 19, 0.15);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: #4a382b;
+}
+
+/* ---------- Chat ---------- */
+.chat-layout { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+.chat-copy h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); margin-bottom: 1rem; }
+.chat-points { margin: 1.4rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.7rem; }
+.chat-points li { position: relative; padding-left: 1.4rem; font-size: 0.86rem; }
+.chat-points li::before { content: "→"; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+.phone {
+  width: min(100%, 540px);
+  margin-inline: auto;
+  border: 2px solid var(--ink);
+  border-radius: 26px;
+  overflow: hidden;
+  background: #efe2cb;
+  box-shadow: 12px 14px 0 rgba(33, 24, 19, 0.14);
+  transform: rotate(0.6deg);
+}
+.phone__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+.phone__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
+.phone__title { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.05em; line-height: 1.4; }
+.phone__title small { display: block; color: #a99076; font-size: 0.48rem; }
+.phone__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.9rem;
+  background:
+    linear-gradient(rgba(33, 24, 19, 0.035) 1px, transparent 1px) 0 0 / 100% 28px,
+    #efe2cb;
+}
+.bubble {
+  position: relative;
+  max-width: 88%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(33, 24, 19, 0.22);
+  border-radius: 12px 12px 12px 3px;
+  background: #fffaf0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  box-shadow: 2px 2px 0 rgba(33, 24, 19, 0.07);
+}
+.bubble--right {
+  align-self: flex-end;
+  border-radius: 12px 12px 3px 12px;
+  background: #f4d69a;
+}
+.bubble__name {
+  display: block;
+  margin-bottom: 0.12rem;
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.bubble__time { float: right; margin: 0.15rem 0 0 0.5rem; font-family: var(--mono); font-size: 0.45rem; color: #8e7a63; }
+.chat-note {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8e7a63;
+}
+
+/* ---------- Resumen / quiz ---------- */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.summary__item {
+  padding: 1rem;
+  border: 1px solid rgba(244, 232, 211, 0.2);
+  border-radius: var(--radius-sm);
+  background: rgba(244, 232, 211, 0.04);
+}
+.summary__item b {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+.summary__item span { font-size: 0.76rem; color: #d8c4aa; line-height: 1.45; display: block; }
+
+.quiz__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; }
+.quiz__head h2 { font-size: clamp(2.4rem, 5vw, 4rem); max-width: 18ch; }
+.quiz__score {
+  margin: 0.9rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.quiz-form { display: grid; gap: 1rem; }
+.q {
+  margin: 0;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid rgba(244, 232, 211, 0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(244, 232, 211, 0.035);
+}
+.q legend {
+  padding: 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+  line-height: 1.3;
+}
+.q legend .qnum {
+  margin-right: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 0.45rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(244, 232, 211, 0.16);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.opt:hover { border-color: rgba(229, 169, 60, 0.6); background: rgba(229, 169, 60, 0.06); }
+.opt input { margin: 0.22rem 0 0; flex: none; accent-color: var(--gold); }
+.opt.is-correct { border-color: #6fbe86; background: rgba(111, 190, 134, 0.12); }
+.opt.is-wrong { border-color: #e07a6d; background: rgba(224, 122, 109, 0.12); }
+.opt.is-correct::after { content: "✓"; margin-left: auto; color: #8fd6a4; font-weight: 700; }
+.opt.is-wrong::after { content: "✕"; margin-left: auto; color: #f0a196; font-weight: 700; }
+.fb {
+  margin: 0.8rem 0 0;
+  padding: 0.7rem 0.8rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(229, 169, 60, 0.08);
+  font-size: 0.79rem;
+  line-height: 1.5;
+  color: #e7d4bc;
+}
+.fb strong { color: var(--gold-2); }
+.quiz-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
+.quiz-result {
+  display: none;
+  margin-top: 1.4rem;
+  padding: 1.4rem 1.5rem;
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-sm);
+  background: rgba(229, 169, 60, 0.08);
+  align-items: center;
+  gap: 1.5rem;
+}
+.quiz-result.is-visible { display: flex; }
+.quiz-result__score {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  line-height: 0.9;
+  color: var(--gold);
+  flex: none;
+}
+.quiz-result__score small { font-size: 0.35em; color: #b9a58c; }
+.quiz-result h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+.quiz-result p { font-size: 0.84rem; color: #e3d0b8; }
+.quiz-result__links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; }
+.quiz-result__links a { font-family: var(--mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-2); }
+
+/* ---------- Glosario ---------- */
+.glossary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.2rem; }
+.term { border-bottom: 1px solid var(--border); }
+.term summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.term summary::-webkit-details-marker { display: none; }
+.term summary::after {
+  content: "+";
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--red);
+  font-weight: 400;
+}
+.term[open] summary::after { content: "−"; }
+.term p { padding: 0 0 0.9rem; font-size: 0.84rem; color: var(--muted); }
+.term em { color: var(--text); }
+
+/* ---------- Profe ---------- */
+.teach {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.4rem, 3.4vw, 2.6rem);
+  border-radius: 24px;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 10px 12px 0 rgba(33, 24, 19, 0.14);
+}
+.teach h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); margin-bottom: 0.7rem; }
+.teach h3 { font-size: 1.1rem; margin: 1.4rem 0 0.5rem; color: var(--gold-2); }
+.teach p, .teach li { font-size: 0.84rem; color: #dcc8af; }
+.teach ol, .teach ul { margin: 0; padding-left: 1.1rem; }
+.teach li { margin-bottom: 0.35rem; }
+.plan { display: grid; gap: 0; margin: 0.8rem 0 0; padding: 0; list-style: none; }
+.plan li {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  gap: 0.8rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid rgba(244, 232, 211, 0.14);
+}
+.plan b { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.05em; color: var(--gold); padding-top: 0.18rem; }
+.plan span { font-size: 0.8rem; color: #e2cfb8; }
+.teach .activity {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--red);
+  background: rgba(244, 232, 211, 0.06);
+  font-size: 0.82rem;
+}
+.teach .activity b { color: var(--gold-2); }
+.cite-box { margin-top: 1.2rem; padding-top: 0.9rem; border-top: 1px solid rgba(244, 232, 211, 0.16); }
+.cite-box p { font-size: 0.7rem; line-height: 1.55; color: #bda98f; margin-bottom: 0.45rem; }
+.cite-box a { color: var(--gold-2); }
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 3rem 0 2.4rem;
+  background: var(--ink);
+  color: #c7b299;
+  border-top: 1px solid rgba(244, 232, 211, 0.14);
+}
+.footer__grid { display: grid; grid-template-columns: 1.2fr 0.8fr 0.8fr; gap: 2rem; }
+.footer h3 { color: var(--paper); font-size: 1.3rem; margin-bottom: 0.5rem; }
+.footer p { font-size: 0.78rem; }
+.footer a { color: #e4d0b6; }
+.footer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(244, 232, 211, 0.13);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #96816a;
+}
+.to-top { color: var(--gold); text-decoration: none; }
+
+/* ---------- Utilidades ---------- */
+.reveal { will-change: opacity, transform; }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+.js .reveal[data-delay="1"] { transition-delay: 0.08s; }
+.js .reveal[data-delay="2"] { transition-delay: 0.16s; }
+.js .reveal[data-delay="3"] { transition-delay: 0.24s; }
+
+.hidden { display: none !important; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.7rem 1rem;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.skip-link:focus { top: 0.8rem; }
+main:focus { outline: none; }
+
+/* ---------- Puerta de diagnóstico: si el JS no corre ---------- */
+.js-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(15, 11, 9, 0.94);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+}
+.js-gate__card {
+  width: min(620px, 100%);
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 14px 16px 0 rgba(0, 0, 0, 0.35);
+}
+.js-gate__tag {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  padding: 0.3em 0.6em;
+  border-radius: 3px;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.js-gate h2 {
+  margin-bottom: 0.7rem;
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  line-height: 1.02;
+}
+.js-gate p { font-size: 0.9rem; color: #4a382b; }
+.js-gate strong { color: var(--ink); }
+.js-gate__path {
+  margin: 1rem 0;
+  padding: 0.6rem 0.7rem;
+  border: 1px dashed rgba(33, 24, 19, 0.35);
+  background: var(--paper-2);
+  font-family: var(--mono);
+  font-size: 0.68rem !important;
+  overflow-wrap: anywhere;
+}
+.js-gate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.1rem;
+}
+.js-gate .btn { min-height: 42px; }
+html.js .js-gate { display: none !important; }
+#jsGateClose:checked ~ .js-gate { display: none !important; }
+html.app-ready .js-gate { display: none !important; }
+
+/* ---------- Avisos de contexto (sin JS / vista incrustada) ---------- */
+.nojs {
+  margin-top: 64px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--gold);
+  color: var(--ink);
+}
+.nojs__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.8rem 1rem;
+  padding: 0.85rem 0;
+}
+.nojs__tag {
+  flex: none;
+  padding: 0.25em 0.55em;
+  border-radius: 3px;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.nojs p {
+  margin: 0;
+  max-width: 90ch;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+.nojs code {
+  padding: 0.08em 0.3em;
+  border: 1px solid rgba(33, 24, 19, 0.25);
+  border-radius: 3px;
+  background: rgba(33, 24, 19, 0.08);
+  font-family: var(--mono);
+  font-size: 0.75em;
+}
+
+.embed-notice {
+  position: relative;
+  z-index: 5;
+  margin-top: 64px;
+  border-bottom: 1px solid rgba(244, 232, 211, 0.2);
+  background: var(--ink-2);
+  color: var(--paper);
+}
+.embed-notice[hidden] { display: none !important; }
+.embed-notice__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem 1rem;
+  padding: 0.7rem 0;
+}
+.embed-notice p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #d8c4aa;
+}
+.embed-notice strong { color: var(--gold-2); }
+.embed-notice__actions { display: flex; align-items: center; gap: 0.5rem; }
+.embed-notice .btn { min-height: 34px; padding: 0.4em 0.8em; font-size: 0.6rem; }
+.embed-close {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(244, 232, 211, 0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--paper);
+  font-size: 1rem;
+  line-height: 1;
+}
+.embed-close:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero__hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.15rem 0 0;
+  color: var(--gold-2);
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hero__hint .live-dot {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(229, 169, 60, 0.16);
+  animation: live 2.4s ease-in-out infinite;
+}
+@keyframes live {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(229, 169, 60, 0.16); }
+  50% { box-shadow: 0 0 0 7px rgba(229, 169, 60, 0.04); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .nav__links a { padding-inline: 0.45rem; font-size: 0.6rem; }
+  .summary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .summary__item:nth-child(4), .summary__item:nth-child(5) { grid-column: span 1; }
+}
+
+@media (max-width: 920px) {
+  .section-head, .lope-context, .corral__grid, .chat-layout, .teach { grid-template-columns: 1fr; }
+  .section-head { align-items: start; }
+  .unities { grid-template-columns: 1fr; }
+  .unit__checks { margin-top: 0.5rem; }
+  .hero__grid { grid-template-columns: 1fr; align-items: start; }
+  .hero__art { max-width: 420px; margin: 0 auto; width: 100%; }
+  .decree-wrap { justify-content: flex-start; }
+  .corral__panel { position: static; min-height: 0; }
+  .corral-cards { grid-template-columns: 1fr; }
+  .lope-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid rgba(251, 238, 221, 0.3); margin-left: 0.35rem; }
+  .timeline__item { padding: 0.55rem 0 0.55rem 0.95rem; border-left: 0; }
+  .timeline__item:first-child { padding-left: 0.95rem; }
+  .timeline__item::before { top: 0.95rem; left: -3.5px; }
+  .timeline__item:first-child::before { left: -3.5px; }
+  .polymetry { grid-template-columns: 1fr; }
+  .cases { grid-template-columns: 1fr; }
+  .glossary-grid { grid-template-columns: 1fr; }
+  .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .vs-head { grid-template-columns: 1fr auto 1fr; }
+}
+
+@media (max-width: 900px) {
+  :root { --gutter: 1.1rem; }
+  .nojs, .embed-notice { margin-top: 58px; }
+  .nojs__inner { padding: 0.7rem 0; }
+  html { scroll-padding-top: 76px; }
+  .nav__inner { height: 58px; }
+  .nav__links {
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.6rem;
+    background: #16110e;
+    border-bottom: 1px solid rgba(244, 232, 211, 0.2);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+  }
+  .nav__links.is-open { display: flex; }
+  .nav__links a { padding: 0.7rem 0.8rem; font-size: 0.68rem; }
+  .nav__menu { display: inline-flex; }
+  .brand__text { display: none; }
+  .translate-toggle { padding: 0.4rem 0.55rem; font-size: 0.55rem; }
+  .hero { padding-top: 92px; }
+  .hero h1 { font-size: clamp(2.5rem, 12vw, 4.2rem); }
+  .hero .kicker { flex-wrap: wrap; row-gap: 0.35rem; font-size: 0.62rem; letter-spacing: 0.16em; }
+  .hero__meta { font-size: 0.56rem; }
+  .decree { transform: rotate(1.2deg); }
+  .decree-annotation { display: none; }
+  .twist { grid-template-columns: 1fr; gap: 0.6rem; }
+  .sim__panel { grid-template-columns: 1fr; }
+  .sim__live { display: flex; }
+  .sim__cert-wrap { padding: 1.3rem; }
+  .summary { grid-template-columns: 1fr 1fr; }
+  .summary__item:nth-child(5) { grid-column: 1 / -1; }
+  .vs-head { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0.8rem; }
+  .vs-card { width: 100%; }
+  .vs-card--lope { text-align: center; }
+  .vs-card:not(.vs-card--lope) { text-align: center; }
+  .vs-badge { width: 46px; height: 46px; font-size: 1rem; }
+  .quiz-result { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .footer__grid { grid-template-columns: 1fr; gap: 1.4rem; }
+  .lope-head { grid-template-columns: 1fr; }
+  .lope-tools { padding-bottom: 0; }
+  .polymetry { padding: 1.2rem; }
+  .verse-grid { grid-template-columns: 1fr; }
+  .corral-quote { grid-template-columns: 1fr; }
+  .corral-quote span { white-space: normal; }
+  .table-hint { display: block; }
+}
+
+.corral__scrollhint {
+  display: none;
+  margin: 0.35rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+@media (max-width: 760px) {
+  .corral__stage::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    bottom: 66px;
+    width: 34px;
+    border-radius: 0 16px 16px 0;
+    background: linear-gradient(90deg, transparent, #0f0b09);
+    pointer-events: none;
+  }
+  .corral__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .corral__scroll svg { min-width: 680px; }
+  .corral__scrollhint { display: block; }
+  .corral__chips { gap: 0.5rem; }
+  .corral__chips .chip { padding: 0.55rem 0.75rem; font-size: 0.6rem; min-height: 42px; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 3.4rem 0; }
+  .hero h1 { font-size: clamp(2.3rem, 11.5vw, 3.4rem); }
+  .hero__actions .btn { width: 100%; }
+  .decree__stamp { bottom: 3.8rem; font-size: 0.7rem; }
+  .summary { grid-template-columns: 1fr; }
+  .summary__item:nth-child(5) { grid-column: auto; }
+  .phone { transform: none; }
+  .bubble { max-width: 95%; }
+  .metric__top { font-size: 0.5rem; }
+  .cert { transform: none; }
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker__track { animation: none; }
+  .js .reveal { opacity: 1; transform: none; }
+  .hotspot .halo { display: none; }
+}
+
+/* ---------- Impresión ---------- */
+@media print {
+  :root { --paper: #fff; --text: #000; --muted: #333; }
+  body { background: #fff; color: #000; font-size: 10.5pt; }
+  .nav, .progress, .ticker, .hero__actions, .hero__meta, .presets, .quiz-actions,
+  .translate-toggle, .nav__menu, .to-top, .sim__foot, #printBtn, .sim__panel { display: none !important; }
+  .section--dark, .section--dark *, .section--wine, .section--wine *, .quiz, .quiz *,
+  .teach, .teach *, .footer, .footer * { color: #000 !important; }
+  .section { padding: 18pt 0; break-inside: avoid; }
+  .hero { padding: 24pt 0 18pt; background: #fff; color: #000; }
+  .hero::before, .hero::after { display: none; }
+  .hero h1, .hero__dek, .hero .kicker, .hero h1 .line--accent { color: #000 !important; }
+  .decree { box-shadow: none; border: 1px solid #000; transform: none; }
+  .card, .unit, .case, .corral-card, .table-wrap, .phone { box-shadow: none; }
+  .section--dark, .section--wine, .quiz, .teach, .footer {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .section--dark .card, .section--wine .card { background: #fff; color: #000; border-color: #000; }
+  .section--dark p, .section--wine p, .teach p, .teach li, .quiz result p { color: #000; }
+  a { color: #000; text-decoration: underline; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .corral__panel { position: static; box-shadow: none; }
+  .sim__panel { grid-template-columns: 1fr; }
+  .cert { box-shadow: none; transform: none; }
+  .chat-layout { grid-template-columns: 1fr; }
+}
+
+</style>
+<script>
+document.documentElement.classList.add('js');
+// Si la app no arranca en 3 s, se retira la capa .js y se muestra el diagnóstico.
+window.setTimeout(function () {
+  if (!document.documentElement.classList.contains('app-ready')) {
+    document.documentElement.classList.remove('js');
+    var gate = document.getElementById('jsGate');
+    if (gate) gate.style.display = 'grid';
+  }
+}, 3000);
+</script>
+</head>
+<body>
+<input type="checkbox" id="jsGateClose" class="sr-only">
+<div class="js-gate" id="jsGate" role="alertdialog" aria-labelledby="jsGateTitle" aria-describedby="jsGateText">
+  <div class="js-gate__card">
+    <span class="js-gate__tag">Aviso técnico</span>
+    <h2 id="jsGateTitle">JavaScript no está corriendo en este visor.</h2>
+    <p id="jsGateText">El deslizador de <strong>«Lugares en escena»</strong> se mueve porque es un control nativo del navegador, pero el certificado, el índice, el plano y el quiz necesitan JavaScript. Abre <code>teatro-barroco-unidades.html</code> en Chrome o Safari con doble clic y recarga con <strong>Cmd + R</strong> si ya estaba abierto.</p>
+    <p class="js-gate__path">Archivo: <code>teatro-barroco-unidades.html</code><br>En la barra de direcciones debe empezar con <code>file:///</code> o <code>http://</code>, no ser una vista previa del chat.</p>
+    <div class="js-gate__actions">
+      <a class="btn btn--gold" href="teatro-barroco-unidades.html" target="_blank" rel="noopener">Abrir en pestaña ↗</a>
+      <label class="btn btn--ghost" for="jsGateClose" style="color:var(--ink);border-color:var(--ink);">Entendido, ver sin interacción</label>
+    </div>
+  </div>
+</div>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="top">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="Inicio: Tres reglas, un tablado, una rebelión">
+      <span class="brand__mark" aria-hidden="true">3</span>
+      <span class="brand__text">Teatro barroco<span>Guía visual · 1609</span></span>
+    </a>
+    <nav aria-label="Secciones de la guía">
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#unidades" data-nav="unidades">Unidades</a></li>
+        <li><a href="#simulador" data-nav="simulador">Simulador</a></li>
+        <li><a href="#corral" data-nav="corral">Corral</a></li>
+        <li><a href="#lope" data-nav="lope">Lope</a></li>
+        <li><a href="#comparar" data-nav="comparar">Comparar</a></li>
+        <li><a href="#obras" data-nav="obras">Obras</a></li>
+        <li><a href="#quiz" data-nav="quiz">Quiz</a></li>
+        <li><a href="#glosario" data-nav="glosario">Glosario</a></li>
+      </ul>
+    </nav>
+    <div class="nav__tools">
+      <button class="translate-toggle" id="transToggle" type="button" aria-pressed="true" aria-label="Mostrar u ocultar las traducciones a lenguaje actual">
+        <span class="dot" aria-hidden="true"></span>
+        Traducción <span id="transState">ON</span>
+      </button>
+      <button class="nav__menu" id="navMenu" type="button" aria-expanded="false" aria-controls="nav-links">Índice</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" tabindex="-1">
+
+  <noscript>
+    <div class="nojs">
+      <div class="container nojs__inner">
+        <span class="nojs__tag">Aviso</span>
+        <p><strong>Estás viendo la página sin JavaScript.</strong> El contenido se lee, pero el simulador, el plano interactivo, el quiz y el botón de traducciones no responderán. Abre <code>teatro-barroco-unidades.html</code> con doble clic en Chrome, Safari o Firefox para usar la versión interactiva.</p>
+      </div>
+    </div>
+  </noscript>
+
+  <div class="embed-notice" id="embedNotice" hidden>
+    <div class="container embed-notice__inner">
+      <p><strong>Vista incrustada.</strong> Si los clics no responden, abre el archivo en una pestaña del navegador.</p>
+      <div class="embed-notice__actions">
+        <button class="btn btn--gold" type="button" id="openTab">Abrir en pestaña ↗</button>
+        <button class="embed-close" type="button" id="embedClose" aria-label="Cerrar aviso">×</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="kicker">Introducción a la literatura · Teatro del Siglo de Oro</p>
+        <h1 id="hero-title">
+          <span class="line">Tres reglas.</span>
+          <span class="line">Un tablado.</span>
+          <span class="line line--accent">Una rebelión.</span>
+        </h1>
+        <p class="hero__dek">Las unidades aristotélicas explicadas sin mitos, el corral de comedias desarmado pieza por pieza y el manual con el que Lope de Vega decidió que el público mandaba más que Aristóteles.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="#unidades">Empezar por el plot twist <span class="arrow arrow--down" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#simulador">Probar el simulador</a>
+        </div>
+        <ul class="hero__meta">
+          <li>Lectura: 12 min</li>
+          <li>Nivel: introducción</li>
+          <li>Simulador + plano</li>
+          <li>Quiz + plan de clase</li>
+        </ul>
+        <p class="hero__hint"><span class="live-dot" aria-hidden="true"></span> Arrastra las perillas, toca los números del plano y responde el quiz.</p>
+      </div>
+
+      <div class="hero__art">
+        <aside class="decree-wrap" aria-label="Documento satírico: certificado de las tres unidades, derogado en 1609">
+          <div class="decree">
+            <div class="decree__top">
+              <span>Consejo de las Tres Unidades</span>
+              <span>Exp. 335 a. C. — 1609</span>
+            </div>
+            <h2 class="decree__title">Sobre el modo de contar una historia</h2>
+            <p class="decree__sub">Atenas · Roma · París · Madrid</p>
+            <div class="decree__rule">
+              <b>01</b>
+              <span>Acción<small>Una sola, entera, con principio, medio y fin.</small></span>
+            </div>
+            <div class="decree__rule">
+              <b>02</b>
+              <span>Tiempo<small>Un día, más o menos. 24 horas, si se puede.</small></span>
+            </div>
+            <div class="decree__rule">
+              <b>03</b>
+              <span>Lugar<small>Un solo sitio. No mover el decorado.</small></span>
+            </div>
+            <div class="decree__stamp" aria-hidden="true">DEROGADO</div>
+            <p class="decree__note">«Las encierro con seis llaves». — Lope, 1609</p>
+            <div class="decree__seal" aria-hidden="true">L</div>
+          </div>
+          <span class="decree-annotation">Válido en el examen. Discutible en un corral.</span>
+        </aside>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <div class="ticker__group">
+          <span>1609 · Madrid</span><span>Arte nuevo de hacer comedias</span><span>Tres jornadas</span><span>Tragicomedia</span><span>Polimetría</span><span>Aparte</span><span>Tramoya</span><span>El vulgo paga</span>
+        </div>
+        <div class="ticker__group">
+          <span>1609 · Madrid</span><span>Arte nuevo de hacer comedias</span><span>Tres jornadas</span><span>Tragicomedia</span><span>Polimetría</span><span>Aparte</span><span>Tramoya</span><span>El vulgo paga</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 01 · UNIDADES ============================ -->
+  <section class="section" id="unidades" aria-labelledby="unidades-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 · La tríada</p>
+          <h2 id="unidades-title">Las tres unidades, sin la leyenda</h2>
+        </div>
+        <p class="lead">Aristóteles estudió la tragedia griega y escribió una <em>Poética</em>. Siglos después, el Renacimiento convirtió sus observaciones en un reglamento. La diferencia entre una cosa y otra es la clave de toda la unidad.</p>
+      </div>
+
+      <div class="twist reveal">
+        <span class="twist__tag">Plot twist</span>
+        <p><strong>La expresión «tres unidades» no aparece en la <em>Poética</em>.</strong> Aristóteles insiste en la unidad de acción; el tiempo lo menciona como una tendencia («procura, en lo posible…»); el lugar no lo formula. La tríada como ley es una construcción renacentista —Castelvetro, 1570— que el neoclasicismo francés convirtió en dogma —Boileau, 1674—. Dicho de otro modo: durante siglos, Europa le hizo decir a Aristóteles algo que Aristóteles no había dicho.</p>
+      </div>
+
+      <div class="unities">
+        <article class="unit reveal">
+          <div class="unit__head">
+            <span class="unit__num" aria-hidden="true">01</span>
+            <svg class="unit__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="9" cy="24" r="4"/>
+              <circle cx="24" cy="12" r="4"/>
+              <circle cx="39" cy="24" r="4"/>
+              <circle cx="24" cy="37" r="4"/>
+              <path d="M13 24h7M28 24h7M22 15l-5-2M28 15l5-2M22 34l-5 2M28 34l5 2"/>
+              <path d="M24 16v16" stroke-dasharray="2 3"/>
+            </svg>
+          </div>
+          <h3>Acción</h3>
+          <p class="unit__sub">Unity of action · la única que importa de verdad</p>
+          <div class="quote">«La fábula es el alma de la tragedia.»<cite>Poética, 1450a</cite></div>
+          <div class="unit__body">
+            <p>Una acción completa, con principio, medio y fin. No la biografía del héroe: <strong>un solo argumento</strong>. Cada episodio debe pertenecer al todo; si lo quitas y la historia sigue igual, sobraba.</p>
+          </div>
+          <p class="unit__example"><b>Ejemplo</b> Edipo rey: cada escena pertenece a la investigación del asesinato de Layo.</p>
+          <ul class="unit__checks">
+            <li>¿Hay una acción principal?</li>
+            <li>¿Los episodios la complican o la distraen?</li>
+            <li>¿El final cierra lo que abrió el inicio?</li>
+          </ul>
+          <span class="unit__tag">Lope también la conserva (más o menos).</span>
+        </article>
+
+        <article class="unit reveal" data-delay="1">
+          <div class="unit__head">
+            <span class="unit__num" aria-hidden="true">02</span>
+            <svg class="unit__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="24" cy="24" r="17"/>
+              <path d="M24 13v11l7 5"/>
+              <path d="M7 24h4M37 24h4M24 7v4M24 37v4"/>
+              <path d="M31 9l-2 3M17 39l-2-3" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <h3>Tiempo</h3>
+          <p class="unit__sub">Unity of time · una tendencia, no una ley</p>
+          <div class="quote">«La tragedia procura, en lo posible, no exceder una revolución del sol.»<cite>Poética, 1449b</cite></div>
+          <div class="unit__body">
+            <p>Aristóteles describe lo que hacía el teatro griego. Los neoclásicos lo fijan en <strong>24 horas</strong>. En escena, el tiempo de la fábula (días, años) y el de la representación (dos o tres horas) nunca coinciden del todo.</p>
+          </div>
+          <p class="unit__example"><b>Ejemplo</b> Entre la segunda y la tercera jornada pueden pasar años sin que nadie se levante del patio.</p>
+          <ul class="unit__checks">
+            <li>¿Cuánto dura la historia?</li>
+            <li>¿Los saltos temporales se justifican?</li>
+            <li>¿Hay elipsis entre actos?</li>
+          </ul>
+          <span class="unit__tag">Lope: «ya le perdimos el respeto».</span>
+        </article>
+
+        <article class="unit reveal" data-delay="2">
+          <span class="sticker sticker--red unit__badge">No estaba en el texto</span>
+          <div class="unit__head">
+            <span class="unit__num" aria-hidden="true">03</span>
+            <svg class="unit__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="5" y="8" width="38" height="30" rx="2"/>
+              <path d="M5 16h38"/>
+              <path d="M11 8v-3M37 8v-3"/>
+              <path d="M24 22c-4 0-6 3-6 6 0 4 6 9 6 9s6-5 6-9c0-3-2-6-6-6Z"/>
+              <circle cx="24" cy="28" r="2"/>
+            </svg>
+          </div>
+          <h3>Lugar</h3>
+          <p class="unit__sub">Unity of place · la más frágil de las tres</p>
+          <div class="quote">«Que en un lugar, en un día, un solo hecho consumado / mantenga el teatro lleno hasta el final.»<cite>Boileau, Arte poética, 1674</cite></div>
+          <div class="unit__body">
+            <p>No está en la <em>Poética</em>: se deduce de la unidad de acción y de la práctica escénica. Castelvetro la teoriza en 1570 y Boileau la vuelve norma. En el corral, en cambio, <strong>el lugar se construye con palabras</strong> y se cambia a la vista.</p>
+          </div>
+          <p class="unit__example"><b>Ejemplo</b> «Estamos en Valencia», dice un personaje, y el tablado ya es Valencia.</p>
+          <ul class="unit__checks">
+            <li>¿Dónde ocurre? ¿Cambia entre actos?</li>
+            <li>¿El espacio tiene valor simbólico?</li>
+            <li>¿Quién nombra el lugar: el decorado o el verso?</li>
+          </ul>
+          <span class="unit__tag">La unidad que el Barroco rompe con más gusto.</span>
+        </article>
+      </div>
+
+      <div class="unities-note reveal">
+        <span><b>Acción</b> = qué pasa</span>
+        <span><b>Tiempo</b> = en cuánto tiempo</span>
+        <span><b>Lugar</b> = dónde</span>
+        <span>Y el paraguas de las tres: la <b>verosimilitud</b>.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 02 · SIMULADOR ============================ -->
+  <section class="section section--dark sim" id="simulador" aria-labelledby="sim-title">
+    <div class="container">
+      <div class="section-head section-head--stack" style="margin-bottom:1.8rem;">
+        <div>
+          <p class="eyebrow">02 · Laboratorio</p>
+          <h2 id="sim-title">El detector de unidades</h2>
+        </div>
+        <p class="lead">Mueve las tres perillas y observa qué tradición estás activando. El detector no te pone nota: te muestra dónde se conserva el sistema aristotélico y dónde empieza el corral.</p>
+      </div>
+
+      <div class="sim__panel reveal">
+        <div class="sim__controls">
+          <div class="controls">
+            <div class="control">
+              <div class="control__top">
+                <label for="loc">Lugares en escena</label>
+                <output id="locOut" for="loc">1</output>
+              </div>
+              <input type="range" id="loc" min="1" max="6" step="1" value="1" aria-describedby="locHint">
+              <div class="control__scale" id="locHint"><span>1 · unidad</span><span>6 · mapa</span></div>
+            </div>
+
+            <div class="control">
+              <div class="control__top">
+                <label for="time">Tiempo de la fábula</label>
+                <output id="timeOut" for="time">24 horas</output>
+              </div>
+              <input type="range" id="time" min="1" max="5" step="1" value="2" aria-describedby="timeHint">
+              <div class="control__scale" id="timeHint"><span>una tarde</span><span>varios años</span></div>
+            </div>
+
+            <div class="control">
+              <div class="control__top">
+                <label for="plots">Hilos argumentales</label>
+                <output id="plotsOut" for="plots">1</output>
+              </div>
+              <input type="range" id="plots" min="1" max="4" step="1" value="1" aria-describedby="plotsHint">
+              <div class="control__scale" id="plotsHint"><span>una acción</span><span>telenovela</span></div>
+            </div>
+          </div>
+
+          <div class="sim__live" id="simLive">
+            <span>Resultado</span>
+            <strong data-mode="ok">APTO</strong>
+          </div>
+
+          <div class="presets" aria-label="Ejemplos rápidos">
+            <button class="btn btn--sm" type="button" data-loc="1" data-time="2" data-plots="1">Edipo rey</button>
+            <button class="btn btn--sm" type="button" data-loc="1" data-time="4" data-plots="2">Fuenteovejuna</button>
+            <button class="btn btn--sm" type="button" data-loc="5" data-time="5" data-plots="2">La vida es sueño</button>
+            <button class="btn btn--sm" type="button" data-loc="3" data-time="3" data-plots="4">Serie de 8 temporadas</button>
+          </div>
+
+          <p class="sim__foot"><strong>Ojo:</strong> la unidad de acción es la única de las tres que Lope exige explícitamente. Su práctica es más libre que su teoría: hay trama secundaria, gracioso, música y bailes. El detector simplifica para que veas el sistema; la obra real siempre es más rica.</p>
+        </div>
+
+        <div class="sim__cert-wrap">
+          <div class="cert" id="cert" data-mode="mid">
+            <div class="cert__head">Certificado de verosimilitud<span>Liceo de Atenas · Corral de la Cruz · Academia de Madrid</span></div>
+            <h3 class="cert__title">Tres unidades:<br>inspección en curso</h3>
+
+            <div class="metric" data-metric="loc">
+              <div class="metric__top"><span>Acción</span><span class="metric__status" data-state="ok">unidad</span></div>
+              <div class="metric__track"><div class="metric__fill" data-state="ok" style="width:100%"></div></div>
+            </div>
+            <div class="metric" data-metric="time">
+              <div class="metric__top"><span>Tiempo</span><span class="metric__status" data-state="ok">unidad</span></div>
+              <div class="metric__track"><div class="metric__fill" data-state="ok" style="width:100%"></div></div>
+            </div>
+            <div class="metric" data-metric="place">
+              <div class="metric__top"><span>Lugar</span><span class="metric__status" data-state="ok">unidad</span></div>
+              <div class="metric__track"><div class="metric__fill" data-state="ok" style="width:100%"></div></div>
+            </div>
+
+            <div class="cert__verdict" id="verdict" aria-live="polite">
+              <strong>Atenas te aprueba (con reservas).</strong>
+              Una acción, un día, un lugar. Es el modelo más clásico. Aviso: Aristóteles solo exigía de verdad la unidad de acción.
+            </div>
+            <div class="cert__stamp" id="stamp" aria-hidden="true">APTO</div>
+            <p class="cert__foot">Documento ficticio con fines didácticos · No válido para matricularse en 1609</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 03 · CORRAL ============================ -->
+  <section class="section" id="corral" aria-labelledby="corral-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 · Arquitectura</p>
+          <h2 id="corral-title">El corral no era un teatro. Era un patio con negocio.</h2>
+        </div>
+        <p class="lead">No era un teatro de proscenio: el corral de comedias nace en el siglo XVI en patios interiores de manzanas de viviendas. No hay telón, no hay luz eléctrica, no hay silencio: hay público, calor, comida y gritos. Esa arquitectura explica buena parte de la dramaturgia barroca.</p>
+      </div>
+
+      <div class="corral__grid">
+        <p class="corral__scrollhint">Desliza el plano para verlo completo →</p>
+        <figure class="corral__stage reveal" style="margin:0;">
+          <div class="corral__scroll">
+          <svg viewBox="0 0 960 640" role="group" aria-labelledby="planoTitle planoDesc" xmlns="http://www.w3.org/2000/svg">
+            <title id="planoTitle">Plano en corte de un corral de comedias del siglo XVII</title>
+            <desc id="planoDesc">Corte transversal con ocho zonas numeradas e interactivas: tablado, patio y mosqueteros, cazuela, aposentos, desván y tramoya, foso y escotillones, alojería y toldo. También hay botones equivalentes debajo del plano.</desc>
+            <defs>
+              <pattern id="bpGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M24 0H0V24" fill="none" stroke="#2c2018" stroke-width="1"/>
+              </pattern>
+              <pattern id="bpHatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="7" stroke="#5b4533" stroke-width="1"/>
+              </pattern>
+              <pattern id="bpWall" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="10" stroke="#6a513c" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <rect width="960" height="640" fill="#17110e"/>
+            <rect width="960" height="640" fill="url(#bpGrid)" opacity="0.55"/>
+            <rect x="20" y="20" width="920" height="600" fill="none" stroke="#4a382b" stroke-width="1"/>
+
+            <text x="38" y="48" class="blueprint-label" style="font-size:12px;letter-spacing:.16em;">CORRAL DE COMEDIAS · CORTE TRANSVERSAL IDEAL</text>
+            <text x="922" y="48" text-anchor="end" class="blueprint-label blueprint-label--dim">ESCALA 1:100 · S. XVII</text>
+            <line x1="38" y1="58" x2="922" y2="58" stroke="#3d2d22" stroke-width="1"/>
+
+            <!-- suelo -->
+            <line x1="38" y1="520" x2="922" y2="520" stroke="#7a5f45" stroke-width="1.5"/>
+            <rect x="38" y="520" width="884" height="44" fill="url(#bpHatch)" opacity="0.4"/>
+
+            <!-- ====== ESCENARIO ====== -->
+            <rect x="70" y="150" width="270" height="370" fill="#201812" stroke="#8f7554" stroke-width="1.4"/>
+            <rect x="70" y="150" width="270" height="370" fill="url(#bpWall)" opacity="0.18"/>
+
+            <!-- desván -->
+            <rect x="70" y="58" width="270" height="92" fill="#1c1410" stroke="#8f7554" stroke-width="1.2"/>
+            <line x1="70" y1="120" x2="340" y2="120" stroke="#5b4533" stroke-width="1"/>
+            <circle cx="126" cy="96" r="18" fill="none" stroke="#c7ae86" stroke-width="1.4"/>
+            <circle cx="126" cy="96" r="4" fill="#c7ae86"/>
+            <path d="M126 78v36M108 96h36M113 83l26 26M139 83l-26 26" stroke="#c7ae86" stroke-width="0.8"/>
+            <path d="M144 96h50l14 22" fill="none" stroke="#c7ae86" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <path d="M208 118v10m-5 0h10" stroke="#e5a93c" stroke-width="1.4"/>
+            <text x="82" y="80" class="blueprint-label">DESVÁN · TRAMOYA</text>
+
+            <!-- corredor -->
+            <rect x="84" y="290" width="242" height="48" fill="#241a14" stroke="#8f7554" stroke-width="1.2"/>
+            <line x1="84" y1="302" x2="326" y2="302" stroke="#c7ae86" stroke-width="1.4"/>
+            <path d="M90 302v30M102 302v30M114 302v30M126 302v30M138 302v30M150 302v30M162 302v30M174 302v30M186 302v30M198 302v30M210 302v30M222 302v30M234 302v30M246 302v30M258 302v30M270 302v30M282 302v30M294 302v30M306 302v30M318 302v30" stroke="#6a513c" stroke-width="0.8"/>
+            <text x="320" y="286" text-anchor="end" class="blueprint-label blueprint-label--dim">CORREDOR</text>
+
+            <!-- puertas -->
+            <path d="M102 440V382a24 24 0 0 1 48 0v58Z" fill="#120d0a" stroke="#8f7554" stroke-width="1.1"/>
+            <path d="M242 440V382a24 24 0 0 1 48 0v58Z" fill="#120d0a" stroke="#8f7554" stroke-width="1.1"/>
+            <line x1="150" y1="440" x2="150" y2="382" stroke="#5b4533" stroke-width="0.8"/>
+            <line x1="290" y1="440" x2="290" y2="382" stroke="#5b4533" stroke-width="0.8"/>
+
+            <!-- tablado -->
+            <rect x="70" y="440" width="280" height="80" fill="#2a1f18" stroke="#b09068" stroke-width="1.5"/>
+            <rect x="70" y="440" width="280" height="80" fill="url(#bpWall)" opacity="0.25"/>
+            <line x1="70" y1="452" x2="350" y2="452" stroke="#6a513c" stroke-width="0.8"/>
+            <path d="M70 520h280" stroke="#b09068" stroke-width="1.2"/>
+            <text x="86" y="482" class="blueprint-label">TABLADO</text>
+
+            <!-- escalones -->
+            <path d="M350 520v-16h12v-16h12v-16h12v-16h12" fill="none" stroke="#8f7554" stroke-width="1.2"/>
+            <path d="M350 504h12M362 488h12M374 472h12M386 456h12" stroke="#8f7554" stroke-width="1.2"/>
+
+            <!-- escotillón -->
+            <rect x="246" y="440" width="58" height="10" fill="#120d0a" stroke="#e5a93c" stroke-width="1" stroke-dasharray="4 3"/>
+            <path d="M275 453v20m-6-7 6 7 6-7" fill="none" stroke="#e5a93c" stroke-width="1.2"/>
+
+            <!-- ====== TOLDO ====== -->
+            <path d="M340 128h384v14q-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0-12 14-24 0Z" fill="#2a1f18" stroke="#8f7554" stroke-width="1.1"/>
+            <path d="M360 128v14M400 128v14M440 128v14M480 128v14M520 128v14M560 128v14M600 128v14M640 128v14M680 128v14" stroke="#5b4533" stroke-width="0.8"/>
+            <text x="352" y="118" class="blueprint-label">TOLDO</text>
+
+            <!-- ====== PATIO / MOSQUETEROS ====== -->
+            <g fill="#4a382b" stroke="#a0805e" stroke-width="0.7">
+              <g transform="translate(430,520)"><circle cx="0" cy="-28" r="5.5"/><path d="M-6-21h12l3 16-5 1-2 18h-4l-2-18-5-1z"/></g>
+              <g transform="translate(462,520)"><circle cx="0" cy="-26" r="5"/><path d="M-5.5-20h11l2.5 15-4.5 1-2 17h-3.5l-2-17-4.5-1z"/></g>
+              <g transform="translate(494,520)"><circle cx="0" cy="-30" r="5.5"/><path d="M-6-23h12l3 17-5 1-2 19h-4l-2-19-5-1z"/><rect x="-8" y="-36" width="16" height="3" rx="1"/></g>
+              <g transform="translate(528,520)"><circle cx="0" cy="-27" r="5"/><path d="M-5.5-21h11l2.5 16-4.5 1-2 17h-3.5l-2-17-4.5-1z"/></g>
+              <g transform="translate(560,520)"><circle cx="0" cy="-29" r="5.5"/><path d="M-6-22h12l3 16-5 1-2 19h-4l-2-19-5-1z"/></g>
+              <g transform="translate(592,520)"><circle cx="0" cy="-26" r="5"/><path d="M-5.5-20h11l2.5 15-4.5 1-2 17h-3.5l-2-17-4.5-1z"/></g>
+              <g transform="translate(624,520)"><circle cx="0" cy="-28" r="5.5"/><path d="M-6-21h12l3 16-5 1-2 18h-4l-2-18-5-1z"/></g>
+              <g transform="translate(658,520)"><circle cx="0" cy="-27" r="5"/><path d="M-5.5-21h11l2.5 16-4.5 1-2 17h-3.5l-2-17-4.5-1z"/></g>
+            </g>
+            <text x="420" y="548" class="blueprint-label">PATIO · MOSQUETEROS</text>
+            <line x1="420" y1="552" x2="420" y2="565" stroke="#5b4533" stroke-width="0.8"/>
+            <line x1="420" y1="565" x2="470" y2="565" stroke="#5b4533" stroke-width="0.8"/>
+
+            <!-- ====== CAZUELA ====== -->
+            <rect x="730" y="286" width="190" height="84" fill="#241a14" stroke="#8f7554" stroke-width="1.3"/>
+            <line x1="730" y1="300" x2="920" y2="300" stroke="#c7ae86" stroke-width="1.6"/>
+            <path d="M738 300v34M750 300v34M762 300v34M774 300v34M786 300v34M798 300v34M810 300v34M822 300v34M834 300v34M846 300v34M858 300v34M870 300v34M882 300v34M894 300v34M906 300v34M918 300v34" stroke="#5b4533" stroke-width="0.8"/>
+            <g fill="#4a382b" stroke="#a0805e" stroke-width="0.6">
+              <g transform="translate(760,370)"><circle cx="0" cy="-24" r="4.5"/><path d="M-7-18h14l4 26h-22Z"/></g>
+              <g transform="translate(792,370)"><circle cx="0" cy="-23" r="4.5"/><path d="M-7-17h14l4 25h-22Z"/></g>
+              <g transform="translate(824,370)"><circle cx="0" cy="-25" r="4.5"/><path d="M-7-19h14l4 27h-22Z"/></g>
+              <g transform="translate(856,370)"><circle cx="0" cy="-23" r="4.5"/><path d="M-7-17h14l4 25h-22Z"/></g>
+              <g transform="translate(888,370)"><circle cx="0" cy="-24" r="4.5"/><path d="M-7-18h14l4 26h-22Z"/></g>
+            </g>
+            <text x="740" y="278" class="blueprint-label">CAZUELA</text>
+
+            <!-- ====== APOSENTOS ====== -->
+            <rect x="730" y="150" width="190" height="120" fill="#1c1410" stroke="#8f7554" stroke-width="1.2"/>
+            <path d="M720 150h200l-10-22H730Z" fill="#2a1f18" stroke="#8f7554" stroke-width="1"/>
+            <g fill="none" stroke="#8f7554" stroke-width="1.1">
+              <rect x="748" y="186" width="38" height="56"/>
+              <rect x="806" y="186" width="38" height="56"/>
+              <rect x="864" y="186" width="38" height="56"/>
+            </g>
+            <g fill="#4a382b">
+              <circle cx="767" cy="214" r="5"/><path d="M760 242v-18h14v18Z"/>
+              <circle cx="825" cy="212" r="5"/><path d="M818 242v-18h14v18Z"/>
+              <circle cx="883" cy="216" r="5"/><path d="M876 242v-18h14v18Z"/>
+            </g>
+            <text x="740" y="172" class="blueprint-label">APOSENTOS</text>
+
+            <!-- ====== ALOJERÍA ====== -->
+            <rect x="748" y="404" width="172" height="116" fill="#1c1410" stroke="#8f7554" stroke-width="1.2"/>
+            <line x1="748" y1="456" x2="920" y2="456" stroke="#c7ae86" stroke-width="1.8"/>
+            <rect x="756" y="414" width="156" height="24" fill="none" stroke="#5b4533" stroke-width="0.8"/>
+            <g fill="none" stroke="#c7ae86" stroke-width="1">
+              <path d="M762 414v-8h6v8M776 414v-10h6v10M790 414v-7h6v7M804 414v-9h6v9"/>
+              <path d="M844 436h22l-4 18h-14Z"/>
+              <path d="M866 440h6a5 5 0 0 1 0 10h-6"/>
+            </g>
+            <g fill="#4a382b"><circle cx="888" cy="430" r="5"/><path d="M881 456v-18h14v18Z"/></g>
+            <text x="756" y="398" class="blueprint-label">ALOJERÍA</text>
+
+            <!-- ====== ESCALERA ====== -->
+            <path d="M700 520h-10v-24h10v-24h10v-24h10v-24h10v-24h10" fill="none" stroke="#8f7554" stroke-width="1.3"/>
+            <path d="M690 496h10M700 472h10M710 448h10" stroke="#8f7554" stroke-width="1.1"/>
+
+            <!-- cotas -->
+            <line x1="38" y1="150" x2="38" y2="520" stroke="#5b4533" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <path d="M34 150h8M34 520h8" stroke="#5b4533" stroke-width="1"/>
+            <text x="30" y="340" transform="rotate(-90 30 340)" text-anchor="middle" class="blueprint-label blueprint-label--dim">8 VARAS</text>
+
+            <!-- escala -->
+            <g transform="translate(60,586)">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="#c7ae86" stroke-width="1.2"/>
+              <line x1="0" y1="-4" x2="0" y2="4" stroke="#c7ae86"/>
+              <line x1="50" y1="-4" x2="50" y2="4" stroke="#c7ae86"/>
+              <line x1="100" y1="-4" x2="100" y2="4" stroke="#c7ae86"/>
+              <text x="0" y="16" class="blueprint-label blueprint-label--dim">0</text>
+              <text x="46" y="16" class="blueprint-label blueprint-label--dim">5</text>
+              <text x="92" y="16" class="blueprint-label blueprint-label--dim">10 m</text>
+            </g>
+
+            <!-- brújula -->
+            <g transform="translate(890,586)">
+              <circle r="18" fill="none" stroke="#5b4533"/>
+              <path d="M0-13 4 3 0 0-4 3Z" fill="#c7ae86"/>
+              <text x="0" y="-22" text-anchor="middle" class="blueprint-label blueprint-label--dim">N</text>
+            </g>
+
+            <!-- ====== HOTSPOTS ====== -->
+            <g class="hotspot" data-spot="tablado" role="button" tabindex="0" aria-label="1. El tablado: plataforma del escenario">
+              <circle class="halo" r="22" cx="318" cy="474"/>
+              <circle class="dot" r="16" cx="318" cy="474"/>
+              <text class="num" x="318" y="474">1</text>
+            </g>
+            <g class="hotspot" data-spot="patio" role="button" tabindex="0" aria-label="2. El patio y los mosqueteros">
+              <circle class="halo" r="22" cx="480" cy="466"/>
+              <circle class="dot" r="16" cx="480" cy="466"/>
+              <text class="num" x="480" y="466">2</text>
+            </g>
+            <g class="hotspot" data-spot="cazuela" role="button" tabindex="0" aria-label="3. La cazuela: galería de mujeres">
+              <circle class="halo" r="22" cx="812" cy="340"/>
+              <circle class="dot" r="16" cx="812" cy="340"/>
+              <text class="num" x="812" y="340">3</text>
+            </g>
+            <g class="hotspot" data-spot="aposentos" role="button" tabindex="0" aria-label="4. Aposentos y galerías">
+              <circle class="halo" r="22" cx="812" cy="240"/>
+              <circle class="dot" r="16" cx="812" cy="240"/>
+              <text class="num" x="812" y="240">4</text>
+            </g>
+            <g class="hotspot" data-spot="desvan" role="button" tabindex="0" aria-label="5. El desván y la tramoya">
+              <circle class="halo" r="22" cx="286" cy="92"/>
+              <circle class="dot" r="16" cx="286" cy="92"/>
+              <text class="num" x="286" y="92">5</text>
+            </g>
+            <g class="hotspot" data-spot="foso" role="button" tabindex="0" aria-label="6. El foso y los escotillones">
+              <path d="M316 536 286 452" stroke="#e5a93c" stroke-width="1" stroke-dasharray="2 2"/>
+              <circle class="halo" r="22" cx="316" cy="552"/>
+              <circle class="dot" r="16" cx="316" cy="552"/>
+              <text class="num" x="316" y="552">6</text>
+            </g>
+            <g class="hotspot" data-spot="alojeria" role="button" tabindex="0" aria-label="7. La alojería">
+              <circle class="halo" r="22" cx="865" cy="505"/>
+              <circle class="dot" r="16" cx="865" cy="505"/>
+              <text class="num" x="865" y="505">7</text>
+            </g>
+            <g class="hotspot" data-spot="toldo" role="button" tabindex="0" aria-label="8. El toldo">
+              <circle class="halo" r="22" cx="640" cy="140"/>
+              <circle class="dot" r="16" cx="640" cy="140"/>
+              <text class="num" x="640" y="140">8</text>
+            </g>
+          </svg>
+          </div>
+          <figcaption class="corral__caption">
+            <span>Dibujo esquemático · no reproduce un corral exacto</span>
+            <span>8 zonas interactivas</span>
+          </figcaption>
+        </figure>
+
+        <aside class="corral__panel reveal" id="corralPanel" aria-live="polite" aria-label="Información de la zona seleccionada">
+          <div class="corral__panel-top">
+            <span class="panel-num" id="pNum">1</span>
+            <div>
+              <h3 id="pTitle">El tablado</h3>
+              <span class="tag" id="pTag">Escenario · el corazón del negocio</span>
+            </div>
+          </div>
+          <p id="pText">Una plataforma que entra en el patio. Sin telón ni cuarta pared: los actores ven y oyen al público. Eso hace posibles el aparte y el soliloquio, y permite cambiar de escena a la vista de todos.</p>
+          <div class="corral__why">
+            <b>Por qué importa para las unidades</b>
+            <span id="pWhy">El lugar no necesita decorado: se construye con la palabra y con la entrada y salida de personajes. Cambiar de espacio cuesta una frase, no una mudanza.</span>
+          </div>
+          <div class="corral__chips" aria-label="Zonas del corral">
+            <button class="chip" type="button" data-spot="tablado" aria-pressed="true"><b>1</b> Tablado</button>
+            <button class="chip" type="button" data-spot="patio" aria-pressed="false"><b>2</b> Patio</button>
+            <button class="chip" type="button" data-spot="cazuela" aria-pressed="false"><b>3</b> Cazuela</button>
+            <button class="chip" type="button" data-spot="aposentos" aria-pressed="false"><b>4</b> Aposentos</button>
+            <button class="chip" type="button" data-spot="desvan" aria-pressed="false"><b>5</b> Desván</button>
+            <button class="chip" type="button" data-spot="foso" aria-pressed="false"><b>6</b> Foso</button>
+            <button class="chip" type="button" data-spot="alojeria" aria-pressed="false"><b>7</b> Alojería</button>
+            <button class="chip" type="button" data-spot="toldo" aria-pressed="false"><b>8</b> Toldo</button>
+          </div>
+        </aside>
+      </div>
+
+      <div class="corral-cards">
+        <article class="corral-card reveal">
+          <p class="kicker">Consecuencia 01</p>
+          <h3>Sin telón, sin cuarta pared</h3>
+          <p>El tablado entra en el patio. Los actores ven al público; el aparte y el soliloquio son parte del juego. Cambiar de lugar no exige decorado: exige una frase.</p>
+        </article>
+        <article class="corral-card reveal" data-delay="1">
+          <p class="kicker">Consecuencia 02</p>
+          <h3>De día, a la luz del sol</h3>
+          <p>Las funciones eran por la tarde. La noche se decía, no se iluminaba: «escenografía verbal». El texto hace el trabajo que hoy haría la tramoya o la luz.</p>
+        </article>
+        <article class="corral-card reveal" data-delay="2">
+          <p class="kicker">Consecuencia 03</p>
+          <h3>Un público, muchas tribunas</h3>
+          <p>Mosqueteros de pie, mujeres en la cazuela, nobles en los aposentos. La mezcla social empuja la mezcla de géneros: rey y gracioso, llanto y risa, verso y música.</p>
+        </article>
+      </div>
+
+      <blockquote class="corral-quote reveal">
+        «El corral de comedias era una casa, o edificio grande, que constaba de una serie de galerías, para uso del público —auditorio—, que rodeaban la planta baja del corral donde se encontraba el escenario […]. Las representaciones dramáticas tenían lugar al aire libre.»
+        <span>Sobejano-Morán, 2017, p. 506</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============================ 04 · LOPE ============================ -->
+  <section class="section section--wine" id="lope" aria-labelledby="lope-title">
+    <div class="container">
+      <p class="eyebrow">04 · 1609</p>
+      <div class="lope-head">
+        <div>
+          <h2 id="lope-title">El manual para romper el manual</h2>
+        </div>
+        <div class="lope-tools">
+          <button class="toggle" id="transToggle2" type="button" aria-pressed="true" aria-label="Mostrar u ocultar las traducciones a lenguaje actual">
+            <span class="dot" aria-hidden="true"></span>
+            Traducción 2026 <span class="t-state">ON</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="lope-context" style="margin-top:1.4rem;">
+        <p>Lope de Vega no era un ignorante que escribía a lo loco. Era un profesional que conocía las reglas, las había estudiado y decidió negociarlas con el público. El <em>Arte nuevo de hacer comedias</em> (1609) es menos un manifiesto revolucionario que una explicación —irónica, defensiva, muy lúcida— de por qué España hace teatro contra el arte… y le funciona.</p>
+        <ul class="fact-list">
+          <li><b>Quién</b><span>Lope de Vega (1562–1635), «Monstruo de la Naturaleza» según Cervantes.</span></li>
+          <li><b>Qué</b><span>Un discurso en verso leído ante una academia de Madrid. Poema didáctico, no tratado universitario.</span></li>
+          <li><b>Cuánto</b><span>Se le atribuyen unas 1.500 comedias; conservamos unas 500.</span></li>
+          <li><b>Para quién</b><span>Para un público nuevo, masivo, que paga entrada y quiere ver de todo.</span></li>
+        </ul>
+      </div>
+
+      <div class="timeline-wrap reveal">
+        <p class="kicker">La línea de tiempo</p>
+        <div class="timeline" role="list" aria-label="Línea de tiempo desde la Poética hasta el cierre del Siglo de Oro">
+          <div class="timeline__item" role="listitem"><b>335 a. C.</b><span>Aristóteles escribe la <em>Poética</em> en Atenas.</span></div>
+          <div class="timeline__item" role="listitem"><b>1579–1582</b><span>Se abren los corrales de la Cruz y del Príncipe en Madrid.</span></div>
+          <div class="timeline__item" role="listitem"><b>1609</b><span>Lope escribe el <em>Arte nuevo de hacer comedias</em>.</span></div>
+          <div class="timeline__item" role="listitem"><b>1635</b><span>Muere Lope; Calderón estrena <em>La vida es sueño</em> (c. 1635).</span></div>
+          <div class="timeline__item" role="listitem"><b>1681</b><span>Muere Calderón: cierre simbólico del Siglo de Oro.</span></div>
+        </div>
+      </div>
+
+      <div class="lope-grid">
+        <article class="move reveal">
+          <span class="move__num" aria-hidden="true">01</span>
+          <h3>Las reglas, en una caja fuerte</h3>
+          <div class="quote">«Y cuando he de escribir una comedia, / encierro los preceptos con seis llaves.»<cite>Arte nuevo, 1609</cite></div>
+          <div class="translation"><b>En claro</b>Me sé las reglas. Las guardo bajo llave y escribo para el público.</div>
+          <span class="move__effect">Conciencia, no ignorancia</span>
+        </article>
+
+        <article class="move reveal" data-delay="1">
+          <span class="move__num" aria-hidden="true">02</span>
+          <h3>Una sola acción</h3>
+          <div class="quote">«Adviértase que sólo este sujeto / tenga una acción, mirando que la fábula / de ninguna manera sea episódica.»<cite>Arte nuevo, 1609</cite></div>
+          <div class="translation"><b>En claro</b>Una acción principal, y que ningún episodio se escape del conflicto.</div>
+          <span class="move__effect">Conserva la unidad de acción</span>
+        </article>
+
+        <article class="move reveal">
+          <span class="move__num" aria-hidden="true">03</span>
+          <h3>El tiempo, a otra parte</h3>
+          <div class="quote">«No hay que advertir que pase en el período / de un sol, aunque es consejo de Aristóteles, / porque ya le perdimos el respeto.»<cite>Arte nuevo, 1609</cite></div>
+          <div class="translation"><b>En claro</b>Aristóteles recomendaba un día. Nosotros ya no le hacemos caso.</div>
+          <span class="move__effect">Rompe la unidad de tiempo</span>
+        </article>
+
+        <article class="move reveal" data-delay="1">
+          <span class="move__num" aria-hidden="true">04</span>
+          <h3>El lugar, en el camino</h3>
+          <div class="quote">«Si fuere fuerza / hacer algún camino una figura, / cosa que tanto ofende quien lo entiende, / pero no vaya a verlas quien se ofende.»<cite>Arte nuevo, 1609</cite></div>
+          <div class="translation"><b>En claro</b>Si un personaje tiene que viajar, que viaje. Y si a alguien le molesta, que no venga.</div>
+          <span class="move__effect">Rompe la unidad de lugar</span>
+        </article>
+
+        <article class="move reveal">
+          <span class="move__num" aria-hidden="true">05</span>
+          <h3>Tragedia + comedia</h3>
+          <div class="quote">«Lo trágico y lo cómico mezclado, / y Terencio con Séneca, aunque sea / como otro Minotauro de Pasífae, / harán grave una parte, otra ridícula; / que aquesta variedad deleita mucho.»<cite>Arte nuevo, 1609</cite></div>
+          <div class="translation"><b>En claro</b>Mezclo tragedia y comedia: sangre y risa en la misma función. La variedad gusta.</div>
+          <span class="move__effect">Tragicomedia</span>
+        </article>
+
+        <article class="move reveal" data-delay="1">
+          <span class="move__num" aria-hidden="true">06</span>
+          <h3>El vulgo manda</h3>
+          <div class="quote">«…porque como las paga el vulgo, es justo / hablarle en necio para darle gusto.»<cite>Arte nuevo, 1609</cite></div>
+          <div class="translation"><b>En claro</b>Quien paga la entrada manda en la función.</div>
+          <span class="move__effect">El gusto como criterio</span>
+        </article>
+
+        <div class="polymetry reveal">
+          <div>
+            <h3>La caja de herramientas: polimetría</h3>
+            <p>Lope no escribe toda la obra en el mismo verso. Cada pasión pide su estrofa. La forma cambia con la situación dramática: eso también es romper con la uniformidad clásica.</p>
+            <p class="small" style="color:#d8bfa6;margin-top:0.6rem;">«Acomode los versos con prudencia / a los sujetos de que va tratando.»<br><span class="mono" style="font-size:0.55rem;letter-spacing:.05em;color:#c7a88c;">ARTE NUEVO, 1609</span></p>
+          </div>
+          <div class="verse-grid">
+            <div class="verse"><b>Décimas</b><span>quejas</span></div>
+            <div class="verse"><b>Soneto</b><span>los que aguardan</span></div>
+            <div class="verse"><b>Romance</b><span>relaciones y noticias</span></div>
+            <div class="verse"><b>Octavas</b><span>lucimiento</span></div>
+            <div class="verse"><b>Tercetos</b><span>cosas graves</span></div>
+            <div class="verse"><b>Redondillas</b><span>amor</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="not-broken reveal">
+        <h3>Lo que Lope <span>no</span> rompió</h3>
+        <div class="pills">
+          <span class="pill"><b>✓</b> Unidad de acción</span>
+          <span class="pill"><b>✓</b> Verosimilitud</span>
+          <span class="pill"><b>✓</b> Decoro</span>
+          <span class="pill"><b>✓</b> Tres actos</span>
+          <span class="pill"><b>✓</b> El gusto del público</span>
+        </div>
+        <p class="lope-nuance"><strong>Matiz importante:</strong> la práctica de Lope fue más lejos que su teoría. Sus comedias tienen trama secundaria, gracioso, música y bailes. Él pide «una acción» principal; no promete un mundo simple. La comedia nueva no es caos: es otro sistema de reglas, con la acción y el decoro como límites y el gusto como árbitro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 05 · COMPARAR ============================ -->
+  <section class="section" id="comparar" aria-labelledby="comparar-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">05 · Cara a cara</p>
+          <h2 id="comparar-title">Atenas contra el corral</h2>
+        </div>
+        <p class="lead">No es que Lope no entendiera a Aristóteles: es que estaba resolviendo otro problema. Esta tabla resume el cambio de sistema, no la desaparición de toda regla.</p>
+      </div>
+
+      <div class="vs-head">
+        <div class="vs-card">
+          <p class="kicker">El filósofo</p>
+          <h3>Aristóteles</h3>
+          <p>384–322 a. C. · Describe la tragedia griega y prioriza la fábula.</p>
+        </div>
+        <div class="vs-badge" aria-hidden="true">vs</div>
+        <div class="vs-card vs-card--lope">
+          <p class="kicker">El profesional</p>
+          <h3>Lope de Vega</h3>
+          <p>1562–1635 · Vive del teatro y escribe para un público masivo.</p>
+        </div>
+      </div>
+
+      <p class="table-hint">Desliza la tabla para ver todas las columnas →</p>
+      <div class="table-wrap" role="region" aria-label="Tabla comparativa entre el sistema clásico y la comedia nueva" tabindex="0">
+        <table class="compare">
+          <caption>Del sistema clásico a la comedia nueva · resumen comparativo</caption>
+          <thead>
+            <tr>
+              <th scope="col">Regla</th>
+              <th scope="col">Atenas y neoclasicismo</th>
+              <th scope="col">Corral y comedia nueva</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Acción</th>
+              <td>Una acción completa y no episódica; la fábula es el alma de la obra.</td>
+              <td>Una acción principal, pero con episodios, trama secundaria y escenas de gracioso. El todo debe sostenerse.</td>
+            </tr>
+            <tr>
+              <th scope="row">Tiempo</th>
+              <td>Un día, 24 horas; los neoclásicos lo convierten en ley.</td>
+              <td>Días, meses o años. Los años caben entre un acto y otro; el público acepta la elipsis.</td>
+            </tr>
+            <tr>
+              <th scope="row">Lugar</th>
+              <td>Un solo espacio. Castelvetro lo teoriza en 1570; Boileau lo fija en 1674.</td>
+              <td>Madrid, Valencia, el campo, el palacio, el campo de batalla. El texto nombra el lugar y el tablado lo hace.</td>
+            </tr>
+            <tr>
+              <th scope="row">Género</th>
+              <td>Tragedia y comedia separadas; mezclarlas es un defecto.</td>
+              <td>Tragicomedia: reyes y graciosos, llanto y risa, corte y aldea en la misma obra.</td>
+            </tr>
+            <tr>
+              <th scope="row">Personajes</th>
+              <td>Héroes de alta cuna; decoro estamental y lingüístico.</td>
+              <td>Rey, villano, dama, galán, gracioso. Se conserva el decoro, pero se amplía el mundo representado.</td>
+            </tr>
+            <tr>
+              <th scope="row">Verso</th>
+              <td>Registro alto y relativamente uniforme.</td>
+              <td>Polimetría: décimas para quejas, sonetos para la espera, romances para narrar, redondillas para el amor.</td>
+            </tr>
+            <tr>
+              <th scope="row">Finalidad</th>
+              <td>Catarsis, enseñanza, imitación de lo verosímil.</td>
+              <td>Gusto, honor, ideología y taquilla. La verosimilitud sigue importando, pero se negocia con el público.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note"><strong>La clave para el examen:</strong> Lope no sustituye un sistema por el caos. Lo sustituye por otro sistema, con sus propias reglas: acción, decoro, verosimilitud y gusto. Si dices «rompe las unidades», especifica cuáles y para qué.</p>
+    </div>
+  </section>
+
+  <!-- ============================ 06 · OBRAS ============================ -->
+  <section class="section section--paper2" id="obras" aria-labelledby="obras-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">06 · Casos</p>
+          <h2 id="obras-title">Cuatro obras, cuatro formas de romper</h2>
+        </div>
+        <p class="lead">No todas las comedias rompen todo. Leer las unidades en una obra concreta es preguntar qué se conserva, qué se estira y qué se rompe. Estas cuatro fichas son un modelo de análisis, no una lista de pecados.</p>
+      </div>
+
+      <div class="cases">
+        <article class="case reveal">
+          <div class="case__top">
+            <span class="case__num">Obra 01</span>
+            <span class="case__date">Lope · c. 1612</span>
+          </div>
+          <div class="case__body">
+            <h3>Fuenteovejuna</h3>
+            <p class="case__author">Lope de Vega</p>
+            <div class="case__coords">
+              <span><b>Lugar</b>Fuenteovejuna: un solo pueblo, casi como un personaje.</span>
+              <span><b>Tiempo</b>Días o semanas; la rebelión se concentra.</span>
+              <span><b>Acción</b>El conflicto colectivo con el Comendador y la pareja protagonista.</span>
+            </div>
+            <div class="case__pills">
+              <span class="unit-pill unit-pill--ok"><b aria-hidden="true">✓</b> Lugar: se conserva</span>
+              <span class="unit-pill unit-pill--mid"><b aria-hidden="true">≈</b> Tiempo: se estira</span>
+              <span class="unit-pill unit-pill--mid"><b aria-hidden="true">≈</b> Acción: coral</span>
+            </div>
+            <p class="case__why"><strong>Qué mirar:</strong> el protagonista no es un héroe individual, es el pueblo. La unidad de lugar se mantiene, pero la de acción se vuelve colectiva. Romper menos no es ser menos barroco.</p>
+            <p class="case__quote">«¿Quién mató al Comendador? / Fuenteovejuna, señor. / ¿Quién? / Todos a una.»</p>
+          </div>
+        </article>
+
+        <article class="case reveal" data-delay="1">
+          <div class="case__top">
+            <span class="case__num">Obra 02</span>
+            <span class="case__date">Lope · c. 1620</span>
+          </div>
+          <div class="case__body">
+            <h3>El caballero de Olmedo</h3>
+            <p class="case__author">Lope de Vega</p>
+            <div class="case__coords">
+              <span><b>Lugar</b>Medina del Campo ↔ Olmedo: el camino es parte de la trama.</span>
+              <span><b>Tiempo</b>Varios días, con elipsis entre jornadas.</span>
+              <span><b>Acción</b>Amor, celos y una muerte anunciada.</span>
+            </div>
+            <div class="case__pills">
+              <span class="unit-pill unit-pill--no"><b aria-hidden="true">✕</b> Lugar: se rompe</span>
+              <span class="unit-pill unit-pill--mid"><b aria-hidden="true">≈</b> Tiempo: se estira</span>
+              <span class="unit-pill unit-pill--ok"><b aria-hidden="true">✓</b> Acción: una</span>
+            </div>
+            <p class="case__why"><strong>Qué mirar:</strong> el viaje entre lugares es la prueba material de que la unidad de lugar no se respeta. La obra convierte ese desplazamiento en fatalidad: el camino lleva a la muerte.</p>
+            <p class="case__quote">«Que de noche le mataron / al caballero, / la gala de Medina, / la flor de Olmedo.»</p>
+          </div>
+        </article>
+
+        <article class="case reveal">
+          <div class="case__top">
+            <span class="case__num">Obra 03</span>
+            <span class="case__date">Calderón · c. 1635</span>
+          </div>
+          <div class="case__body">
+            <h3>La vida es sueño</h3>
+            <p class="case__author">Pedro Calderón de la Barca</p>
+            <div class="case__coords">
+              <span><b>Lugar</b>Polonia: torre, palacio, campo de batalla.</span>
+              <span><b>Tiempo</b>Años; el príncipe crece y el reino cambia.</span>
+              <span><b>Acción</b>Segismundo, el poder y la libertad; trama de Rosaura.</span>
+            </div>
+            <div class="case__pills">
+              <span class="unit-pill unit-pill--no"><b aria-hidden="true">✕</b> Lugar: se rompe</span>
+              <span class="unit-pill unit-pill--no"><b aria-hidden="true">✕</b> Tiempo: se rompe</span>
+              <span class="unit-pill unit-pill--mid"><b aria-hidden="true">≈</b> Acción: doble</span>
+            </div>
+            <p class="case__why"><strong>Qué mirar:</strong> el espacio es simbólico y cambia con la tramoya; la obra dura años y aun así se vive como un instante. Calderón lleva la máquina barroca al extremo: el teatro dentro del teatro, la vida como sueño.</p>
+            <p class="case__quote">«¿Qué es la vida? Un frenesí. / ¿Qué es la vida? Una ilusión, / una sombra, una ficción…»</p>
+          </div>
+        </article>
+
+        <article class="case reveal" data-delay="1">
+          <div class="case__top">
+            <span class="case__num">Obra 04</span>
+            <span class="case__date">Tirso · c. 1616</span>
+          </div>
+          <div class="case__body">
+            <h3>El burlador de Sevilla</h3>
+            <p class="case__author">Tirso de Molina (atribuida)</p>
+            <div class="case__coords">
+              <span><b>Lugar</b>Sevilla, Nápoles, la costa: un mapa del deseo.</span>
+              <span><b>Tiempo</b>Años; la carrera del burlador.</span>
+              <span><b>Acción</b>Don Juan engaña, huye y recibe su castigo.</span>
+            </div>
+            <div class="case__pills">
+              <span class="unit-pill unit-pill--no"><b aria-hidden="true">✕</b> Lugar: se rompe</span>
+              <span class="unit-pill unit-pill--no"><b aria-hidden="true">✕</b> Tiempo: se rompe</span>
+              <span class="unit-pill unit-pill--ok"><b aria-hidden="true">✓</b> Acción: una</span>
+            </div>
+            <p class="case__why"><strong>Qué mirar:</strong> el mapa es el argumento. Don Juan se mueve para burlar; el espacio funciona como una red de engaños y castigos. La movilidad es condición de la acción, no adorno.</p>
+            <p class="case__quote">«Tan largo me lo fiáis.»</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="table-note"><strong>Ojo con las fechas:</strong> Lope muere en 1635; Calderón y Tirso pertenecen a la misma órbita barroca, con una evolución hacia el espectáculo, la alegoría y la tramoya. «Barroco» no es un bloque homogéneo: es un proceso.</p>
+    </div>
+  </section>
+
+  <!-- ============================ 07 · CHAT ============================ -->
+  <section class="section" id="chat" aria-labelledby="chat-title">
+    <div class="container chat-layout">
+      <div class="chat-copy">
+        <p class="eyebrow">07 · Ficción didáctica</p>
+        <h2 id="chat-title">El grupo del Siglo de Oro</h2>
+        <p class="lead">Si Aristóteles hubiera tenido WhatsApp, probablemente habría silenciado a Lope. Esto es lo que se habrían dicho (más o menos).</p>
+        <ul class="chat-points">
+          <li><strong>El público es una fuerza formal:</strong> no solo recibe la obra, también decide su forma.</li>
+          <li><strong>El edificio y la tecnología</strong> (tramoya, escotillón, toldo) amplían lo representable.</li>
+          <li><strong>La ruptura no elimina las reglas:</strong> cambia cuáles se obedecen y quién las legitima.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="phone" role="group" aria-label="Conversación ficticia de WhatsApp entre Aristóteles, Lope de Vega, un mosquetero, una dama y Calderón sobre las unidades">
+          <div class="phone__bar">
+            <span class="phone__dot" aria-hidden="true"></span>
+            <span class="phone__title">Teatro barroco · 5 miembros<small>en línea: Lope, la Dama, un mosquetero</small></span>
+          </div>
+          <div class="phone__body">
+            <div class="bubble">
+              <span class="bubble__name">Aristóteles</span>
+              Una acción, en un día, en un lugar. No es tan difícil.
+              <span class="bubble__time">16:09</span>
+            </div>
+            <div class="bubble bubble--right">
+              <span class="bubble__name">Lope</span>
+              Maestro, he encerrado sus preceptos con seis llaves. 🗝️
+              <span class="bubble__time">16:10</span>
+            </div>
+            <div class="bubble">
+              <span class="bubble__name">Aristóteles</span>
+              ¿Seis llaves?
+              <span class="bubble__time">16:10</span>
+            </div>
+            <div class="bubble bubble--right">
+              <span class="bubble__name">Lope</span>
+              Es una forma de hablar. Escribo en tres actos y el público paga.
+              <span class="bubble__time">16:11</span>
+            </div>
+            <div class="bubble">
+              <span class="bubble__name">Mosquetero</span>
+              Yo pagué. Quiero rey, gracioso, batalla, música y que pase un año si hace falta.
+              <span class="bubble__time">16:12</span>
+            </div>
+            <div class="bubble">
+              <span class="bubble__name">La Dama</span>
+              Y yo quiero hablar, cambiar de traje y no ser solo el premio del galán.
+              <span class="bubble__time">16:12</span>
+            </div>
+            <div class="bubble bubble--right">
+              <span class="bubble__name">Lope</span>
+              Eso también. La mezcla deleita.
+              <span class="bubble__time">16:13</span>
+            </div>
+            <div class="bubble">
+              <span class="bubble__name">Calderón</span>
+              Esperadme, que le pongo tramoya.
+              <span class="bubble__time">16:14</span>
+            </div>
+            <div class="bubble">
+              <span class="bubble__name">Aristóteles</span>
+              Esto no es una tragedia.
+              <span class="bubble__time">16:14</span>
+            </div>
+            <div class="bubble bubble--right">
+              <span class="bubble__name">Lope</span>
+              Es una tragicomedia. Se llama gusto.
+              <span class="bubble__time">16:15</span>
+            </div>
+          </div>
+        </div>
+        <p class="chat-note">Ficción didáctica · ninguna de estas frases está en una edición crítica</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 08 · QUIZ ============================ -->
+  <section class="section section--dark quiz" id="quiz" aria-labelledby="quiz-title">
+    <div class="container">
+      <div class="summary" role="group" aria-label="Resumen en cinco ideas">
+        <div class="summary__item"><b>01</b><span>La tríada es una codificación posterior; Aristóteles insistió en la acción.</span></div>
+        <div class="summary__item"><b>02</b><span>El corral, sin telón y de día, favorece el cambio de lugar y la palabra que lo nombra.</span></div>
+        <div class="summary__item"><b>03</b><span>Lope conserva la unidad de acción y rompe tiempo y lugar.</span></div>
+        <div class="summary__item"><b>04</b><span>El <em>Arte nuevo</em> legitima la tragicomedia, la polimetría y el gusto del público.</span></div>
+        <div class="summary__item"><b>05</b><span>La comedia nueva no es caos: es otro sistema de reglas.</span></div>
+      </div>
+
+      <div class="quiz__head">
+        <div>
+          <p class="eyebrow">08 · Checkpoint</p>
+          <h2 id="quiz-title">Siete preguntas para saber si puedes explicarlo sin mirar</h2>
+          <p class="quiz__score">Sin nota · con explicación</p>
+        </div>
+      </div>
+
+      <form class="quiz-form" id="quizForm" novalidate>
+        <fieldset class="q" data-answer="a">
+          <legend><span class="qnum">01</span>¿Cuál de las tres unidades desarrolla Aristóteles con verdadera insistencia?</legend>
+          <label class="opt"><input type="radio" name="q1" value="a"> <span>La acción: una fábula completa y no episódica.</span></label>
+          <label class="opt"><input type="radio" name="q1" value="b"> <span>El tiempo: exactamente 24 horas.</span></label>
+          <label class="opt"><input type="radio" name="q1" value="c"> <span>El lugar: un único decorado.</span></label>
+          <label class="opt"><input type="radio" name="q1" value="d"> <span>Las tres por igual, con el mismo rango de ley.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> el centro de la <em>Poética</em> es la fábula (<em>mythos</em>). El tiempo aparece como una tendencia («procura, en lo posible…») y el lugar no se formula.</p>
+        </fieldset>
+
+        <fieldset class="q" data-answer="c">
+          <legend><span class="qnum">02</span>¿De dónde sale la doctrina de las tres unidades tal como la estudiamos?</legend>
+          <label class="opt"><input type="radio" name="q2" value="a"> <span>De una cita literal de Aristóteles.</span></label>
+          <label class="opt"><input type="radio" name="q2" value="b"> <span>De la comedia latina de Plauto y Terencio.</span></label>
+          <label class="opt"><input type="radio" name="q2" value="c"> <span>De la codificación renacentista y neoclásica: Castelvetro y Boileau.</span></label>
+          <label class="opt"><input type="radio" name="q2" value="d"> <span>Del <em>Arte nuevo</em> de Lope de Vega.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> Castelvetro (1570) teoriza la unidad de lugar y refuerza la de tiempo; Boileau (1674) las convierte en norma clásica francesa. La expresión «tres unidades» es posterior.</p>
+        </fieldset>
+
+        <fieldset class="q" data-answer="b">
+          <legend><span class="qnum">03</span>En el <em>Arte nuevo</em>, ¿qué hace Lope con los preceptos?</legend>
+          <label class="opt"><input type="radio" name="q3" value="a"> <span>Los estudia y los sigue al pie de la letra.</span></label>
+          <label class="opt"><input type="radio" name="q3" value="b"> <span>Los encierra con seis llaves y escribe para el público.</span></label>
+          <label class="opt"><input type="radio" name="q3" value="c"> <span>Los quema en la plaza pública.</span></label>
+          <label class="opt"><input type="radio" name="q3" value="d"> <span>Los traduce al latín para la academia.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> «Y cuando he de escribir una comedia, / encierro los preceptos con seis llaves». No es ignorancia: es una elección consciente, justificada por el gusto del público.</p>
+        </fieldset>
+
+        <fieldset class="q" data-answer="c">
+          <legend><span class="qnum">04</span>¿Qué unidad conserva Lope explícitamente en su poética?</legend>
+          <label class="opt"><input type="radio" name="q4" value="a"> <span>La de tiempo.</span></label>
+          <label class="opt"><input type="radio" name="q4" value="b"> <span>La de lugar.</span></label>
+          <label class="opt"><input type="radio" name="q4" value="c"> <span>La de acción.</span></label>
+          <label class="opt"><input type="radio" name="q4" value="d"> <span>Ninguna: las rompe todas.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> «Adviértase que sólo este sujeto / tenga una acción». Lope pide una acción principal y rechaza la fábula episódica. Su práctica admite tramas secundarias, pero el principio sigue en pie.</p>
+        </fieldset>
+
+        <fieldset class="q" data-answer="c">
+          <legend><span class="qnum">05</span>¿Qué rasgo del corral favorece la ruptura de la unidad de lugar?</legend>
+          <label class="opt"><input type="radio" name="q5" value="a"> <span>El telón de terciopelo y los decorados pintados.</span></label>
+          <label class="opt"><input type="radio" name="q5" value="b"> <span>La iluminación eléctrica y los cambios a oscuras.</span></label>
+          <label class="opt"><input type="radio" name="q5" value="c"> <span>El tablado sin telón, la palabra que nombra el espacio y la entrada y salida de personajes.</span></label>
+          <label class="opt"><input type="radio" name="q5" value="d"> <span>Los asientos numerados y el silencio del público.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> sin telón ni cuarta pared, el espacio se construye verbalmente. El personaje dice «estamos en Valencia» y el público lo acepta: es la escenografía verbal del corral.</p>
+        </fieldset>
+
+        <fieldset class="q" data-answer="b">
+          <legend><span class="qnum">06</span>«Lo trágico y lo cómico mezclado» se refiere sobre todo a…</legend>
+          <label class="opt"><input type="radio" name="q6" value="a"> <span>La unidad de tiempo.</span></label>
+          <label class="opt"><input type="radio" name="q6" value="b"> <span>La tragicomedia: mezcla de géneros y de mundos sociales.</span></label>
+          <label class="opt"><input type="radio" name="q6" value="c"> <span>La polimetría: mezcla de estrofas.</span></label>
+          <label class="opt"><input type="radio" name="q6" value="d"> <span>El decoro: cada personaje habla según su clase.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> Lope defiende mezclar lo trágico y lo cómico, a Terencio con Séneca. La variedad deleita y define la tragicomedia, forma híbrida que domina el teatro barroco.</p>
+        </fieldset>
+
+        <fieldset class="q" data-answer="b">
+          <legend><span class="qnum">07</span>«El vulgo es necio… es justo hablarle en necio para darle gusto» revela, sobre todo, que Lope…</legend>
+          <label class="opt"><input type="radio" name="q7" value="a"> <span>Desprecia al público y escribe solo para las élites.</span></label>
+          <label class="opt"><input type="radio" name="q7" value="b"> <span>Reconoce que el gusto del público condiciona la forma dramática.</span></label>
+          <label class="opt"><input type="radio" name="q7" value="c"> <span>No conocía la <em>Poética</em> de Aristóteles.</span></label>
+          <label class="opt"><input type="radio" name="q7" value="d"> <span>Defiende la unidad de lugar por encima de todo.</span></label>
+          <p class="fb" hidden><strong>Por qué:</strong> la frase es dura, pero el argumento es profesional: quien paga la entrada condiciona lo que se escribe. Es una poética del gusto y del mercado, no una simple boutade.</p>
+        </fieldset>
+
+        <div class="quiz-actions">
+          <button class="btn btn--gold" type="submit">Corregir respuestas</button>
+          <button class="btn btn--ghost" type="reset" id="quizReset">Reintentar</button>
+        </div>
+      </form>
+
+      <div class="quiz-result" id="quizResult" role="status" aria-live="polite">
+        <div class="quiz-result__score"><span id="scoreNum">0</span><small>/7</small></div>
+        <div>
+          <h3 id="scoreTitle">Resultado</h3>
+          <p id="scoreText"></p>
+          <div class="quiz-result__links">
+            <a href="#unidades">→ Repasar unidades</a>
+            <a href="#lope">→ Repasar Arte nuevo</a>
+            <a href="#corral">→ Repasar corral</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 09 · GLOSARIO + PROFE ============================ -->
+  <section class="section" id="glosario" aria-labelledby="glosario-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">09 · Caja de herramientas</p>
+          <h2 id="glosario-title">Palabras que sí caen</h2>
+        </div>
+        <p class="lead">Glosario mínimo para leer una comedia y no perderse en el patio. Abre cada término: están ordenados para consulta rápida, no para memorizar de corrido.</p>
+      </div>
+
+      <div class="glossary-grid">
+        <details class="term">
+          <summary>Corral de comedias</summary>
+          <p>Teatro público permanente instalado en el patio interior de una manzana de viviendas. Sin techo sobre el patio, con tablado, galerías y aposentos. El de Almagro (1628) es el único conservado completo.</p>
+        </details>
+        <details class="term">
+          <summary>Comedia (a secas)</summary>
+          <p>En el Siglo de Oro, cualquier obra dramática profana, trágica o cómica, no solo la comedia de humor. La «comedia nueva» es el sistema dramático que Lope teoriza y practica.</p>
+        </details>
+        <details class="term">
+          <summary>Patio y mosqueteros</summary>
+          <p>El patio era el espacio central, a cielo abierto, donde los hombres veían de pie. Los mosqueteros eran el público más ruidoso y decisivo: su reacción podía hundir o encumbrar una comedia.</p>
+        </details>
+        <details class="term">
+          <summary>Cazuela</summary>
+          <p>Galería situada frente al escenario, a menudo reservada a las mujeres. No era un palco silencioso: se comentaba, se gritaba y se participaba del espectáculo.</p>
+        </details>
+        <details class="term">
+          <summary>Aposento</summary>
+          <p>Cuarto o ventana de las casas vecinas que se alquilaba a nobles, clérigos o autoridades. El espacio teatral reproducía la jerarquía social: cada grupo veía desde un lugar distinto.</p>
+        </details>
+        <details class="term">
+          <summary>Alojería</summary>
+          <p>Puesto donde se vendía aloja —agua, miel y especias—, fruta y dulces. El intermedio también era negocio: entre actos se vendía, se bailaba y se comentaba la obra.</p>
+        </details>
+        <details class="term">
+          <summary>Aparte</summary>
+          <p>Comentario que un personaje dice al público y que, supuestamente, no oyen los demás personajes. Rompe la cuarta pared y crea complicidad: el espectador sabe más que los personajes.</p>
+        </details>
+        <details class="term">
+          <summary>Tramoya</summary>
+          <p>Maquinaria escénica para producir efectos: vuelos, nubes, apariciones, truenos. En el desván del corral se instalaban poleas y cuerdas. Con Calderón, la tramoya se vuelve espectáculo en sí misma.</p>
+        </details>
+        <details class="term">
+          <summary>Jornada</summary>
+          <p>Nombre que recibe cada acto en el teatro del Siglo de Oro. Lope fija tres jornadas, frente a los cinco actos que recomendaba Horacio. No es una unidad aristotélica, pero ordena la estructura.</p>
+        </details>
+        <details class="term">
+          <summary>Polimetría</summary>
+          <p>Uso de distintas formas métricas dentro de una misma obra. Lope la justifica: décimas para quejas, sonetos para la espera, romances para narrar, tercetos para lo grave, redondillas para el amor.</p>
+        </details>
+        <details class="term">
+          <summary>Decoro</summary>
+          <p>Conveniencia entre el personaje y su lenguaje, su conducta y su condición social. El rey habla como rey; el lacayo no dice conceptos altos. Lope lo conserva como límite de la mezcla.</p>
+        </details>
+        <details class="term">
+          <summary>Verosimilitud</summary>
+          <p>Lo que el público puede aceptar como creíble dentro de la ficción. No es lo mismo que «realismo». Lope pide imitar «lo verosímil», aunque el público acepte años y viajes entre actos.</p>
+        </details>
+        <details class="term">
+          <summary>Gracioso</summary>
+          <p>Personaje cómico, generalmente criado del galán, que parodia el ideal heroico, comenta la acción y aporta alivio. Es una de las piezas clave de la mezcla de tonos.</p>
+        </details>
+        <details class="term">
+          <summary>Tragicomedia</summary>
+          <p>Forma híbrida que mezcla personajes y argumentos nobles con cómicos. El término ya aparece en Plauto; en el Barroco español se convierte en la forma dominante de la comedia nueva.</p>
+        </details>
+        <details class="term">
+          <summary>Proscenio</summary>
+          <p>Escenario «a la italiana», con un arco que separa la sala del escenario y una cuarta pared imaginaria. Se desarrolla en el siglo XVII —teatro Farnese, 1618— y se generaliza después. El corral funciona con otra lógica espacial.</p>
+        </details>
+        <details class="term">
+          <summary>Vulgo</summary>
+          <p>En el Siglo de Oro, el público popular o no letrado; Lope lo usa para referirse a los espectadores que pagan y deciden. No es un término neutro: mezcla desprecio y conciencia de mercado.</p>
+        </details>
+        <details class="term">
+          <summary>Cuarta pared y escenografía verbal</summary>
+          <p>La cuarta pared es la «pared invisible» entre escenario y público del teatro de proscenio. El corral casi no la tiene. La escenografía verbal es el espacio creado por las palabras cuando no hay decorado.</p>
+        </details>
+      </div>
+
+      <div class="teach" style="margin-top:3rem;">
+        <div>
+          <p class="eyebrow">10 · Para el aula</p>
+          <h2>Plan de 45 minutos</h2>
+          <p>Una ruta posible para llevar la página al aula sin que la pantalla sustituya la discusión.</p>
+          <ol class="plan">
+            <li><b>0–5′</b><span>Hook: proyecta el decreto de la portada y pregunta «¿qué le falta a esta ley para funcionar en 1609?».</span></li>
+            <li><b>5–15′</b><span>Tríada: lee el <em>plot twist</em>. Insiste en la diferencia entre Aristóteles y la codificación renacentista.</span></li>
+            <li><b>15–25′</b><span>Simulador y corral: en parejas, muevan las perillas y elijan una zona del plano. Puesta en común de 3 minutos.</span></li>
+            <li><b>25–35′</b><span><em>Arte nuevo</em>: reparte los seis movimientos. Cada grupo explica el suyo con una frase y un efecto.</span></li>
+            <li><b>35–45′</b><span>Quiz + cierre: corrige en vivo y pide una frase de síntesis («Lope no rompe todo:…»).</span></li>
+          </ol>
+          <div class="activity"><b>Actividad de cierre:</b> toma una escena de una serie o película que te guste y reescríbela como comedia nueva: tres jornadas, dos lugares, una acción principal, un gracioso. Explica qué unidad rompiste y por qué el público lo aceptaría.</div>
+          <button class="btn btn--gold btn--sm" type="button" id="printBtn" style="margin-top:1rem;">Imprimir / guardar PDF</button>
+        </div>
+        <div>
+          <h3 style="margin-top:0;">Tres preguntas de discusión</h3>
+          <ol>
+            <li>¿La libertad de Lope es estética, comercial o ideológica? ¿Puede ser las tres a la vez?</li>
+            <li>¿Qué gana y qué pierde una obra cuando rompe la unidad de lugar? Piensa en una película o serie reciente.</li>
+            <li>Si el corral era el «streaming» de su época, ¿qué reglas del relato se rompen hoy por presión del público? ¿Quién es el nuevo vulgo?</li>
+          </ol>
+          <h3>Al terminar, podrás…</h3>
+          <ul>
+            <li>Distinguir la unidad de acción de las otras dos y explicar por qué no son lo mismo.</li>
+            <li>Relacionar el corral de comedias con la ruptura de tiempo y lugar.</li>
+            <li>Analizar una comedia concreta con criterios, no con impresiones.</li>
+          </ul>
+          <div class="cite-box">
+            <h3>Cómo citar esta guía</h3>
+            <p>Sobejano-Morán, Antonio. <em>A Guide to the Interpretation of Literary Texts</em>. Panda Publications, 2017, pp. 466–469 y 506.</p>
+            <p>Aristóteles. <em>Poética</em>, 1449b–1451a. Lope de Vega. <em>Arte nuevo de hacer comedias en este tiempo</em>, 1609.</p>
+            <p>Material didáctico de Introducción a la Literatura. «Tres reglas, un tablado, una rebelión», 2026.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="fuentes">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <h3>Tres reglas, un tablado, una rebelión</h3>
+        <p>Guía visual para entender las unidades aristotélicas, el corral de comedias y la ruptura del teatro barroco español. Pensada para una clase de Introducción a la Literatura, para leer en pantalla o proyectar.</p>
+        <p class="small" style="color:#9f8a70;">Datos rápidos: Madrid estrena corrales en 1579 (Cruz) y 1582 (Príncipe); el de Almagro, en 1628, es el único conservado completo.</p>
+      </div>
+      <div>
+        <h3>Fuentes</h3>
+        <p class="small">Sobejano-Morán, Antonio. <em>A Guide to the Interpretation of Literary Texts</em>. Panda Publications, 2017, pp. 466–469 y 506. ISBN 978-0-9818392-4-0.</p>
+        <p class="small">Aristóteles. <em>Poética</em>, 1449b–1451a. Lope de Vega. <em>Arte nuevo de hacer comedias en este tiempo</em>, 1609.</p>
+        <p class="small">Díez Borque, José María. <em>Teatro del Siglo de Oro: corrales y coliseos en la península ibérica</em>. Cuadernos de Teatro Clásico, 6, 1991.</p>
+      </div>
+      <div>
+        <h3>Para seguir leyendo</h3>
+        <ul class="small" style="margin:0;padding-left:1.1rem;">
+          <li><a href="https://es.wikisource.org/wiki/Arte_nuevo_de_hacer_comedias_en_este_tiempo" target="_blank" rel="noopener">Arte nuevo de hacer comedias</a> (texto completo)</li>
+          <li><a href="https://www.cervantesvirtual.com/obra/arte-nuevo-de-hacer-comedias-en-este-tiempo/" target="_blank" rel="noopener">Arte nuevo</a> · edición de Juan Manuel Rozas</li>
+          <li><a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0056" target="_blank" rel="noopener">Aristóteles, Poética</a> (Perseus)</li>
+          <li><a href="https://es.wikipedia.org/wiki/Corral_de_comedias" target="_blank" rel="noopener">Corral de comedias</a> · estado de la cuestión</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__meta">
+      <span>Material didáctico · Introducción a la Literatura · 2026</span>
+      <span>Diagramas SVG originales · Sin imágenes externas</span>
+      <a class="to-top" href="#top">Volver arriba ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Revelado al hacer scroll ---------- */
+  const revealEls = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  /* ---------- Aviso de vista incrustada ---------- */
+  const embedNotice = $('#embedNotice');
+  if (embedNotice && window.self !== window.top) {
+    embedNotice.hidden = false;
+    const openTab = $('#openTab');
+    if (openTab) {
+      openTab.addEventListener('click', () => {
+        window.open(window.location.href, '_blank', 'noopener');
+      });
+    }
+    const embedClose = $('#embedClose');
+    if (embedClose) {
+      embedClose.addEventListener('click', () => { embedNotice.hidden = true; });
+    }
+  }
+
+  /* ---------- Progreso de lectura ---------- */
+  const progress = $('#progress');
+  let ticking = false;
+  const updateProgress = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const value = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
+    progress.style.width = value + '%';
+    ticking = false;
+  };
+  const requestProgress = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  };
+  window.addEventListener('scroll', requestProgress, { passive: true });
+  window.addEventListener('resize', requestProgress);
+  updateProgress();
+
+  /* ---------- Menú móvil ---------- */
+  const navMenu = $('#navMenu');
+  const navLinks = $('#nav-links');
+  const closeMenu = () => {
+    navMenu.setAttribute('aria-expanded', 'false');
+    navLinks.classList.remove('is-open');
+  };
+  navMenu.addEventListener('click', () => {
+    const isOpen = navMenu.getAttribute('aria-expanded') === 'true';
+    navMenu.setAttribute('aria-expanded', String(!isOpen));
+    navLinks.classList.toggle('is-open', !isOpen);
+  });
+  navLinks.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760) closeMenu();
+  });
+
+  /* ---------- Anclas con respuesta visible ---------- */
+  const anchorLinks = $$('a[href^="#"]');
+  anchorLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      window.setTimeout(() => {
+        const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 84);
+        const start = window.scrollY;
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+        // Si el navegador o el visor bloquean el scroll suave, salta igual.
+        window.setTimeout(() => {
+          if (Math.abs(window.scrollY - start) < 4) {
+            const html = document.documentElement;
+            const previous = html.style.scrollBehavior;
+            html.style.scrollBehavior = 'auto';
+            window.scrollTo(0, top);
+            html.style.scrollBehavior = previous;
+          }
+        }, 500);
+        target.classList.remove('is-targeted');
+        // Reinicia la animación si se pulsa dos veces seguidas.
+        void target.offsetWidth;
+        target.classList.add('is-targeted');
+        window.setTimeout(() => target.classList.remove('is-targeted'), 1500);
+      }, 0);
+    });
+  });
+
+  /* ---------- Scroll spy ---------- */
+  const links = $$('.nav__links a[data-nav]');
+  const sections = $$('main section[id]').filter((section) =>
+    links.some((link) => link.dataset.nav === section.id)
+  );
+  if ('IntersectionObserver' in window && sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        links.forEach((link) => {
+          if (link.dataset.nav === id) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      });
+    }, { rootMargin: '-42% 0px -52% 0px', threshold: 0 });
+    sections.forEach((section) => spy.observe(section));
+  }
+
+  /* ---------- Traducciones ---------- */
+  const transButtons = [$('#transToggle'), $('#transToggle2')].filter(Boolean);
+  const transState = $('#transState');
+  const setTranslations = (on) => {
+    document.body.classList.toggle('no-translations', !on);
+    transButtons.forEach((button) => {
+      button.setAttribute('aria-pressed', String(on));
+      const state = $('.t-state', button);
+      if (state) state.textContent = on ? 'ON' : 'OFF';
+    });
+    if (transState) transState.textContent = on ? 'ON' : 'OFF';
+  };
+  transButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const on = button.getAttribute('aria-pressed') !== 'true';
+      setTranslations(on);
+    });
+  });
+  setTranslations(true);
+
+  /* ---------- Simulador de unidades ---------- */
+  const loc = $('#loc');
+  const time = $('#time');
+  const plots = $('#plots');
+  const locOut = $('#locOut');
+  const timeOut = $('#timeOut');
+  const plotsOut = $('#plotsOut');
+  const cert = $('#cert');
+  const verdict = $('#verdict');
+  const stamp = $('#stamp');
+  const timeLabels = ['1 hora', '24 horas', '1 semana', '1 año', 'Varios años'];
+
+  const stateOf = (kind, value) => {
+    if (kind === 'place') return value === 1 ? 'ok' : value === 2 ? 'mid' : 'bad';
+    if (kind === 'time') return value <= 2 ? 'ok' : value === 3 ? 'mid' : 'bad';
+    return value === 1 ? 'ok' : value === 2 ? 'mid' : 'bad';
+  };
+
+  const paintMetric = (key, state, statusText) => {
+    const metric = $(`[data-metric="${key}"]`);
+    if (!metric) return;
+    const status = $('.metric__status', metric);
+    const fill = $('.metric__fill', metric);
+    const width = state === 'ok' ? 100 : state === 'mid' ? 58 : 24;
+    status.textContent = statusText;
+    status.dataset.state = state;
+    fill.dataset.state = state;
+    fill.style.width = width + '%';
+  };
+
+  const updateSim = () => {
+    const l = Number(loc.value);
+    const t = Number(time.value);
+    const p = Number(plots.value);
+    const placeState = stateOf('place', l);
+    const timeState = stateOf('time', t);
+    const actionState = stateOf('action', p);
+
+    locOut.textContent = l;
+    timeOut.textContent = timeLabels[t - 1];
+    plotsOut.textContent = p;
+
+    paintMetric('loc', actionState, actionState === 'ok' ? 'unidad' : actionState === 'mid' ? 'flexible' : 'dispersa');
+    paintMetric('time', timeState, timeState === 'ok' ? 'unidad' : timeState === 'mid' ? 'flexible' : 'rota');
+    paintMetric('place', placeState, placeState === 'ok' ? 'unidad' : placeState === 'mid' ? 'flexible' : 'rota');
+
+    let title;
+    let text;
+    let mode;
+    let stampText;
+
+    if (p >= 3) {
+      title = 'Alto: la acción se deshilacha.';
+      text = 'Con tres o más hilos, ni Aristóteles ni Lope. La unidad de acción es el límite que la comedia nueva no cruza: los episodios pueden abundar, pero deben pertenecer a una acción principal.';
+      mode = 'bad';
+      stampText = 'REVISAR';
+    } else if (l === 1 && t <= 2 && p === 1) {
+      title = 'Atenas te aprueba (con reservas).';
+      text = 'Una acción, un día, un lugar. Es el modelo más clásico. Aviso: Aristóteles exigía de verdad la unidad de acción; las otras dos son la versión Renacimiento.';
+      mode = 'ok';
+      stampText = 'APTO';
+    } else if (l >= 2 && t >= 3 && p <= 2) {
+      title = 'Modo Lope: bienvenido al corral.';
+      text = 'Una acción principal, tiempo y lugar liberados. Esto es una comedia nueva: el público acepta el viaje y la elipsis porque la acción sostiene el conjunto.';
+      mode = 'corral';
+      stampText = 'CORRAL';
+    } else if (p === 2 && l === 1 && t >= 3) {
+      title = 'Modo Fuenteovejuna: un lugar, el tiempo se estira.';
+      text = 'Mantienes el lugar y la acción principal, pero el tiempo se alarga y el pueblo entero se vuelve protagonista. Es el Barroco sin mover el decorado.';
+      mode = 'mid';
+      stampText = 'CORRAL';
+    } else if (p === 2 && l === 1 && t <= 2) {
+      title = 'Casi Atenas: una acción con satélite.';
+      text = 'Una acción principal y una secundaria. Los griegos fruncirían el ceño; Lope, no. Es el embrión de la comedia nueva: el todo sigue en pie.';
+      mode = 'mid';
+      stampText = 'HÍBRIDO';
+    } else if (p === 1 && (l >= 2 || t >= 3)) {
+      title = 'Híbrido: la acción resiste.';
+      text = 'Mantienes la unidad de acción, pero ya viajas en el mapa o en el tiempo. Vas camino del corral: te falta la mezcla de tonos y el pulso del público.';
+      mode = 'mid';
+      stampText = 'HÍBRIDO';
+    } else {
+      title = 'Zona intermedia.';
+      text = 'Revisa qué unidad te importa más: toda poética es una jerarquía. La acción manda; el tiempo y el lugar se negocian.';
+      mode = 'mid';
+      stampText = 'HÍBRIDO';
+    }
+
+    verdict.innerHTML = '<strong>' + title + '</strong>' + text;
+    cert.dataset.mode = mode;
+    stamp.textContent = stampText;
+    const simLive = $('#simLive strong');
+    if (simLive) {
+      simLive.textContent = stampText;
+      simLive.dataset.mode = mode;
+    }
+  };
+
+  [loc, time, plots].forEach((input) => input.addEventListener('input', updateSim));
+  $$('.presets [data-loc]').forEach((button) => {
+    button.addEventListener('click', () => {
+      loc.value = button.dataset.loc;
+      time.value = button.dataset.time;
+      plots.value = button.dataset.plots;
+      updateSim();
+    });
+  });
+  updateSim();
+
+  /* ---------- Corral interactivo ---------- */
+  const SPOTS = {
+    tablado: {
+      n: '1',
+      title: 'El tablado',
+      tag: 'Escenario · el corazón del negocio',
+      text: 'Una plataforma que entra en el patio. Sin telón ni cuarta pared: los actores ven y oyen al público. Eso hace posibles el aparte y el soliloquio, y permite cambiar de escena a la vista de todos.',
+      why: 'El lugar no necesita decorado: se construye con la palabra y con la entrada y salida de personajes. Cambiar de espacio cuesta una frase, no una mudanza.'
+    },
+    patio: {
+      n: '2',
+      title: 'El patio y los mosqueteros',
+      tag: 'Público de pie · el veredicto',
+      text: 'El patio descubierto, en el centro. Allí se apiñaban los hombres de pie, especialmente los mosqueteros, el sector más ruidoso. Su aprobación podía decidir el éxito de una comedia.',
+      why: 'Lope escribe para ese público: «como las paga el vulgo, es justo / hablarle en necio para darle gusto». El gusto del patio condiciona la mezcla de tonos y el ritmo.'
+    },
+    cazuela: {
+      n: '3',
+      title: 'La cazuela',
+      tag: 'Galería de mujeres · comentario en vivo',
+      text: 'Galería situada frente al escenario, a menudo reservada a las mujeres. No era un espacio silencioso: se comentaba, se gritaba y se participaba. La separación por sexos era parte del orden social del corral.',
+      why: 'La presencia de mujeres en el público —y de actrices en escena— amplía el mundo representado: damas, criadas, reinas. El teatro barroco español no excluye a las actrices como el inglés.'
+    },
+    aposentos: {
+      n: '4',
+      title: 'Aposentos y galerías',
+      tag: 'Palcos y ventanas · la jerarquía a la vista',
+      text: 'Cuartos y ventanas de las casas vecinas, alquilados a nobles, clérigos y autoridades. El corral no ocultaba la desigualdad: cada grupo social veía desde un lugar distinto.',
+      why: 'Esa mezcla de públicos en un mismo recinto favorece la mezcla de géneros: el rey y el gracioso comparten función, aunque no butaca.'
+    },
+    desvan: {
+      n: '5',
+      title: 'El desván y la tramoya',
+      tag: 'Sobre el escenario · la máquina',
+      text: 'El desván era el espacio superior donde se instalaban poleas, cuerdas y artefactos para producir vuelos, nubes, truenos y apariciones. La tramoya barroca hace visible lo sobrenatural.',
+      why: 'Con la tramoya, el espacio se vuelve elástico y espectacular: se puede subir al cielo o abrir el infierno sin cambiar el decorado. Calderón explota este recurso al máximo.'
+    },
+    foso: {
+      n: '6',
+      title: 'El foso y los escotillones',
+      tag: 'Bajo el tablado · apariciones',
+      text: 'El foso y los escotillones permitían aparecer y desaparecer personajes, voces del más allá y figuras fantasmales. El suelo del escenario era también una máquina.',
+      why: 'El espacio dramático incluye lo invisible: el infierno, la tumba, la conciencia. La unidad de lugar se rompe también hacia abajo.'
+    },
+    alojeria: {
+      n: '7',
+      title: 'La alojería',
+      tag: 'Comida y bebida · el negocio del intermedio',
+      text: 'La alojería vendía aloja —agua, miel y especias—, fruta y dulces. Entre jornada y jornada se vendía, se bailaba y se comentaba la obra. El espectáculo incluía el intermedio.',
+      why: 'El teatro es también una economía del tiempo libre. La estructura en tres jornadas deja espacio para el entremés, el baile y el consumo: el ritmo lo pide el edificio.'
+    },
+    toldo: {
+      n: '8',
+      title: 'El toldo',
+      tag: 'Sombra sobre el patio · funciones de día',
+      text: 'Un toldo cubría parte del patio para proteger del sol. Las funciones eran por la tarde: no había iluminación artificial capaz de crear una noche escénica.',
+      why: 'La noche se construye con palabras: «ya la noche tiende su manto». Esa escenografía verbal es una de las claves de la libertad espacial del corral.'
+    }
+  };
+
+  const panel = $('#corralPanel');
+  const pNum = $('#pNum');
+  const pTitle = $('#pTitle');
+  const pTag = $('#pTag');
+  const pText = $('#pText');
+  const pWhy = $('#pWhy');
+  const hotspots = $$('.hotspot');
+  const chips = $$('.corral__chips .chip');
+
+  const selectSpot = (key, scrollOnMobile = false) => {
+    const data = SPOTS[key];
+    if (!data) return;
+    pNum.textContent = data.n;
+    pTitle.textContent = data.title;
+    pTag.textContent = data.tag;
+    pText.textContent = data.text;
+    pWhy.textContent = data.why;
+
+    hotspots.forEach((hotspot) => {
+      hotspot.classList.toggle('is-active', hotspot.dataset.spot === key);
+    });
+    chips.forEach((chip) => {
+      chip.setAttribute('aria-pressed', String(chip.dataset.spot === key));
+    });
+
+    if (scrollOnMobile && window.innerWidth <= 920) {
+      panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    }
+  };
+
+  hotspots.forEach((hotspot) => {
+    hotspot.addEventListener('click', () => selectSpot(hotspot.dataset.spot, true));
+    hotspot.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        selectSpot(hotspot.dataset.spot, true);
+      }
+    });
+  });
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => selectSpot(chip.dataset.spot, false));
+  });
+  selectSpot('tablado');
+
+  /* ---------- Quiz ---------- */
+  const quizForm = $('#quizForm');
+  const quizResult = $('#quizResult');
+  const scoreNum = $('#scoreNum');
+  const scoreTitle = $('#scoreTitle');
+  const scoreText = $('#scoreText');
+  const questions = $$('.q', quizForm);
+
+  const clearQuiz = () => {
+    quizResult.classList.remove('is-visible');
+    questions.forEach((question) => {
+      $$('.opt', question).forEach((opt) => opt.classList.remove('is-correct', 'is-wrong'));
+      const feedback = $('.fb', question);
+      if (feedback) feedback.hidden = true;
+    });
+  };
+
+  quizForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let score = 0;
+    let answered = 0;
+
+    questions.forEach((question) => {
+      const answer = question.dataset.answer;
+      const chosen = $('input:checked', question);
+      $$('.opt', question).forEach((opt) => opt.classList.remove('is-correct', 'is-wrong'));
+
+      const correctInput = $('input[value="' + answer + '"]', question);
+      if (correctInput) correctInput.closest('.opt').classList.add('is-correct');
+
+      if (chosen) {
+        answered += 1;
+        if (chosen.value === answer) {
+          score += 1;
+        } else {
+          chosen.closest('.opt').classList.add('is-wrong');
+        }
+      }
+
+      const feedback = $('.fb', question);
+      if (feedback) feedback.hidden = false;
+    });
+
+    scoreNum.textContent = String(score);
+
+    let title;
+    let text;
+    if (score === questions.length) {
+      title = 'Nivel Lope: seis llaves y ninguna excusa.';
+      text = 'Puedes explicar qué conserva y qué rompe la comedia nueva sin reducirlo a «Lope hacía lo que quería». Eso es exactamente lo que hay que saber.';
+    } else if (score >= 5) {
+      title = 'Nivel corral: ya ves el tablado completo.';
+      text = 'Tienes el sistema claro. Revisa las explicaciones de las que fallaste: casi siempre el error está en confundir a Aristóteles con sus lectores renacentistas.';
+    } else if (score >= 3) {
+      title = 'Vas bien: distingues la regla del mito.';
+      text = 'Ya sabes que la tríada no es una cita literal y que Lope conserva la acción. Vuelve al <em>Arte nuevo</em> y a las fichas de obras para fijar los matices.';
+    } else {
+      title = 'Estás en el patio, pero aún no ves el tablado.';
+      text = 'Vuelve a la tríada y al <em>Arte nuevo</em>. Después prueba el simulador: verás qué unidad se conserva y cuáles se negocian.';
+    }
+
+    scoreTitle.innerHTML = title;
+    const missing = questions.length - answered;
+    scoreText.innerHTML = 'Acertaste <strong>' + score + ' de ' + questions.length + '</strong>. ' +
+      (missing > 0 ? 'Dejaste ' + missing + ' pregunta' + (missing === 1 ? '' : 's') + ' sin responder. ' : '') +
+      text;
+
+    quizResult.classList.add('is-visible');
+    quizResult.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  });
+
+  quizForm.addEventListener('reset', () => {
+    window.setTimeout(clearQuiz, 0);
+  });
+
+  /* ---------- Imprimir ---------- */
+  const printBtn = $('#printBtn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => window.print());
+  }
+
+  /* ---------- La app arrancó: retirar la puerta de diagnóstico ---------- */
+  document.documentElement.classList.add('app-ready');
+})();
+
+</script>
+</body>
+</html>
