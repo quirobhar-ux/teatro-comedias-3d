@@ -1,0 +1,856 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Bernarda Alba, Acto II · Hoja</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap">
+<style>
+/* Layout: una sola columna de lectura (como una hoja impresa), barra fija arriba con el interruptor de respuestas; cada respuesta vive plegada debajo de su pregunta. */
+:root{
+  --paper:#F7F2EA; --sheet:#FFFCF7; --ink:#1E1915; --muted:#6B5F55; --rule:#DED3C2;
+  --accent:#A3330D; --gold:#B7791A; --ans:#FBF1DC; --ans-rule:#E7CF9F; --field:#FFFFFF;
+  --display:'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --body:'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15110E; --sheet:#1D1814; --ink:#F1E9DC; --muted:#A99B8C; --rule:#3A312A;
+  --accent:#E9875C; --gold:#E9A23B; --ans:#2A2117; --ans-rule:#5A4528; --field:#15110E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#15110E; --sheet:#1D1814; --ink:#F1E9DC; --muted:#A99B8C; --rule:#3A312A;
+  --accent:#E9875C; --gold:#E9A23B; --ans:#2A2117; --ans-rule:#5A4528; --field:#15110E; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+
+/* barra */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+.bar-in{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.bar-title{font-family:var(--display);font-size:19px;line-height:1.2}
+.bar-actions{display:flex;flex-wrap:wrap;gap:8px}
+button{font:inherit;font-size:14px;font-weight:600;border-radius:999px;padding:7px 14px;cursor:pointer;border:1px solid var(--rule);background:var(--sheet);color:var(--ink)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--sheet)}
+button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* cabecera */
+header.head{padding-block:48px 24px;display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(36px,7vw,58px);line-height:1.05;margin:0;text-wrap:balance}
+h1 i{color:var(--accent)}
+.lead{color:var(--muted);max-width:62ch;margin:0}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
+.rule{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;font-size:15px}
+.rule b{display:block;margin-bottom:2px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;padding:2px 7px;border-radius:4px;vertical-align:2px;white-space:nowrap}
+.tag.cita{background:var(--gold);color:var(--sheet)}
+.tag.op{background:var(--accent);color:var(--sheet)}
+.warn{border-left:4px solid var(--accent);padding:10px 16px;background:var(--sheet);font-size:15px;margin-top:4px}
+
+/* secciones */
+section.sec{padding-top:40px;display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;gap:14px;align-items:baseline;border-top:2px solid var(--ink);padding-top:14px}
+.num{font-family:var(--display);font-size:42px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4.5vw,34px);line-height:1.15;margin:0;text-wrap:balance}
+h3{font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:12px 0 0}
+p{margin:0}
+.q{display:flex;flex-direction:column;gap:8px;background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:16px 18px}
+.q .qt{font-weight:600}
+.q .qn{color:var(--accent);font-weight:700;margin-right:4px;font-variant-numeric:tabular-nums}
+blockquote{margin:0;padding:4px 0 4px 16px;border-left:3px solid var(--gold);font-family:var(--display);font-size:20px;line-height:1.4;display:flex;flex-direction:column;gap:8px}
+.vocab{font-size:14px;color:var(--muted)}
+.vocab b{color:var(--ink)}
+
+textarea,input[type=text]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:8px;padding:8px 10px}
+textarea{min-height:72px;resize:vertical}
+input[type=text]{padding:6px 8px;font-size:15px}
+
+/* tablas */
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:12px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:15px}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--rule)}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td.fill{min-width:150px}
+td .lit{font-style:italic;color:var(--muted)}
+.small-tbl table{min-width:0}
+
+/* respuestas */
+details.ans{border:1px dashed var(--ans-rule);border-radius:10px;background:transparent}
+details.ans>summary{list-style:none;cursor:pointer;padding:8px 14px;font-size:14px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:8px;user-select:none}
+details.ans>summary::-webkit-details-marker{display:none}
+details.ans>summary::before{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;font-size:14px;line-height:1}
+details.ans[open]>summary::before{content:"–"}
+details.ans[open]{background:var(--ans);border-style:solid}
+details.ans[open]>summary .lbl-closed{display:none}
+details.ans:not([open])>summary .lbl-open{display:none}
+.ans-body{padding:2px 16px 14px;display:flex;flex-direction:column;gap:10px;font-size:16px}
+.ans-body ul,.ans-body ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.ans-body .model{font-family:var(--display);font-size:18px;line-height:1.4;border-left:3px solid var(--gold);padding-left:12px}
+.ans-body .tbl{background:var(--sheet)}
+.note{font-size:14px;color:var(--muted)}
+
+.checks{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.checks input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+
+.confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion:no-preference){details.ans[open] .ans-body{animation:fade .2s ease}}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+</style>
+
+<div class="bar"><div class="bar-in">
+  <span class="bar-title">Bernarda Alba · Acto II</span>
+  <div class="bar-actions">
+    <button id="toggleAll" class="primary" type="button" aria-pressed="false">Mostrar todas las respuestas</button>
+    <span id="clearWrap" class="confirm"><button id="clearBtn" type="button">Borrar lo que escribí</button></span>
+  </div>
+</div></div>
+
+<main class="wrap">
+
+<header class="head">
+  <span class="eyebrow">SPAN 241 · Hoja de trabajo</span>
+  <h1>La casa de Bernarda Alba, <i>Acto II</i></h1>
+  <p class="lead">Esta hoja es tu guía de la clase de hoy. Complétala mientras avanzamos, no al final. Escribe primero tu respuesta y solo después abre «Ver respuesta» para comparar. Lo que escribes se guarda en este navegador.</p>
+  <div class="rules">
+    <div class="rule"><b>En español</b>Si no sabes una palabra, escríbela en inglés [entre corchetes] y sigue.</div>
+    <div class="rule"><b>Sin traductor</b>Equivocarse está bien. Copiar, no.</div>
+    <div class="rule"><span class="tag cita">CITA</span> <b style="display:inline">Busca la frase exacta</b> en el texto del Acto II y apunta la página.</div>
+    <div class="rule"><span class="tag op">OPINIÓN</span> <b style="display:inline">No hay respuesta correcta.</b> Queremos tu idea, con argumentos.</div>
+  </div>
+  <p class="warn"><b>Aviso de contenido:</b> el final del Acto II incluye violencia colectiva contra una mujer. Hablaremos de ello con respeto. Si necesitas salir un momento, puedes hacerlo.</p>
+</header>
+
+<!-- 1 -->
+<section class="sec" id="personajes">
+  <div class="sec-head"><span class="num">1</span><h2>¿Quién es quién en la casa?</h2></div>
+  <p><b>Ficha de personajes.</b> Completa la tabla. En «Comentarios» puedes poner una etiqueta como si fuera un perfil de TikTok o un meme (<i>main character</i>, <i>the snitch</i>, <i>red flag</i>).</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Personaje</th><th>Edad</th><th>¿Qué quiere en el Acto II?</th><th>Comentarios</th></tr></thead>
+    <tbody>
+      <tr><td>Bernarda</td><td>60</td><td class="fill"><input type="text" id="p-ber-q" aria-label="Bernarda: qué quiere"></td><td class="fill"><input type="text" id="p-ber-c" aria-label="Bernarda: comentarios"></td></tr>
+      <tr><td>Angustias</td><td>39</td><td class="fill"><input type="text" id="p-ang-q" aria-label="Angustias: qué quiere"></td><td class="fill"><input type="text" id="p-ang-c" aria-label="Angustias: comentarios"></td></tr>
+      <tr><td>Magdalena</td><td>30</td><td class="fill"><input type="text" id="p-mag-q" aria-label="Magdalena: qué quiere"></td><td class="fill"><input type="text" id="p-mag-c" aria-label="Magdalena: comentarios"></td></tr>
+      <tr><td>Amelia</td><td>27</td><td class="fill"><input type="text" id="p-ame-q" aria-label="Amelia: qué quiere"></td><td class="fill"><input type="text" id="p-ame-c" aria-label="Amelia: comentarios"></td></tr>
+      <tr><td>Martirio</td><td>24</td><td class="fill"><input type="text" id="p-mar-q" aria-label="Martirio: qué quiere"></td><td class="fill"><input type="text" id="p-mar-c" aria-label="Martirio: comentarios"></td></tr>
+      <tr><td>Adela</td><td>20</td><td class="fill"><input type="text" id="p-ade-q" aria-label="Adela: qué quiere"></td><td class="fill"><input type="text" id="p-ade-c" aria-label="Adela: comentarios"></td></tr>
+      <tr><td>La Poncia</td><td>60</td><td class="fill"><input type="text" id="p-pon-q" aria-label="La Poncia: qué quiere"></td><td class="fill"><input type="text" id="p-pon-c" aria-label="La Poncia: comentarios"></td></tr>
+      <tr><td>Pepe el Romano</td><td>25</td><td class="fill"><input type="text" id="p-pep-q" aria-label="Pepe: qué quiere"></td><td class="fill"><input type="text" id="p-pep-c" aria-label="Pepe: comentarios"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl"><table>
+      <thead><tr><th>Personaje</th><th>¿Qué quiere?</th><th>Etiqueta posible</th></tr></thead>
+      <tbody>
+        <tr><td>Bernarda</td><td>Mantener el control y la apariencia: que nada «traspase las paredes».</td><td>The control freak</td></tr>
+        <tr><td>Angustias</td><td>Casarse con Pepe, salir de la casa y defender lo que es suyo (el retrato).</td><td>Engaged and on guard</td></tr>
+        <tr><td>Magdalena</td><td>Nada concreto: observa con ironía. Sabe que Pepe viene por el dinero.</td><td>The cynic</td></tr>
+        <tr><td>Amelia</td><td>No meterse en problemas. Mira y comenta, con miedo.</td><td>The bystander</td></tr>
+        <tr><td>Martirio</td><td>Que Adela no tenga a Pepe. Lo desea, pero no actúa: vigila.</td><td>The snitch</td></tr>
+        <tr><td>Adela</td><td>Estar con Pepe a toda costa. Libertad, su cuerpo.</td><td>Main character</td></tr>
+        <tr><td>La Poncia</td><td>Evitar el escándalo y vivir en «casa decente». Avisa a Bernarda, que no la escucha.</td><td>Knows all the tea</td></tr>
+        <tr><td>Pepe el Romano</td><td>Casarse con Angustias por el dinero mientras ve a Adela de noche.</td><td>Red flag</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Las etiquetas son libres: lo importante es que se puedan justificar con el texto.</p>
+  </div></details>
+
+  <div class="q">
+    <p class="qt"><span class="tag op">OPINIÓN</span> Pepe el Romano nunca aparece en escena, pero todas hablan de él. ¿Por qué crees que Lorca no lo muestra nunca?</p>
+    <textarea id="q-pepe" aria-label="Por qué Lorca no muestra a Pepe"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <ul>
+        <li><b>Es una obra de mujeres.</b> En el reparto no hay ningún hombre y toda la acción pasa dentro de la casa. Si Pepe entrara, rompería el encierro.</li>
+        <li><b>Es más un símbolo que una persona.</b> No sabemos cómo es; cada hermana ve en él lo que le falta.</li>
+        <li><b>Está presente sin estar:</b> la tos, los pasos de la jaca, la ventana, el retrato. Así funciona también el poder de los hombres en ese mundo.</li>
+        <li><b>Conflicto entre mujeres.</b> Sin Pepe en escena, la obra no es un triángulo amoroso: es hermana contra hermana, y madre contra hijas.</li>
+      </ul>
+      <div class="tbl small-tbl"><table>
+        <thead><tr><th>Posición</th><th>Quiénes</th><th>Cómo se relacionan con Pepe</th></tr></thead>
+        <tbody>
+          <tr><td>Lo tienen</td><td>Angustias y Adela</td><td>Angustias con el dinero y el compromiso, de día y por la reja. Adela con el cuerpo y el riesgo, de noche.</td></tr>
+          <tr><td>Lo quiere, no actúa</td><td>Martirio</td><td>Vigila, esconde el retrato, bloquea.</td></tr>
+          <tr><td>Fuera del juego</td><td>Magdalena y Amelia</td><td>Magdalena con cinismo, Amelia con distancia.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="model">«Lorca no muestra a Pepe porque funciona como símbolo: cada hermana ve en él lo que le falta. Angustias lo consigue con dinero, Adela con su cuerpo y su valentía, Martirio lo desea sin actuar, y Magdalena y Amelia ya se quedaron fuera.»</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="sec" id="detective">
+  <div class="sec-head"><span class="num">2</span><h2>Misión detective: ¿a qué hora se fue Pepe?</h2></div>
+  <p>Los testigos no coinciden. En grupos de 3, completen la tabla con la cita y lo que revela.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Hora</th><th>Testigo</th><th><span class="tag cita">CITA</span> ¿Qué dice?</th><th>¿Qué revela?</th></tr></thead>
+    <tbody>
+      <tr><td>1:00</td><td>Angustias</td><td class="fill"><input type="text" id="d1-c" aria-label="1:00 cita"></td><td class="fill"><input type="text" id="d1-r" aria-label="1:00 revela"></td></tr>
+      <tr><td>1:30</td><td>Amelia</td><td class="fill"><input type="text" id="d2-c" aria-label="1:30 cita"></td><td class="fill"><input type="text" id="d2-r" aria-label="1:30 revela"></td></tr>
+      <tr><td>4:00</td><td>La Poncia</td><td class="fill"><input type="text" id="d3-c" aria-label="4:00 cita"></td><td class="fill"><input type="text" id="d3-r" aria-label="4:00 revela"></td></tr>
+      <tr><td>4:30</td><td>El hijo de La Poncia</td><td class="fill"><input type="text" id="d4-c" aria-label="4:30 cita"></td><td class="fill"><input type="text" id="d4-r" aria-label="4:30 revela"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl"><table>
+      <thead><tr><th>Hora</th><th>Cita</th><th>Qué revela</th></tr></thead>
+      <tbody>
+        <tr><td>1:00</td><td>«Pepe lleva más de una semana marchándose a la una.»</td><td>Hasta la una está con Angustias. Es lo que ella cree.</td></tr>
+        <tr><td>1:30</td><td>«Se iría a eso de la una y media… Lo sentí toser y oí los pasos de su jaca.»</td><td>Amelia lo oye moverse, pero no lo ve irse.</td></tr>
+        <tr><td>4:00</td><td>«Pero si yo lo sentí marchar a eso de las cuatro.»</td><td>Pepe se queda casi tres horas más después de dejar a Angustias.</td></tr>
+        <tr><td>4:30</td><td>Pasó con la yunta y «estaban hablando todavía».</td><td>Confirma que Pepe habla con alguien de madrugada.</td></tr>
+      </tbody>
+    </table></div>
+  </div></details>
+  <p class="vocab"><b>Vocabulario:</b> jaca = caballo pequeño · yunta = par de mulas para arar · sentir = aquí significa «oír» (to hear)</p>
+
+  <div class="q">
+    <p class="qt"><span class="tag cita">CITA</span> Busquen dos pistas más: una de <b>Martirio</b> y una de <b>Adela</b>.</p>
+    <textarea id="q-pistas" aria-label="Dos pistas"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <ul>
+        <li><b>Martirio:</b> «me pareció oír gente en el corral… Ya lo he oído otras noches». Repite «una mulilla sin desbravar» con segunda intención. Pregunta: «¿No habláis ahora por la ventana del callejón?».</li>
+        <li><b>Adela:</b> dice «Tengo mal cuerpo», no duerme y se enoja cuando le preguntan. La Poncia la acusa: «¿Dónde vas de noche cuando te levantas?».</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <p class="qt"><span class="qn">Pregunta clave.</span> En la casa hay dos ventanas. ¿Cuáles son? Escriban su conclusión: «Creemos que… porque el texto dice…».</p>
+    <textarea id="q-ventanas" aria-label="Dos ventanas y conclusión"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <ol>
+        <li>La ventana del dormitorio de Angustias («Yo hablo por la ventana de mi dormitorio»).</li>
+        <li>La ventana del callejón, junto al corral, donde todo apunta a Adela.</li>
+      </ol>
+      <p class="model">«Creemos que Pepe habla con Angustias hasta la una y después con Adela hasta las cuatro, porque el texto dice: "Pero si yo lo sentí marchar a eso de las cuatro".»</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="sec" id="diccionario">
+  <div class="sec-head"><span class="num">3</span><h2>Diccionario de la casa</h2></div>
+  <p>Te damos la traducción literal. Tú escribes qué significa de verdad y cómo lo dirías tú. Intenta adivinar antes de abrir la respuesta.</p>
+
+  <h3>A · Amor y dinero</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>La frase (quién)</th><th>Literalmente</th><th>¿Qué significa?</th><th>Cómo lo dirías tú</th></tr></thead>
+    <tbody>
+      <tr><td>«Al que le duela, que reviente.» (Angustias)</td><td class="lit">Whoever it hurts, let them burst.</td><td class="fill"><input type="text" id="ia1" aria-label="significado"></td><td class="fill"><input type="text" id="ia1b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«Más vale onza en el arca que ojos negros en la cara.» (Angustias)</td><td class="lit">A gold coin in the chest beats dark eyes in the face.</td><td class="fill"><input type="text" id="ia2" aria-label="significado"></td><td class="fill"><input type="text" id="ia2b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«Casi se me salió el corazón por la boca.» (Angustias)</td><td class="lit">My heart almost came out of my mouth.</td><td class="fill"><input type="text" id="ia3" aria-label="significado"></td><td class="fill"><input type="text" id="ia3b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«No tiene mal tipo.» (Angustias)</td><td class="lit">He doesn’t have a bad build.</td><td class="fill"><input type="text" id="ia4" aria-label="significado"></td><td class="fill"><input type="text" id="ia4b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«Él también parece muy picado.» (La Poncia)</td><td class="lit">He also seems very stung.</td><td class="fill"><input type="text" id="ia5" aria-label="significado"></td><td class="fill"><input type="text" id="ia5b" aria-label="cómo lo dirías"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th>Frase</th><th>Significa</th><th>Gen Z</th></tr></thead>
+      <tbody>
+        <tr><td>Al que le duela, que reviente</td><td>Si te molesta, aguántate.</td><td>Stay mad.</td></tr>
+        <tr><td>Más vale onza en el arca…</td><td>El dinero vale más que la belleza.</td><td>The bag beats the looks.</td></tr>
+        <tr><td>Casi se me salió el corazón…</td><td>Estaba nerviosísima.</td><td>I was literally dying.</td></tr>
+        <tr><td>No tiene mal tipo</td><td>Es guapo (dicho con modestia).</td><td>He’s lowkey hot.</td></tr>
+        <tr><td>Parece muy picado</td><td>Está muy enamorado.</td><td>He’s down bad.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Angustias usa refranes de dinero y de defensa: sabe que Pepe la elige por la herencia y se protege.</p>
+  </div></details>
+
+  <h3>B · Insultos y peleas</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>La frase (quién)</th><th>Literalmente</th><th>¿Qué significa?</th><th>Cómo lo dirías tú</th></tr></thead>
+    <tbody>
+      <tr><td>«¡Mosca muerta!» (Bernarda a Martirio)</td><td class="lit">Dead fly!</td><td class="fill"><input type="text" id="ib1" aria-label="significado"></td><td class="fill"><input type="text" id="ib1b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«¡Sembradura de vidrios!» (Bernarda)</td><td class="lit">A sowing of broken glass!</td><td class="fill"><input type="text" id="ib2" aria-label="significado"></td><td class="fill"><input type="text" id="ib2b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«¡Oledora! ¡Pérfida!» (Adela a La Poncia)</td><td class="lit">Sniffer! Treacherous one!</td><td class="fill"><input type="text" id="ib3" aria-label="significado"></td><td class="fill"><input type="text" id="ib3b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«Mira a ver si puedes agarrar la liebre con tus manos.» (Adela)</td><td class="lit">See if you can catch the hare with your hands.</td><td class="fill"><input type="text" id="ib4" aria-label="significado"></td><td class="fill"><input type="text" id="ib4b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«¡Y chitón!» (Adela)</td><td class="lit">And shh!</td><td class="fill"><input type="text" id="ib5" aria-label="significado"></td><td class="fill"><input type="text" id="ib5b" aria-label="cómo lo dirías"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th>Frase</th><th>Significa</th><th>Gen Z</th></tr></thead>
+      <tbody>
+        <tr><td>¡Mosca muerta!</td><td>Parece inocente, pero no lo es.</td><td>Fake innocent. Snake.</td></tr>
+        <tr><td>¡Sembradura de vidrios!</td><td>Persona que siembra problemas.</td><td>Walking red flag.</td></tr>
+        <tr><td>¡Oledora! ¡Pérfida!</td><td>Chismosa, metiche, traidora.</td><td>Nosy and fake.</td></tr>
+        <tr><td>Agarrar la liebre con tus manos</td><td>No me vas a atrapar. (Es un desafío, no un insulto.)</td><td>Catch me if you can.</td></tr>
+        <tr><td>¡Y chitón!</td><td>Ni una palabra a nadie.</td><td>Zip it. Don’t snitch.</td></tr>
+      </tbody>
+    </table></div>
+  </div></details>
+
+  <h3>C · Poder y control</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>La frase (quién)</th><th>Literalmente</th><th>¿Qué significa?</th><th>Cómo lo dirías tú</th></tr></thead>
+    <tbody>
+      <tr><td>«Ya empiezas a sacar la punta del cuchillo.» (Bernarda)</td><td class="lit">You’re starting to pull out the knife’s tip.</td><td class="fill"><input type="text" id="ic1" aria-label="significado"></td><td class="fill"><input type="text" id="ic1b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«¡No llegará la sangre al río!» (La Poncia)</td><td class="lit">The blood won’t reach the river.</td><td class="fill"><input type="text" id="ic2" aria-label="significado"></td><td class="fill"><input type="text" id="ic2b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«En cuanto las dejes sueltas se te subirán al tejado.» (La Poncia)</td><td class="lit">Let them loose and they’ll climb onto your roof.</td><td class="fill"><input type="text" id="ic3" aria-label="significado"></td><td class="fill"><input type="text" id="ic3b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«¡Siempre gasté sabrosa pimienta!» (Bernarda)</td><td class="lit">I always used tasty pepper.</td><td class="fill"><input type="text" id="ic4" aria-label="significado"></td><td class="fill"><input type="text" id="ic4b" aria-label="cómo lo dirías"></td></tr>
+      <tr><td>«Nadie me traiga ni me lleve.» (Bernarda)</td><td class="lit">Nobody bring me or carry me.</td><td class="fill"><input type="text" id="ic5" aria-label="significado"></td><td class="fill"><input type="text" id="ic5b" aria-label="cómo lo dirías"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th>Frase</th><th>Significa</th><th>Gen Z</th></tr></thead>
+      <tbody>
+        <tr><td>Sacar la punta del cuchillo</td><td>Vas a atacar con palabras.</td><td>Here comes the shade.</td></tr>
+        <tr><td>No llegará la sangre al río</td><td>No será tan grave.</td><td>Relax, it won’t get that bad.</td></tr>
+        <tr><td>Se te subirán al tejado</td><td>Perderás el control.</td><td>They’ll go feral.</td></tr>
+        <tr><td>Siempre gasté sabrosa pimienta</td><td>Siempre fui dura y peleona.</td><td>I’m built different.</td></tr>
+        <tr><td>Nadie me traiga ni me lleve</td><td>No me traigan chismes.</td><td>Don’t bring me the tea.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Ironía dramática: La Poncia dice «No llegará la sangre al río»… y en el Acto III sí llega.</p>
+  </div></details>
+
+  <h3>Piensa un poco más</h3>
+  <div class="q">
+    <p class="qt"><span class="qn">1.</span> Muchos insultos de la obra vienen de animales, del campo o de la casa (mosca muerta, marrana, mulilla, vidrios). ¿Qué nos dice eso del mundo de estas mujeres?</p>
+    <textarea id="q-insultos" aria-label="Insultos y su mundo"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <ul>
+        <li><b>Su lenguaje es tan pequeño como su mundo.</b> Viven encerradas en un pueblo rural: sus palabras salen del corral, la casa y el campo.</li>
+        <li><b>Las tratan como animales que hay que domar</b> («mulilla sin desbravar»), y ellas usan esa misma mirada entre sí.</li>
+        <li><b>Atacan la moral y el cuerpo, no la inteligencia:</b> lo que importa en esa casa es la reputación.</li>
+        <li><b>Es lenguaje popular andaluz,</b> lleno de imágenes concretas; Lorca lo vuelve poesía («sembradura de vidrios»).</li>
+      </ul>
+      <p class="model">«Los insultos vienen de animales y de la casa porque es el único mundo que conocen. Además, comparar a una mujer con un animal muestra cómo las ven: como algo que hay que domar y vigilar.»</p>
+      <p class="note">Para ir más lejos: ¿de dónde vienen nuestros insultos de hoy (NPC, bot, basic, mid)? ¿Qué dicen de nuestro mundo?</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">2.</span> Una expresión del Acto II es idéntica en inglés: «Por un oído me entra y por otro me sale». ¿Cómo se dice en inglés?</p>
+    <input type="text" id="q-oido" aria-label="En inglés">
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p><b>In one ear and out the other.</b></p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">3.</span> Reto: elige UNA expresión y úsala en una frase sobre tu vida (tu compañero de cuarto, tu familia, el campus).</p>
+    <textarea id="q-reto" aria-label="Tu frase"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ejemplos</span><span class="lbl-open">Ocultar ejemplos</span></summary><div class="ans-body">
+      <ul>
+        <li>«Mi compañero de cuarto es una mosca muerta: parece tranquilo, pero se come toda mi comida.»</li>
+        <li>«Mañana tengo examen de química y no he estudiado. ¡No llegará la sangre al río!»</li>
+        <li>«Si no te gusta mi música, al que le duela, que reviente.»</li>
+      </ul>
+    </div></details>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="sec" id="cuerpo">
+  <div class="sec-head"><span class="num">4</span><h2>Cuerpo, deseo y vigilancia</h2></div>
+
+  <h3>A · La Poncia cuenta su historia</h3>
+  <p>Todas se ríen con «¡Ven que te tiente!» (<i>come here, let me touch you</i>).</p>
+  <div class="q">
+    <p class="qt"><span class="qn">1.</span> ¿Por qué Amelia corre a la puerta mientras se ríen? ¿Qué nos dice eso sobre hablar de sexo en esta casa?</p>
+    <textarea id="q4-1" aria-label="Respuesta 1"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Tiene miedo de que llegue Bernarda («¡Ay!, creí que llegaba nuestra madre»). Del sexo solo se puede hablar como chiste y a escondidas: el deseo es algo prohibido y vigilado.</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">2.</span> Según La Poncia, el marido «deja la cama por la mesa y luego la mesa por la tabernilla». Explícalo con tus palabras.</p>
+    <textarea id="q4-2" aria-label="Respuesta 2"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Al principio el marido desea a su mujer (la cama). Después solo le interesa que le den de comer (la mesa). Al final se va al bar (la tabernilla) y la deja sola. Es una visión desencantada del matrimonio: el deseo dura poco y la mujer termina en casa sirviendo.</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">3.</span> <span class="tag op">OPINIÓN</span> Hot take: ¿La Poncia es feminista o es una mujer que aprendió la violencia de Bernarda? Usa una cita: «¡Yo pude con él!» · «Por poco si le dejo tuerto» · «Yo tengo la escuela de tu madre».</p>
+    <textarea id="q4-3" aria-label="Respuesta 3"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ul>
+        <li><b>Sí, en parte:</b> no se deja dominar por su marido y se impone («¡Yo pude con él!»).</li>
+        <li><b>No del todo:</b> lo hace con violencia, y ella misma dice que aprendió de Bernarda («Yo tengo la escuela de tu madre»). Reproduce el sistema en vez de cambiarlo.</li>
+        <li><b>Respuesta más rica:</b> las dos cosas. Es una mujer fuerte dentro de un mundo que solo le enseñó la fuerza como herramienta.</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <h3>B · Adela habla de su cuerpo</h3>
+  <p>Lee estas frases y fíjate en las palabras de <b>fuego</b>, <b>sangre</b> y <b>cuerpo</b>.</p>
+  <blockquote>
+    <span>«Mi cuerpo será de quien yo quiera.»</span>
+    <span>«Por encima de mi madre saltaría para apagarme este fuego que tengo levantado por piernas y boca.»</span>
+    <span>«Mirando sus ojos me parece que bebo su sangre lentamente.»</span>
+  </blockquote>
+  <div class="q">
+    <p class="qt"><span class="qn">4.</span> ¿Qué tipo de amor es este: romántico, físico, desesperado? Justifica con una palabra del texto.</p>
+    <textarea id="q4-4" aria-label="Respuesta 4"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Es deseo físico y desesperado, no amor romántico. Adela no habla de ternura ni de futuro, sino de hambre, <b>fuego</b> y <b>sangre</b>: «apagarme este fuego», «bebo su sangre». Es una pasión casi violenta, capaz de saltar por encima de su madre.</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">5.</span> <span class="tag op">OPINIÓN</span> En 1936, que una mujer dijera esto era un escándalo. ¿Y hoy? ¿Quién decide sobre el cuerpo de una mujer de 20 años?</p>
+    <textarea id="q4-5" aria-label="Respuesta 5"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ul>
+        <li>En la obra deciden Bernarda, la iglesia y el pueblo. Adela es la única que dice «yo».</li>
+        <li>Hoy pueden pesar las leyes, la familia, la religión, las redes y la presión social.</li>
+        <li>Conexión: Lorca, homosexual en la España de 1936, también conocía el deseo «prohibido». Fue asesinado ese mismo año.</li>
+      </ul>
+      <p class="note">Discutimos ideas, no personas.</p>
+    </div></details>
+  </div>
+
+  <h3>C · Párate en la línea</h3>
+  <p>La Poncia le aconseja a Adela que espere: Angustias «no resiste el primer parto» y entonces Pepe se casará con la más joven. ¿Qué es La Poncia aquí? Elige y defiéndelo con una cita.</p>
+  <div class="q">
+    <div class="checks" role="radiogroup" aria-label="Posición de La Poncia" style="display:flex;flex-wrap:wrap;gap:8px 20px">
+      <label><input type="radio" name="poncia" id="pon-a" value="aliada"> Aliada de Adela</label>
+      <label><input type="radio" name="poncia" id="pon-s" value="superviviente"> Superviviente</label>
+      <label><input type="radio" name="poncia" id="pon-e" value="espia"> Espía de Bernarda</label>
+    </div>
+    <textarea id="q4-cita" aria-label="Mi cita" placeholder="Mi cita…"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver citas posibles</span><span class="lbl-open">Ocultar citas</span></summary><div class="ans-body">
+      <ul>
+        <li><b>Aliada:</b> «Pepe hará lo que hacen todos los viudos de esta tierra: se casará con la más joven, la más hermosa, y ésa eres tú.»</li>
+        <li><b>Superviviente:</b> «No os tengo ley a ninguna, pero quiero vivir en casa decente.»</li>
+        <li><b>Espía:</b> «Sombra tuya he de ser.»</li>
+      </ul>
+      <p class="note">Las tres posiciones valen si se defienden con el texto. Lo inquietante: le aconseja esperar la muerte de su hermana como si fuera un consejo práctico.</p>
+    </div></details>
+  </div>
+  <p class="vocab"><b>Vocabulario:</b> no os tengo ley = no las quiero · sombra tuya he de ser = te voy a seguir a todas partes · tuerto = con un solo ojo · almirez = mortero de cocina</p>
+</section>
+
+<!-- 5 -->
+<section class="sec" id="afuera">
+  <div class="sec-head"><span class="num">5</span><h2>Afuera y adentro</h2></div>
+
+  <h3>A · Los segadores</h3>
+  <p>Mientras los hombres cantan en el campo, las hijas cosen sábanas. Completa el cuadro.</p>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Afuera (los hombres)</th><th>Adentro (las mujeres)</th></tr></thead>
+    <tbody>
+      <tr><td>¿Qué hacen?</td><td class="fill"><input type="text" id="s5-h1" aria-label="Afuera qué hacen"></td><td class="fill"><input type="text" id="s5-h2" aria-label="Adentro qué hacen"></td></tr>
+      <tr><td>¿Qué sienten?</td><td class="fill"><input type="text" id="s5-s1" aria-label="Afuera qué sienten"></td><td class="fill"><input type="text" id="s5-s2" aria-label="Adentro qué sienten"></td></tr>
+      <tr><td><span class="tag cita">CITA</span></td><td class="fill"><input type="text" id="s5-c1" aria-label="Afuera cita"></td><td class="fill"><input type="text" id="s5-c2" aria-label="Adentro cita"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th></th><th>Afuera</th><th>Adentro</th></tr></thead>
+      <tbody>
+        <tr><td>Hacen</td><td>Siegan el trigo, cantan, contratan a una mujer «vestida de lentejuelas».</td><td>Cosen sábanas en sillas bajas, de luto.</td></tr>
+        <tr><td>Sienten</td><td>Sol, libertad, alegría.</td><td>Calor, encierro, nostalgia, deseo.</td></tr>
+        <tr><td>Cita</td><td>«Los hombres necesitan estas cosas.»</td><td>«Nacer mujer es el mayor castigo.» (Amelia)</td></tr>
+      </tbody>
+    </table></div>
+  </div></details>
+
+  <div class="q">
+    <p class="qt"><span class="qn">1.</span> Amelia dice: «Nacer mujer es el mayor castigo». Adela dice de los hombres: «Se les perdona todo». ¿Qué ejemplo de este doble estándar aparece en la escena de los segadores?</p>
+    <textarea id="q5-1" aria-label="Respuesta 1"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Los segadores contratan a una mujer «vestida de lentejuelas» y La Poncia hasta le dio dinero a su propio hijo para que fuera. Para los hombres es normal («Los hombres necesitan estas cosas»); para las hijas, solo mirar por la ventana ya es un escándalo.</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">2.</span> <span class="tag op">OPINIÓN</span> ¿Existe todavía un doble estándar sexual en tu generación? Da un ejemplo (sin nombres).</p>
+    <textarea id="q5-2" aria-label="Respuesta 2"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ul>
+        <li>El chico que sale con muchas personas es un <i>player</i>; la chica, recibe <i>slut-shaming</i>.</li>
+        <li>Juzgar la ropa de las mujeres y no la de los hombres.</li>
+        <li>El «body count» como medida distinta para cada género.</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="q">
+    <p class="qt"><span class="qn">Ojo, gramática.</span> En la canción y en la casa se usa el infinitivo como mandato: «<i>Abrir</i> puertas y ventanas» = <i>abrid</i>. Convierte estos mandatos.</p>
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th>Infinitivo como mandato</th><th>Imperativo de vosotros</th><th>Inglés</th></tr></thead>
+      <tbody>
+        <tr><td>¡Abrir!</td><td class="fill"><input type="text" id="g1a" aria-label="vosotros"></td><td class="fill"><input type="text" id="g1b" aria-label="inglés"></td></tr>
+        <tr><td>¡Callar!</td><td class="fill"><input type="text" id="g2a" aria-label="vosotros"></td><td class="fill"><input type="text" id="g2b" aria-label="inglés"></td></tr>
+        <tr><td>¡Dejar esa conversación!</td><td class="fill"><input type="text" id="g3a" aria-label="vosotros"></td><td class="fill"><input type="text" id="g3b" aria-label="inglés"></td></tr>
+      </tbody>
+    </table></div>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <ul>
+        <li>¡Abrir! → <b>¡Abrid!</b> → Open (up)!</li>
+        <li>¡Callar! → <b>¡Callad!</b> → Be quiet! / Shut up!</li>
+        <li>¡Dejar esa conversación! → <b>¡Dejad esa conversación!</b> → Drop it! / Change the subject!</li>
+      </ul>
+      <p class="note">Es habla popular de España. En la escritura formal se usa el imperativo (abrid, callad).</p>
+    </div></details>
+  </div>
+
+  <h3>B · «Y ni nuestros ojos siquiera nos pertenecen.» (Magdalena)</h3>
+  <div class="q">
+    <p class="qt">Escritura rápida, 2 minutos, sin preocuparte por la gramática: «Mis ojos le pertenecen a… porque…».</p>
+    <textarea id="q5-ojos" aria-label="Mis ojos le pertenecen a"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ejemplos</span><span class="lbl-open">Ocultar ejemplos</span></summary><div class="ans-body">
+      <ul>
+        <li>«Mis ojos le pertenecen al algoritmo, porque TikTok decide lo que veo.»</li>
+        <li>«Mis ojos le pertenecen a mi familia, porque siempre pienso en lo que dirían.»</li>
+      </ul>
+      <p class="note">En la casa de Bernarda mirar por la ventana es pecado. Hoy mirar el teléfono es normal, pero alguien decide lo que vemos. ¿Quién es más libre?</p>
+    </div></details>
+  </div>
+
+  <h3>C · Símbolos en 60 segundos</h3>
+  <p>En esta casa nada es solo lo que parece. Con tu pareja, busca una cita para cada símbolo y explica qué significa.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Símbolo</th><th><span class="tag cita">CITA</span> Dónde aparece</th><th>¿Qué significa de verdad?</th></tr></thead>
+    <tbody>
+      <tr><td>El calor</td><td class="fill"><input type="text" id="sy1a" aria-label="cita"></td><td class="fill"><input type="text" id="sy1b" aria-label="significado"></td></tr>
+      <tr><td>La ventana y la reja</td><td class="fill"><input type="text" id="sy2a" aria-label="cita"></td><td class="fill"><input type="text" id="sy2b" aria-label="significado"></td></tr>
+      <tr><td>El retrato de Pepe</td><td class="fill"><input type="text" id="sy3a" aria-label="cita"></td><td class="fill"><input type="text" id="sy3b" aria-label="significado"></td></tr>
+      <tr><td>La mulilla sin desbravar</td><td class="fill"><input type="text" id="sy4a" aria-label="cita"></td><td class="fill"><input type="text" id="sy4b" aria-label="significado"></td></tr>
+      <tr><td>Los encajes</td><td class="fill"><input type="text" id="sy5a" aria-label="cita"></td><td class="fill"><input type="text" id="sy5b" aria-label="significado"></td></tr>
+      <tr><td>Las paredes</td><td class="fill"><input type="text" id="sy6a" aria-label="cita"></td><td class="fill"><input type="text" id="sy6b" aria-label="significado"></td></tr>
+      <tr><td><input type="text" id="sy7n" aria-label="Tu símbolo" placeholder="Tu símbolo"></td><td class="fill"><input type="text" id="sy7a" aria-label="cita"></td><td class="fill"><input type="text" id="sy7b" aria-label="significado"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th>Símbolo</th><th>Cita</th><th>Significa</th></tr></thead>
+      <tbody>
+        <tr><td>El calor</td><td>«Subía fuego de la tierra.» (La Poncia)</td><td>El deseo reprimido que no puede salir.</td></tr>
+        <tr><td>La ventana y la reja</td><td>Angustias habla con Pepe por la reja.</td><td>El único contacto con el mundo y con los hombres.</td></tr>
+        <tr><td>El retrato</td><td>«Entre las sábanas de la cama de Martirio.»</td><td>Pepe como objeto: se roba, se esconde, se posee.</td></tr>
+        <tr><td>La mulilla</td><td>«Una mulilla sin desbravar», dicho por Martirio con segunda intención.</td><td>Un animal salvaje… o Adela y su deseo sin domar.</td></tr>
+        <tr><td>Los encajes</td><td>Martirio: «Para verlo yo.»</td><td>Una sexualidad escondida que nadie ve.</td></tr>
+        <tr><td>Las paredes</td><td>«Que ni las hierbas se enteren.»</td><td>Las apariencias: que nada salga de la casa.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Otros símbolos posibles: la lluvia o el agua, las campanas, las sábanas del ajuar.</p>
+  </div></details>
+  <p class="vocab"><b>Vocabulario:</b> segadores = trabajadores que cortan el trigo · lentejuelas = sequins · desbravar = domar un animal · encajes = lace</p>
+</section>
+
+<!-- 6 -->
+<section class="sec" id="poder">
+  <div class="sec-head"><span class="num">6</span><h2>El retrato y el poder</h2></div>
+
+  <h3>A · El retrato robado</h3>
+  <p>Las frases están desordenadas. Escribe el número (1 a 5) en el orden en que pasan.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:90px">Orden</th><th>Quién</th><th>Qué dice o hace</th></tr></thead>
+    <tbody>
+      <tr><td><input type="text" id="r1" aria-label="orden" inputmode="numeric" maxlength="1"></td><td>La Poncia</td><td>«Entre las sábanas de la cama de Martirio.»</td></tr>
+      <tr><td><input type="text" id="r2" aria-label="orden" inputmode="numeric" maxlength="1"></td><td>Angustias, furiosa</td><td>«¿Quién de vosotras lo tiene?»</td></tr>
+      <tr><td><input type="text" id="r3" aria-label="orden" inputmode="numeric" maxlength="1"></td><td>Bernarda</td><td>La golpea: «¡Mosca muerta!»</td></tr>
+      <tr><td><input type="text" id="r4" aria-label="orden" inputmode="numeric" maxlength="1"></td><td>Amelia</td><td>«Ni que Pepe fuera un san Bartolomé de plata.»</td></tr>
+      <tr><td><input type="text" id="r5" aria-label="orden" inputmode="numeric" maxlength="1"></td><td>Bernarda</td><td>«Registra los cuartos, mira por las camas.»</td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <ol>
+      <li>Angustias: «¿Quién de vosotras lo tiene?»</li>
+      <li>Amelia: «Ni que Pepe fuera un san Bartolomé de plata.»</li>
+      <li>Bernarda: «Registra los cuartos, mira por las camas.»</li>
+      <li>La Poncia: «Entre las sábanas de la cama de Martirio.»</li>
+      <li>Bernarda la golpea: «¡Mosca muerta!»</li>
+    </ol>
+    <p class="note">En la tabla, de arriba abajo: 4 · 1 · 5 · 2 · 3.</p>
+  </div></details>
+
+  <div class="q">
+    <p class="qt"><span class="qn">1.</span> <span class="tag op">OPINIÓN</span> Martirio dice que solo fue una broma. ¿Por qué esconde la foto en su cama? ¿Quiere a Pepe… o quiere que nadie lo tenga?</p>
+    <textarea id="q6-1" aria-label="Respuesta 1"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ul>
+        <li>Lo desea: esconde el retrato en su cama, el lugar más íntimo.</li>
+        <li>Quiere herir a Angustias y bloquear a Adela: «si yo no lo tengo, que nadie lo tenga».</li>
+        <li>La lectura más rica es que hay un poco de las dos. Su deseo se convierte en vigilancia y celos.</li>
+      </ul>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">2.</span> Bernarda no pregunta «¿por qué?» sino «¿cuál de vosotras?». ¿Qué le importa más a ella?</p>
+    <textarea id="q6-2" aria-label="Respuesta 2"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Le importan el culpable y el escándalo, no los sentimientos de sus hijas. Lo que la preocupa es que se entere el pueblo: «Estarán las vecinas con el oído pegado a los tabiques».</p>
+    </div></details>
+  </div>
+
+  <h3>B · Hermanas en guerra</h3>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Martirio</th><th>Adela</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag cita">CITA</span> Su frase más fuerte</td><td class="fill"><input type="text" id="hb1a" aria-label="Martirio frase"></td><td class="fill"><input type="text" id="hb1b" aria-label="Adela frase"></td></tr>
+      <tr><td>¿Qué quiere?</td><td class="fill"><input type="text" id="hb2a" aria-label="Martirio quiere"></td><td class="fill"><input type="text" id="hb2b" aria-label="Adela quiere"></td></tr>
+      <tr><td>Una palabra para describirla</td><td class="fill"><input type="text" id="hb3a" aria-label="Martirio palabra"></td><td class="fill"><input type="text" id="hb3b" aria-label="Adela palabra"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th></th><th>Martirio</th><th>Adela</th></tr></thead>
+      <tbody>
+        <tr><td>Frase</td><td>«¡Querer no es hacer!» · «Yo romperé tus abrazos.» · «¡Primero muerta!»</td><td>«¡Lo tendré todo!» · «Hace la que puede y la que se adelanta.»</td></tr>
+        <tr><td>Quiere</td><td>A Pepe, o al menos que Adela no lo tenga.</td><td>A Pepe y su libertad, a cualquier precio.</td></tr>
+        <tr><td>Palabra</td><td>Celosa, amargada, vigilante.</td><td>Valiente, impulsiva, desafiante.</td></tr>
+      </tbody>
+    </table></div>
+  </div></details>
+
+  <div class="q">
+    <p class="qt"><span class="qn">3.</span> Martirio dice: «¡Querer no es hacer!». ¿Qué significa? ¿Quién quiere y quién hace?</p>
+    <textarea id="q6-3" aria-label="Respuesta 3"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Desear algo no es lo mismo que atreverse a hacerlo. Martirio <b>quiere</b> a Pepe pero no actúa; Adela <b>hace</b>: se adelanta y lo toma. Por eso Adela responde «Hace la que puede y la que se adelanta».</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">4.</span> <span class="tag op">OPINIÓN</span> ¿Martirio es la villana o la víctima? ¿Adela es valiente o egoísta? Elige y defiende.</p>
+    <textarea id="q6-4" aria-label="Respuesta 4"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ul>
+        <li><b>Martirio víctima:</b> Bernarda le quitó a su pretendiente (Enrique Humanas). <b>Villana:</b> roba, vigila y delata.</li>
+        <li><b>Adela valiente:</b> es la única que se rebela. <b>Egoísta:</b> traiciona a su hermana y se presenta como víctima («He sido como arrastrada por una maroma»).</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <h3>C · Clase social</h3>
+  <p>Bernarda: «¡Mi sangre no se junta con la de los Humanas mientras yo viva! Su padre fue gañán.»</p>
+  <div class="q">
+    <p class="qt"><span class="qn">5.</span> ¿Por qué Martirio está amargada? (Pista: Enrique Humanas.)</p>
+    <textarea id="q6-5" aria-label="Respuesta 5"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Enrique Humanas quiso cortejar a Martirio, pero Bernarda le mandó recado de que no viniera a la ventana porque su familia era pobre (su padre fue gañán). Bernarda prefirió una hija soltera a una hija casada con un pobre.</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">6.</span> <span class="tag op">OPINIÓN</span> ¿Estados Unidos es una sociedad sin clases? ¿Dónde ves hoy esta lógica: apps de citas, <i>marrying up</i>, el código postal, la universidad?</p>
+    <textarea id="q6-6" aria-label="Respuesta 6"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ul>
+        <li>Filtros de las apps de citas por estudios, trabajo o altura.</li>
+        <li>«¿A qué universidad fuiste?» o «¿de qué barrio eres?» como forma de clasificar.</li>
+        <li>Padres que no aceptarían a una pareja por su trabajo o su origen. ¿Qué sería un «gañán» hoy?</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <h3>D · «No pienso. Hay cosas que no se pueden ni se deben pensar. Yo ordeno.»</h3>
+  <div class="q">
+    <p class="qt"><span class="qn">7.</span> ¿Qué es peor para Bernarda: que su hija haga algo malo o que el pueblo se entere? ¿Está ciega o elige no ver?</p>
+    <textarea id="q6-7" aria-label="Respuesta 7"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Lo peor para ella es que el pueblo se entere. Elige no ver: sabe que algo pasa («Yo veía la tormenta venir»), pero dice «Aquí no pasa nada». Para Bernarda la apariencia vale más que la verdad. Hoy lo llamaríamos negación o <i>gaslighting</i>.</p>
+    </div></details>
+  </div>
+
+  <h3>E · Cinco hijas, cinco cadenas</h3>
+  <p>Bernarda: «Pero todavía no soy anciana y tengo <b>cinco cadenas</b> para vosotras y esta casa levantada por mi padre para que ni las hierbas se enteren de mi desolación.»</p>
+  <div class="q">
+    <p class="qt"><span class="qn">8.</span> <span class="tag op">OPINIÓN</span> ¿Las cadenas las pone Bernarda… o se las ponen las hermanas entre sí?</p>
+    <textarea id="q6-8" aria-label="Respuesta 8"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <p>Las dos cosas. Bernarda tiene cinco cadenas, como cinco dedos de la mano con que golpea («Tendré que sentarles la mano»). Pero las hijas también son cinco intentos de escapar, cada una a su manera:</p>
+      <div class="tbl small-tbl"><table>
+        <thead><tr><th>Hija</th><th>Su forma de escapar</th></tr></thead>
+        <tbody>
+          <tr><td>Angustias</td><td>El dinero y el matrimonio: la puerta legal.</td></tr>
+          <tr><td>Magdalena</td><td>La ironía: escapa con la lengua, no con el cuerpo.</td></tr>
+          <tr><td>Amelia</td><td>El silencio: no arriesgar nada.</td></tr>
+          <tr><td>Martirio</td><td>La vigilancia: si ella no sale, que nadie salga.</td></tr>
+          <tr><td>Adela</td><td>El cuerpo y el riesgo: romper la cerradura.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="model">«Si las cinco cooperaran, podrían abrir la puerta. Pero compiten por Pepe, se vigilan y se delatan. Bernarda no necesita encerrarlas: se encierran unas a otras.»</p>
+    </div></details>
+  </div>
+  <p class="vocab"><b>Vocabulario:</b> san Bartolomé de plata = estatua de santo («he’s not THAT special») · maroma = cuerda gruesa · gañán = peón del campo · humos = arrogancia</p>
+</section>
+
+<!-- 7 -->
+<section class="sec" id="final">
+  <div class="sec-head"><span class="num">7</span><h2>El final: la hija de la Librada</h2></div>
+  <p>Una joven soltera tiene un hijo «no se sabe con quién». Lo mata para ocultar su vergüenza y unos perros lo encuentran. Ahora el pueblo la arrastra por la calle para matarla.</p>
+
+  <h3>A · Tres reacciones</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Personaje</th><th><span class="tag cita">CITA</span> ¿Qué dice?</th><th>¿Qué revela de ella?</th></tr></thead>
+    <tbody>
+      <tr><td>Bernarda</td><td class="fill"><input type="text" id="f1a" aria-label="Bernarda cita"></td><td class="fill"><input type="text" id="f1b" aria-label="Bernarda revela"></td></tr>
+      <tr><td>Martirio (mirando a Adela)</td><td class="fill"><input type="text" id="f2a" aria-label="Martirio cita"></td><td class="fill"><input type="text" id="f2b" aria-label="Martirio revela"></td></tr>
+      <tr><td>Adela</td><td class="fill"><input type="text" id="f3a" aria-label="Adela cita"></td><td class="fill"><input type="text" id="f3b" aria-label="Adela revela"></td></tr>
+    </tbody>
+  </table></div>
+  <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+    <div class="tbl small-tbl"><table>
+      <thead><tr><th>Personaje</th><th>Cita</th><th>Revela</th></tr></thead>
+      <tbody>
+        <tr><td>Bernarda</td><td>«¡Carbón ardiendo en el sitio de su pecado!» · «¡Matadla!»</td><td>Defiende el código del honor sin piedad, del lado del pueblo.</td></tr>
+        <tr><td>Martirio</td><td>«¡Que pague lo que debe!»</td><td>Amenaza a Adela: sabe su secreto.</td></tr>
+        <tr><td>Adela</td><td>«No, no. Para matarla, no.» · «¡Que la dejen escapar!»</td><td>Se identifica con ella: siente miedo y compasión.</td></tr>
+      </tbody>
+    </table></div>
+  </div></details>
+
+  <div class="q">
+    <p class="qt"><span class="qn">1.</span> Martirio dice su frase <b>mirando a Adela</b>. ¿Por qué es importante esa acotación?</p>
+    <textarea id="q7-1" aria-label="Respuesta 1"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Porque la frase no es solo sobre la hija de la Librada: es una amenaza. Martirio le dice a Adela, sin nombrarla, que lo mismo le puede pasar a ella si sigue con Pepe.</p>
+    </div></details>
+  </div>
+  <div class="q">
+    <p class="qt"><span class="qn">2.</span> <span class="tag op">OPINIÓN</span> ¿Quién falta en esta historia? ¿Alguien lo busca? Conecta con lo que dijo Adela: «Se les perdona todo».</p>
+    <textarea id="q7-2" aria-label="Respuesta 2"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Falta el padre del bebé. Nadie lo busca ni lo castiga: todo el peso cae sobre la mujer. Es el doble estándar de la escena de los segadores llevado a la violencia: a los hombres «se les perdona todo».</p>
+    </div></details>
+  </div>
+
+  <h3>B · La última acotación</h3>
+  <p>Antes del telón: <i>ADELA (cogiéndose el vientre): «¡No! ¡No!»</i></p>
+  <div class="q">
+    <p class="qt"><span class="qn">3.</span> ¿Por qué se toca el vientre? ¿Qué nos dice Lorca sin decirlo? Busca dos pistas en el acto que lo apoyen.</p>
+    <textarea id="q7-3" aria-label="Respuesta 3"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver respuesta</span><span class="lbl-open">Ocultar respuesta</span></summary><div class="ans-body">
+      <p>Lorca sugiere que Adela podría estar embarazada de Pepe y que teme acabar como la hija de la Librada. Es un presagio de lo que viene.</p>
+      <ul>
+        <li>Los encuentros de noche en el corral (la jaca, las cuatro de la madrugada).</li>
+        <li>«Tengo mal cuerpo»; no duerme.</li>
+        <li>El abrazo que vio Martirio: «¡He visto cómo te abrazaba!».</li>
+        <li>Su reacción desesperada ante el castigo de la hija de la Librada.</li>
+      </ul>
+      <p class="note">En esta casa los gestos dicen lo que las palabras no pueden decir.</p>
+    </div></details>
+  </div>
+  <p class="vocab"><b>Vocabulario:</b> acotación = stage direction · tranco = umbral de la puerta · varas de olivo = palos · presagio = foreshadowing</p>
+</section>
+
+<!-- 8 -->
+<section class="sec" id="cierre">
+  <div class="sec-head"><span class="num">8</span><h2>Cierre</h2></div>
+
+  <h3>A · Discusión silenciosa: preguntas incómodas</h3>
+  <p>Camina por las paredes y escribe en los papeles, sin hablar. Aquí apunta tu respuesta a la pregunta que más te movió.</p>
+  <div class="q">
+    <p class="qt"><span class="qn">1.</span> El padre invisible: el pueblo castiga a la hija de la Librada, pero nadie busca al padre. ¿Pasa algo parecido hoy?</p>
+    <p class="qt"><span class="qn">2.</span> El pueblo digital: ¿las redes sociales son el nuevo «pueblo» que mira por la ventana? ¿Quién es la Bernarda de tu vida digital?</p>
+    <p class="qt"><span class="qn">3.</span> ¿Heroína? Adela rompe todas las reglas y traiciona a su hermana. ¿Es valiente, egoísta o las dos cosas?</p>
+    <p class="qt"><span class="qn">4.</span> ¿Juzgar a Bernarda? ¿Es justo juzgarla con valores de 2026? ¿Ella también es víctima del sistema que defiende?</p>
+    <textarea id="q8-a" aria-label="Mi respuesta" placeholder="Pregunta n.º … · Mi respuesta…"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver ideas para empezar</span><span class="lbl-open">Ocultar ideas</span></summary><div class="ans-body">
+      <ol>
+        <li>Se juzga a la madre soltera, a la chica de la foto filtrada, y casi nunca al hombre.</li>
+        <li>Las redes vigilan y castigan como el pueblo: comentarios, capturas, <i>cancel culture</i>. Tu Bernarda puede ser el algoritmo, tu familia o tú misma.</li>
+        <li>Es valiente porque es la única que se rebela. Es egoísta porque arriesga a toda la familia y traiciona a Angustias. Las dos cosas pueden ser verdad.</li>
+        <li>Bernarda defiende un sistema que también la oprimió a ella: viuda, vigilada por el pueblo, sin otra forma de poder que el control.</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <h3>B · El chat «Hijas de Bernarda»</h3>
+  <p>En grupos de 3, escriban 10 mensajes del grupo de WhatsApp de las hermanas la noche del Acto II. Marquen cada regla al cumplirla.</p>
+  <div class="q">
+    <ul class="checks">
+      <li><label><input type="checkbox" id="ch1"> Todo en español, sin traductor automático.</label></li>
+      <li><label><input type="checkbox" id="ch2"> Usamos 3 expresiones del diccionario de la casa (sección 3).</label></li>
+      <li><label><input type="checkbox" id="ch3"> Cada hermana habla como en el texto.</label></li>
+      <li><label><input type="checkbox" id="ch4"> Cada mensaje se puede justificar con algo que pasa en el Acto II.</label></li>
+      <li><label><input type="checkbox" id="ch5"> Giro final: alguien añade a La Poncia… o a Bernarda.</label></li>
+    </ul>
+    <textarea id="q8-chat" aria-label="Nuestro chat" style="min-height:180px" placeholder="Magdalena: …&#10;Angustias: …"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver un ejemplo</span><span class="lbl-open">Ocultar ejemplo</span></summary><div class="ans-body">
+      <p><b>Magdalena:</b> ¿Alguien más oyó la jaca a las 4?<br>
+      <b>Angustias:</b> Se fue a la una. Al que le duela, que reviente.<br>
+      <b>Martirio:</b> Yo oí algo en el corral… una mulilla sin desbravar, seguro.<br>
+      <b>Adela:</b> Por un oído me entra y por otro me sale.<br>
+      <i>Bernarda se unió al grupo</i></p>
+      <p class="note">Ejemplo inventado para modelar la actividad. Pregunta final: ¿qué haría Bernarda si leyera este chat? («¡Aquí no se vuelve a dar un paso sin que yo lo sienta!»)</p>
+    </div></details>
+  </div>
+
+  <h3>C · Boleto de salida 3 · 2 · 1</h3>
+  <div class="q">
+    <p class="qt"><span class="qn">3</span> expresiones nuevas que vas a usar esta semana</p>
+    <textarea id="x3" aria-label="3 expresiones" style="min-height:60px"></textarea>
+    <p class="qt"><span class="qn">2</span> símbolos del acto y lo que significan para ti</p>
+    <textarea id="x2" aria-label="2 símbolos" style="min-height:60px"></textarea>
+    <p class="qt"><span class="qn">1</span> pregunta que todavía tienes sobre Adela o Martirio</p>
+    <textarea id="x1" aria-label="1 pregunta" style="min-height:60px"></textarea>
+    <details class="ans"><summary><span class="lbl-closed">Ver un ejemplo</span><span class="lbl-open">Ocultar ejemplo</span></summary><div class="ans-body">
+      <ul>
+        <li><b>3:</b> «mosca muerta», «al que le duela, que reviente», «no llegará la sangre al río».</li>
+        <li><b>2:</b> la ventana (para mí es el teléfono: lo único que conecta con afuera); las paredes (lo que una familia esconde).</li>
+        <li><b>1:</b> ¿Martirio delatará a Adela o se quedará callada?</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <h3>D · Tarea: Acto III, ¿llegará la sangre al río?</h3>
+  <div class="q">
+    <ul class="checks">
+      <li><label><input type="checkbox" id="t1"> <span><b>Lee</b> el Acto III completo. Marca cada vez que alguien habla de ver, mirar u oír.</span></label></li>
+      <li><label><input type="checkbox" id="t2"> <span><b>Predice</b> en 100 palabras: ¿qué va a pasar con Adela y Pepe? Usa el futuro y una cita del Acto II.</span></label></li>
+      <li><label><input type="checkbox" id="t3"> <span><b>Bonus:</b> busca una noticia real de un linchamiento digital (de una figura pública o un caso en medios conocidos) y compárala con la hija de la Librada.</span></label></li>
+    </ul>
+  </div>
+  <blockquote><span>«Nadie podrá evitar que suceda lo que tiene que suceder.» (Adela)</span></blockquote>
+</section>
+
+<footer>SPAN 241 · Introducción a la literatura hispánica · Federico García Lorca, <i>La casa de Bernarda Alba</i> (1936)</footer>
+</main>
+
+<script>
+(function(){
+  var KEY='bernarda-acto2-hoja';
+  var store={};
+  try{store=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){store={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+  var fields=document.querySelectorAll('main input[id], main textarea[id]');
+  fields.forEach(function(el){
+    if(el.type==='checkbox'||el.type==='radio'){
+      if(store[el.id])el.checked=true;
+      el.addEventListener('change',function(){
+        if(el.type==='radio'){document.querySelectorAll('input[name="'+el.name+'"]').forEach(function(r){delete store[r.id]})}
+        if(el.checked)store[el.id]=1;else delete store[el.id];save();
+      });
+    }else{
+      if(typeof store[el.id]==='string')el.value=store[el.id];
+      el.addEventListener('input',function(){if(el.value)store[el.id]=el.value;else delete store[el.id];save()});
+    }
+  });
+
+  var all=document.querySelectorAll('details.ans');
+  var btn=document.getElementById('toggleAll');
+  function sync(){
+    var open=Array.prototype.every.call(all,function(d){return d.open});
+    btn.textContent=open?'Ocultar todas las respuestas':'Mostrar todas las respuestas';
+    btn.setAttribute('aria-pressed',open?'true':'false');
+  }
+  btn.addEventListener('click',function(){
+    var open=btn.getAttribute('aria-pressed')!=='true';
+    all.forEach(function(d){d.open=open});sync();
+  });
+  all.forEach(function(d){d.addEventListener('toggle',sync)});
+
+  var wrap=document.getElementById('clearWrap');
+  function resetClear(){
+    wrap.innerHTML='<button id="clearBtn" type="button">Borrar lo que escribí</button>';
+    document.getElementById('clearBtn').addEventListener('click',askClear);
+  }
+  function askClear(){
+    wrap.innerHTML='<span>¿Borrar todas tus respuestas?</span><button id="yesClear" type="button" class="primary">Sí, borrar</button><button id="noClear" type="button">Cancelar</button>';
+    document.getElementById('yesClear').addEventListener('click',function(){
+      store={};save();
+      fields.forEach(function(el){if(el.type==='checkbox'||el.type==='radio')el.checked=false;else el.value=''});
+      resetClear();
+    });
+    document.getElementById('noClear').addEventListener('click',resetClear);
+  }
+  document.getElementById('clearBtn').addEventListener('click',askClear);
+})();
+</script>
+
+</body></html>
