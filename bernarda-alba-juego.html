@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La casa de Bernarda Alba — Juego de mesa</title>
+<style>
+  :root{
+    --cal:#f6f1e7; --cal2:#ebe3d3; --luto:#161412; --tinta:#2a2623;
+    --rojo:#9d2b22; --verde:#2f7d4f; --ocre:#c9962b; --linea:#cfc4ae;
+    --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans: "Gill Sans","Gill Sans MT","Trebuchet MS",Verdana,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:var(--sans); color:var(--tinta);
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,.7), transparent 40%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0 2px, transparent 2px 5px),
+      var(--cal);
+  }
+  header{
+    background:var(--luto); color:var(--cal); padding:14px 28px;
+    display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+    border-bottom:6px solid var(--rojo);
+  }
+  header h1{font-family:var(--serif); font-weight:400; font-size:28px; margin:0; letter-spacing:.5px}
+  header h1 em{color:#e8c66a; font-style:italic}
+  header .sub{font-size:13px; letter-spacing:3px; text-transform:uppercase; opacity:.7}
+  header .spacer{flex:1}
+  .reloj{font-family:var(--serif); font-size:26px; font-variant-numeric:tabular-nums; padding:2px 14px; border:1px solid rgba(255,255,255,.3); border-radius:4px}
+  .reloj.fin{background:var(--rojo); border-color:var(--rojo)}
+  button{
+    font-family:var(--sans); font-size:16px; cursor:pointer; border-radius:4px;
+    border:2px solid var(--luto); background:var(--luto); color:var(--cal); padding:10px 18px;
+    letter-spacing:.5px;
+  }
+  button:hover{filter:brightness(1.25)}
+  button:focus-visible{outline:3px solid var(--ocre); outline-offset:2px}
+  button.sec{background:transparent; color:var(--luto)}
+  button.claro{background:transparent; color:var(--cal); border-color:rgba(255,255,255,.4); font-size:13px; padding:6px 12px}
+  button.ok{background:var(--verde); border-color:var(--verde)}
+  button.mal{background:var(--rojo); border-color:var(--rojo)}
+  button:disabled{opacity:.4; cursor:default}
+  main{max-width:1400px; margin:0 auto; padding:22px 28px 40px}
+  .oculto{display:none !important}
+
+  /* ---------- Inicio ---------- */
+  .panel{background:#fffdf8; border:1px solid var(--linea); border-radius:6px; padding:22px 26px; margin-bottom:20px; box-shadow:0 2px 0 var(--cal2)}
+  .panel h2{font-family:var(--serif); font-weight:400; font-size:26px; margin:0 0 6px}
+  .panel p.nota{margin:0 0 14px; color:#6a6258; font-size:15px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{display:inline-flex; align-items:center; border:2px solid var(--luto); background:#fff; border-radius:20px; overflow:hidden}
+  .chip button{border:0; background:transparent; color:var(--luto); border-radius:0; font-size:16px; padding:7px 6px 7px 14px}
+  .chip button.quitar{padding:7px 11px 7px 6px; font-size:18px; line-height:1; color:#8a8176}
+  .chip button.quitar:hover{color:var(--rojo)}
+  .chip.ausente{border-style:dashed; border-color:#b9b0a2}
+  .chip.ausente .nombre{opacity:.4; text-decoration:line-through}
+  .fila input.ancho{width:200px}
+  .fila{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:16px}
+  .fila label{font-size:15px}
+  .fila input{width:70px; font-size:16px; padding:8px; border:2px solid var(--luto); border-radius:4px; font-family:var(--sans)}
+  .equipos{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:6px}
+  .equipo{border-radius:6px; overflow:hidden; border:1px solid var(--linea); background:#fff}
+  .equipo .cab{color:#fff; padding:10px 14px; font-family:var(--serif); font-size:22px}
+  .equipo .cab small{display:block; font-family:var(--sans); font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.8}
+  .equipo ul{list-style:none; margin:0; padding:10px 14px}
+  .equipo li{padding:3px 0; font-size:17px}
+  .reglas{columns:2; column-gap:36px; font-size:15.5px; line-height:1.5; padding-left:20px; margin:8px 0 0}
+  .reglas li{break-inside:avoid; margin-bottom:6px}
+  @media (max-width:800px){.reglas{columns:1}}
+
+  /* ---------- Tablero ---------- */
+  .juego{display:grid; grid-template-columns:1fr 290px; gap:22px; align-items:start}
+  @media (max-width:1000px){.juego{grid-template-columns:1fr}}
+  .tablero{display:grid; grid-template-columns:repeat(8,1fr); gap:8px; position:relative}
+  .acto-rot{grid-column:1/-1; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#6a6258; margin:6px 0 -2px; display:flex; align-items:center; gap:10px}
+  .acto-rot::after{content:""; flex:1; height:1px; background:var(--linea)}
+  .casilla{
+    aspect-ratio:1/1; border-radius:46% 46% 6px 6px / 30% 30% 6px 6px; /* arco */
+    border:2px solid var(--luto); background:#fffdf8; position:relative;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-end; padding:6px 4px 8px;
+    min-height:92px;
+  }
+  .casilla .num{position:absolute; top:12%; left:0; right:0; text-align:center; font-family:var(--serif); font-size:24px; opacity:.55}
+  .casilla.a2{background:#f3e6c9}
+  .casilla.a3{background:#dde7dc}
+  .casilla.voz{background:var(--rojo); color:#fff; border-color:var(--rojo)}
+  .casilla.voz .num{opacity:.95; font-size:13px; letter-spacing:1px; text-transform:uppercase; font-family:var(--sans); top:14%}
+  .casilla.extremo{background:var(--luto); color:var(--cal)}
+  .casilla.extremo .num{opacity:1; font-size:15px; letter-spacing:2px; text-transform:uppercase; font-family:var(--sans); top:16%}
+  .casilla.activa{box-shadow:0 0 0 4px var(--ocre)}
+  .fichas{display:flex; flex-wrap:wrap; gap:3px; justify-content:center}
+  .ficha{width:26px; height:26px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.5); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center}
+
+  .lado .turno{border-radius:6px; color:#fff; padding:16px 18px; margin-bottom:14px}
+  .lado .turno small{font-size:11px; letter-spacing:3px; text-transform:uppercase; opacity:.8}
+  .lado .turno .nom{font-family:var(--serif); font-size:32px; line-height:1.1}
+  .lado .turno .miem{font-size:14px; opacity:.9; margin-top:4px}
+  .dado{display:flex; align-items:center; gap:14px; margin-bottom:16px}
+  .dado .cara{font-size:64px; line-height:1; width:70px; text-align:center}
+  .dado button{flex:1; font-size:20px; padding:16px}
+  .marcador{list-style:none; margin:0; padding:0}
+  .marcador li{display:flex; align-items:center; gap:10px; padding:8px 10px; border-bottom:1px solid var(--linea); font-size:16px}
+  .marcador li.es-turno{background:#fff; font-weight:700}
+  .marcador .pos{margin-left:auto; font-family:var(--serif); font-size:18px}
+  .aviso{background:var(--rojo); color:#fff; padding:10px 14px; border-radius:4px; margin-bottom:14px; font-size:15px}
+
+  /* ---------- Tarjeta ---------- */
+  .velo{position:fixed; inset:0; background:rgba(22,20,18,.82); display:flex; align-items:center; justify-content:center; padding:24px; z-index:10}
+  .tarjeta{background:#fffdf8; width:min(980px,100%); max-height:94vh; overflow:auto; border-radius:8px; border-top:14px solid var(--luto)}
+  .tarjeta .tcab{display:flex; align-items:center; gap:12px; padding:16px 28px 0; flex-wrap:wrap}
+  .etq{font-size:12px; letter-spacing:3px; text-transform:uppercase; padding:5px 10px; border-radius:3px; color:#fff; background:var(--luto)}
+  .etq.cita{background:var(--ocre); color:var(--luto)}
+  .etq.robo{background:var(--rojo)}
+  .crono{margin-left:auto; font-family:var(--serif); font-size:34px; font-variant-numeric:tabular-nums}
+  .crono.cero{color:var(--rojo)}
+  .tarjeta .preg{font-family:var(--serif); font-size:clamp(26px,3.2vw,40px); line-height:1.25; padding:14px 28px 6px}
+  .tarjeta .ayuda{padding:0 28px; color:#6a6258; font-size:17px}
+  .tarjeta .resp{margin:16px 28px 0; padding:14px 18px; background:#e6efe4; border-left:6px solid var(--verde); font-size:21px; line-height:1.4}
+  .tarjeta .resp b{display:block; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--verde); margin-bottom:4px}
+  .tarjeta .acc{display:flex; gap:12px; padding:20px 28px 24px; flex-wrap:wrap}
+  .tarjeta .acc button{font-size:18px; padding:12px 20px}
+
+  /* ---------- Final ---------- */
+  .podio li{font-size:22px; padding:8px 0; display:flex; gap:12px; align-items:center}
+  .podio li:first-child{font-family:var(--serif); font-size:34px}
+  .cierre{font-family:var(--serif); font-size:30px; line-height:1.3; border-left:8px solid var(--rojo); padding:6px 0 6px 20px; margin:10px 0}
+</style>
+
+<style>
+  /* ====== Capa visual 2 ====== */
+  body{background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(233,196,106,.28), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,.02) 0 2px, transparent 2px 5px),
+      var(--cal)}
+  header{position:relative; overflow:hidden}
+  header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
+    background:repeating-linear-gradient(90deg,var(--rojo) 0 18px,#7d1f18 18px 36px)}
+  header{border-bottom:0; padding-bottom:20px}
+  .fachada{display:block; width:100%; height:auto; border-radius:6px; border:1px solid var(--linea); margin-bottom:20px; background:#fff}
+  .panel{box-shadow:0 10px 30px -18px rgba(40,30,10,.45), 0 2px 0 var(--cal2)}
+  .panel h2{display:flex; align-items:center; gap:12px}
+  .panel h2::before{content:""; width:10px; height:26px; background:var(--rojo); border-radius:2px}
+
+  .equipo{box-shadow:0 8px 20px -14px rgba(0,0,0,.6); animation:sube .5s both}
+  .equipo:nth-child(2){animation-delay:.08s}.equipo:nth-child(3){animation-delay:.16s}
+  .equipo:nth-child(4){animation-delay:.24s}.equipo:nth-child(5){animation-delay:.32s}
+  .equipo .cab{position:relative; padding:14px 16px 12px}
+  .equipo .cab i{display:block; font-family:var(--sans); font-style:italic; font-size:13px; opacity:.85; margin-top:2px}
+  .equipo .cab::after{content:""; position:absolute; right:14px; top:14px; width:26px; height:34px; border:2px solid rgba(255,255,255,.55); border-radius:13px 13px 2px 2px;
+    background:repeating-linear-gradient(90deg,transparent 0 5px,rgba(255,255,255,.55) 5px 7px)}
+  @keyframes sube{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+
+  .tablero{gap:16px 16px; padding:6px 14px 18px}
+  .acto-rot{font-size:13px; color:var(--tinta); margin:10px 0 0; z-index:1}
+  .acto-rot b{font-family:var(--serif); font-weight:400; font-size:20px; letter-spacing:0; text-transform:none}
+  .banda{grid-column:1/-1; margin:-8px -14px; border-radius:10px; z-index:0}
+  .banda.b1{background:linear-gradient(180deg,#fffef9,#f3ecdc); box-shadow:inset 0 0 0 1px var(--linea)}
+  .banda.b2{background:linear-gradient(180deg,#f6dfa8,#e7b96a); box-shadow:inset 0 0 0 1px #d2a557}
+  .banda.b3{background:
+     radial-gradient(1.5px 1.5px at 8% 22%,#fff,transparent),radial-gradient(1.5px 1.5px at 23% 70%,#fff,transparent),
+     radial-gradient(2px 2px at 37% 18%,#fff,transparent),radial-gradient(1.5px 1.5px at 52% 80%,#fff,transparent),
+     radial-gradient(1.5px 1.5px at 66% 14%,#fff,transparent),radial-gradient(2px 2px at 81% 66%,#fff,transparent),
+     radial-gradient(1.5px 1.5px at 93% 26%,#fff,transparent),
+     linear-gradient(180deg,#141c33,#26345a)}
+  .casilla{z-index:1; min-height:98px; border-width:2px; box-shadow:0 4px 0 rgba(0,0,0,.18); transition:box-shadow .2s, transform .2s}
+  .casilla .num{font-size:26px}
+  .casilla.a2{background:#fff6df; border-color:#5a3c10}
+  .casilla.a3{background:#e9eefb; border-color:#0d1326}
+  .casilla.voz{background:linear-gradient(180deg,#b5362c,#8a2019); border-color:#5e130e}
+  .casilla.voz .num::after{content:"❝"; display:block; font-family:var(--serif); font-size:24px; line-height:1; margin-top:2px}
+  .casilla.extremo{background:linear-gradient(180deg,#2a2622,#0e0d0c)}
+  .casilla.activa{box-shadow:0 0 0 4px var(--ocre), 0 8px 18px rgba(0,0,0,.35); transform:translateY(-3px)}
+  .casilla::after{position:absolute; color:var(--rojo); font-size:20px; font-weight:700; line-height:1}
+  .casilla.dr::after{content:"▸"; right:-15px; top:46%}
+  .casilla.dl::after{content:"◂"; left:-15px; top:46%}
+  .casilla.dd::after{content:"▾"; bottom:-24px; left:calc(50% - 6px); font-size:22px}
+  .b3 ~ .casilla.dr::after,.b3 ~ .casilla.dl::after{color:#e9c46a}
+  .ficha{width:32px; height:32px; font-size:12px; letter-spacing:.3px; box-shadow:0 2px 4px rgba(0,0,0,.5); animation:cae .25s}
+  .ficha.viva{animation:late 1.1s infinite}
+  .marcador .ficha,.podio .ficha{animation:none; flex:none}
+  @keyframes cae{from{transform:translateY(-10px) scale(1.2)}to{transform:none}}
+  @keyframes late{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+
+  .lado .turno{box-shadow:0 10px 24px -12px rgba(0,0,0,.6); position:relative; overflow:hidden}
+  .lado .turno::after{content:""; position:absolute; right:-18px; bottom:-28px; width:110px; height:140px; border:3px solid rgba(255,255,255,.18); border-radius:55px 55px 0 0;
+    background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(255,255,255,.18) 16px 19px)}
+  .die{width:74px; height:74px; flex:none; background:#fffdf8; border:2px solid var(--luto); border-radius:14px; display:grid; grid-template-columns:repeat(3,1fr); padding:9px; gap:2px; box-shadow:0 5px 0 var(--luto)}
+  .die span{border-radius:50%; margin:3px}
+  .die span.on{background:var(--rojo)}
+  .die.rueda{animation:rueda .6s linear}
+  @keyframes rueda{0%{transform:rotate(0)}25%{transform:rotate(-14deg) translateY(-6px)}50%{transform:rotate(10deg)}75%{transform:rotate(-6deg) translateY(-3px)}100%{transform:none}}
+  .marcador{background:#fffdf8; border:1px solid var(--linea); border-radius:6px; overflow:hidden}
+  .marcador li:last-child{border-bottom:0}
+  .marcador li.es-turno{background:#fbf1d6}
+
+  .velo{backdrop-filter:blur(3px); animation:aparece .2s}
+  .tarjeta{position:relative; box-shadow:0 30px 80px rgba(0,0,0,.6); animation:entra .3s cubic-bezier(.2,.9,.3,1.2)}
+  .barra{height:6px; background:var(--ocre); width:100%}
+  .tarjeta .preg{padding-top:20px}
+  .tarjeta .acc{border-top:1px solid var(--linea); margin-top:20px; background:#faf5ea}
+  @keyframes aparece{from{opacity:0}to{opacity:1}}
+  @keyframes entra{from{opacity:0; transform:translateY(24px) scale(.97)}to{opacity:1; transform:none}}
+
+  #panelGanador{color:#fff; border:0}
+  #panelGanador h2{font-size:44px}
+  #panelGanador h2::before{background:rgba(255,255,255,.6); height:44px}
+  #panelGanador .podio{background:#fffdf8; color:var(--tinta); border-radius:6px; padding:10px 20px 10px 44px}
+  .fichasP{display:grid; grid-template-columns:repeat(auto-fit,minmax(235px,1fr)); gap:14px}
+  .fp{background:#fffdf8; border:1px solid var(--linea); border-radius:6px; overflow:hidden; box-shadow:0 8px 20px -14px rgba(0,0,0,.6); break-inside:avoid; animation:sube .5s both}
+  .fp .cab{color:#fff; padding:14px 16px 12px; font-family:var(--serif); font-size:26px; line-height:1.1}
+  .fp .cab small{display:block; font-family:var(--sans); font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.8}
+  .fp .cab i{display:block; font-family:var(--sans); font-size:13px; opacity:.9; margin-top:4px; font-style:normal}
+  .fp .cu{padding:12px 16px 16px; font-size:15.5px; line-height:1.4}
+  .fp h3{font-size:11px; letter-spacing:2.5px; text-transform:uppercase; margin:12px 0 3px; color:var(--rojo); font-weight:700}
+  .fp h3:first-child{margin-top:0}
+  .fp p{margin:0}
+  .fp ul{margin:0; padding-left:18px}
+  .fp .fr{list-style:none; padding:0}
+  .fp .fr li{font-family:var(--serif); font-style:italic; font-size:17px; padding:5px 10px; margin-top:5px; background:#f6efe0; border-left:4px solid var(--ocre)}
+  @media print{
+    header,.noimp,#vInicio,#vJuego,#vFinal,.velo{display:none !important}
+    body{background:#fff} main{padding:0; max-width:none}
+    .fichasP{grid-template-columns:1fr 1fr; gap:10px}
+    .fp{box-shadow:none; animation:none}
+    *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="sub">Juego de mesa · SPAN 24100</div>
+    <h1>La casa de <em>Bernarda Alba</em></h1>
+  </div>
+  <div class="spacer"></div>
+  <div id="reloj" class="reloj oculto" title="Tiempo de clase">35:00</div>
+  <button id="btnTerminar" class="claro oculto">Terminar partida</button>
+  <button id="btnNueva" class="claro oculto">Nueva partida</button>
+</header>
+
+<main>
+
+  <!-- INICIO -->
+  <section id="vInicio">
+    <svg class="fachada" viewBox="0 0 1200 190" role="img" aria-label="Fachada blanca de una casa andaluza con cinco ventanas enrejadas y una puerta negra">
+      <defs><linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4d58a"/><stop offset="1" stop-color="#fbeed0"/></linearGradient>
+      <pattern id="teja" width="22" height="14" patternUnits="userSpaceOnUse"><path d="M0 14 Q11 -4 22 14" fill="#b4532a" stroke="#7d3618" stroke-width="1.5"/></pattern></defs>
+      <rect width="1200" height="190" fill="url(#cielo)"/>
+      <circle cx="1080" cy="38" r="24" fill="#fff6d8"/><circle cx="1080" cy="38" r="40" fill="#fff6d8" opacity=".35"/>
+      <rect x="60" y="46" width="1080" height="14" fill="url(#teja)"/>
+      <rect x="70" y="60" width="1060" height="130" fill="#fffdf8"/>
+      <rect x="70" y="60" width="1060" height="8" fill="#000" opacity=".08"/>
+      <g fill="#161412" transform="translate(80 0)">
+        <path d="M560 190 V112 a40 40 0 0 1 80 0 V190 Z"/>
+      </g>
+      <circle cx="708" cy="150" r="3" fill="#c9962b"/>
+      <g id="v" stroke="#161412" stroke-width="3" fill="#2a2623">
+        <path d="M140 150 V104 a26 26 0 0 1 52 0 V150 Z"/>
+        <path d="M153 150 V84 M166 150 V78 M179 150 V84 M140 118 H192 M140 136 H192" fill="none" stroke="#fffdf8" stroke-width="2.5"/>
+        <rect x="134" y="150" width="64" height="6" fill="#161412" stroke="none"/>
+      </g>
+      <use href="#v" x="170"/><use href="#v" x="340"/><use href="#v" x="680"/><use href="#v" x="850"/>
+      <rect x="0" y="184" width="1200" height="6" fill="#9d2b22"/>
+      <text x="600" y="34" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="19" fill="#5a4a22">Un pueblo de Andalucía. Verano. Una casa cerrada y cinco ventanas.</text>
+    </svg>
+    <div class="panel">
+      <h2>1. ¿Quién vino hoy?</h2>
+      <p class="nota">Toca un nombre para marcarlo ausente (queda tachado); tócalo otra vez para devolverlo. La × lo quita de la lista. <b id="cuenta"></b></p>
+      <div id="chips" class="chips"></div>
+      <div class="fila">
+        <input id="nuevo" class="ancho" type="text" maxlength="30" placeholder="Nombre nuevo" aria-label="Nombre del estudiante nuevo">
+        <button id="btnAgregar" class="sec">Agregar estudiante</button>
+        <button id="btnTodos" class="sec">Todos presentes</button>
+        <button id="btnLista" class="sec">Restablecer lista original</button>
+      </div>
+      <div class="fila">
+        <button id="btnSortear">Sortear equipos</button>
+        <label>Minutos de juego <input id="minutos" type="number" min="5" max="90" value="35"></label>
+      </div>
+    </div>
+
+    <div id="panelEquipos" class="panel oculto">
+      <h2>2. Las casas</h2>
+      <p class="nota">Cada equipo juega con el nombre de un personaje. Si no te convence el sorteo, repítelo.</p>
+      <div id="equipos" class="equipos"></div>
+      <div class="fila"><button id="btnCalent">Calentamiento: fichas de personaje</button><button id="btnEmpezar" class="ok">Empezar la partida</button></div>
+    </div>
+
+    <div class="panel">
+      <h2>Reglas</h2>
+      <ol class="reglas">
+        <li>En cada turno, el equipo tira el dado y avanza. Los roles rotan: uno tira, uno busca en el texto, uno responde.</li>
+        <li>Cada fila del tablero es un acto. Todos los equipos pasan por las mismas preguntas: Acto I, Acto II y Acto III.</li>
+        <li>Si la respuesta es correcta, el equipo se queda en la casilla. Si falla, vuelve a donde estaba.</li>
+        <li><b>Cita obligatoria:</b> en esas preguntas, la respuesta solo vale si el equipo señala la línea del texto que la sostiene.</li>
+        <li><b>Robo:</b> si un equipo falla, el equipo siguiente puede contestar la misma pregunta. Si acierta, avanza una casilla.</li>
+        <li><b>Casillas rojas (Voz del personaje):</b> el equipo habla 30 segundos como su personaje. Si convence, avanza una casilla más.</li>
+        <li>Para entrar en la Meta hay que acertar una pregunta del Acto III. Gana quien llega primero, o quien va delante cuando se acaba el tiempo.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CALENTAMIENTO -->
+  <section id="vCalent" class="oculto">
+    <div class="panel noimp">
+      <h2>Calentamiento: ¿cómo habla tu personaje?</h2>
+      <p class="nota">Tres minutos. Cada equipo lee su ficha. Después, cada persona dice una frase como su personaje sobre este tema:</p>
+      <div class="cierre">Ocho años de luto sin salir de la casa. ¿Qué dices?</div>
+      <div class="fila">
+        <button id="btnEmpezar2" class="ok">Empezar la partida</button>
+        <button id="btnImprimir" class="sec">Imprimir fichas</button>
+        <button id="btnVolver" class="sec">Volver a los equipos</button>
+      </div>
+    </div>
+    <div id="fichas" class="fichasP"></div>
+  </section>
+
+  <!-- JUEGO -->
+  <section id="vJuego" class="oculto">
+    <div class="juego">
+      <div id="tablero" class="tablero"></div>
+      <aside class="lado">
+        <div id="aviso" class="aviso oculto">Se acabó el tiempo. Terminen la ronda y pulsa «Terminar partida».</div>
+        <div id="turno" class="turno"></div>
+        <div class="dado">
+          <div id="cara" class="die" aria-label="Dado"></div>
+          <button id="btnDado">Tirar el dado</button>
+        </div>
+        <ul id="marcador" class="marcador"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section id="vFinal" class="oculto">
+    <div class="panel" id="panelGanador">
+      <h2 id="ganador"></h2>
+      <ol id="podio" class="podio"></ol>
+    </div>
+    <div class="panel">
+      <h2>Para cerrar</h2>
+      <p class="nota">Cada estudiante escribe una o dos oraciones antes de salir.</p>
+      <div class="cierre">En la casa de Bernarda todo se hace pensando en «el qué dirán».<br>¿Quién vigila hoy lo que hacemos, y qué callamos por eso?</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- TARJETA -->
+<div id="velo" class="velo oculto" role="dialog" aria-modal="true">
+  <div class="tarjeta" id="tarjeta"><div id="barra" class="barra"></div>
+    <div class="tcab">
+      <span id="tEquipo" class="etq"></span>
+      <span id="tActo" class="etq"></span>
+      <span id="tCita" class="etq cita oculto">Cita obligatoria</span>
+      <span id="tRobo" class="etq robo oculto"></span>
+      <span id="crono" class="crono">60</span>
+    </div>
+    <div id="tPreg" class="preg"></div>
+    <div id="tAyuda" class="ayuda"></div>
+    <div id="tResp" class="resp oculto"><b>Respuesta</b><span id="tRespTxt"></span></div>
+    <div id="tAcc" class="acc"></div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ====== DATOS QUE PUEDES EDITAR ====== */
+
+const ESTUDIANTES = ["Abagail","Anai","Anna","Eluney","Jerad","Joanna","Luna","Maddie","Mariam","Max","Owen","Paul","Rebecca","Shreyas","Sophia"];
+
+const PERSONAJES = [
+  {nombre:"Bernarda",  color:"#161412", lema:"el bastón",
+   quien:"La madre. Viuda dos veces. Manda en la casa y en sus cinco hijas.",
+   quiere:"Orden, honra y que nadie en el pueblo hable mal de su familia.",
+   habla:["Da órdenes cortas. No pregunta: manda.","Nunca duda y nunca pide perdón.","Dice «mi casa», «mis hijas», «la gente»."],
+   tono:"Fría y firme. Golpea el suelo con el bastón.",
+   frases:["En esta casa nadie…","No quiero oír ni una palabra sobre…","¿Qué van a decir los vecinos si…?"]},
+  {nombre:"Adela",     color:"#2f7d4f", lema:"el vestido verde",
+   quien:"La hija menor. Tiene veinte años y no acepta el encierro.",
+   quiere:"Ser libre, vivir y estar con Pepe el Romano.",
+   habla:["Con pasión y con exclamaciones.","Habla de su cuerpo, de salir, del futuro.","Desafía a todas: «yo quiero», «nadie me va a…»."],
+   tono:"Rápida, intensa, sin miedo.",
+   frases:["Yo no nací para…","Quiero salir de aquí y…","No me importa lo que…"]},
+  {nombre:"Poncia",    color:"#b4532a", lema:"la que todo lo ve",
+   quien:"La criada. Lleva treinta años en la casa y conoce todos los secretos.",
+   quiere:"Que la casa no estalle. También guarda rencor contra Bernarda.",
+   habla:["Usa refranes y lenguaje del pueblo.","Da consejos y avisos, pero no lo dice todo.","Tiene humor y habla con indirectas."],
+   tono:"Tranquila y astuta. Sabe más de lo que dice.",
+   frases:["Yo solo digo que…","Llevo treinta años aquí y…","Tú haz lo que quieras, pero…"]},
+  {nombre:"Martirio",  color:"#6b3f7a", lema:"el retrato escondido",
+   quien:"Una de las hijas del medio. Se siente débil y poco querida.",
+   quiere:"A Pepe, en secreto. Y que Adela no lo tenga.",
+   habla:["En voz baja, con frases de doble sentido.","Vigila a sus hermanas y lo insinúa.","Hay envidia y amargura en lo que dice."],
+   tono:"Contenida, hasta que explota.",
+   frases:["Yo lo he visto todo y…","No digo nada, pero…","Si yo no puedo, entonces…"]},
+  {nombre:"Angustias", color:"#a97a12", lema:"el anillo de perlas",
+   quien:"La hija mayor. Tiene treinta y nueve años, dinero propio y es la prometida de Pepe.",
+   quiere:"Casarse pronto y salir de esta casa.",
+   habla:["Se queja y se defiende de sus hermanas.","Presume: «mi novio», «mi dinero», «mi boda».","Suena insegura: necesita que le crean."],
+   tono:"Cansada y a la defensiva.",
+   frases:["Yo soy la que se va a casar, así que…","Con mi dinero yo puedo…","Todas me tienen envidia porque…"]}
+];
+
+/* cita:true = la respuesta solo vale si señalan la línea del texto */
+const PREGUNTAS = {
+  1: [
+    {q:"¿Cuántas hijas tiene Bernarda y cómo se llaman?", a:"Cinco: Angustias, Magdalena, Amelia, Martirio y Adela."},
+    {q:"La obra empieza con campanas. ¿Qué acaba de pasar?", a:"El funeral de Antonio María Benavides, el segundo marido de Bernarda."},
+    {q:"¿Cuánto tiempo de luto impone Bernarda y qué significa para sus hijas?", a:"Ocho años. Significa encierro: no salir de la casa ni tratar con hombres.", cita:true},
+    {q:"¿Por qué Angustias es la única hermana con dinero?", a:"Es hija del primer marido de Bernarda y heredó de su padre. Por eso Pepe el Romano la pretende."},
+    {q:"¿Qué siente Poncia por Bernarda? Busquen una línea que lo pruebe.", a:"Rencor acumulado en treinta años de servicio, aunque la obedece. Vale cualquier línea de la primera escena donde habla de ella a sus espaldas.", cita:true},
+    {q:"Adela le da un abanico a su madre. ¿Cómo es y qué hace Bernarda con él?", a:"Tiene flores rojas y verdes. Bernarda lo tira al suelo y exige uno negro, propio de una viuda."},
+    {q:"¿De qué color es el vestido que se pone Adela y qué nos dice de ella?", a:"Verde. Frente al negro del luto, muestra su rebeldía y su deseo de vivir."},
+    {q:"¿Quién es María Josefa y por qué la tienen encerrada?", a:"Es la madre de Bernarda, de ochenta años. La encierran para que los vecinos no la vean ni la oigan. Dice en voz alta lo que las demás callan: quiere casarse y salir de la casa."},
+    {q:"¿Por qué Bernarda no deja que sus hijas se casen con hombres del pueblo? ¿Qué revela de ella?", a:"Dice que no son de su clase. Revela su orgullo social: prefiere hijas solteras a hijas casadas con alguien inferior.", cita:true},
+    {q:"Toda la obra ocurre dentro de la casa. ¿Qué efecto produce ese espacio único?", a:"Sensación de encierro, calor y presión. La calle es la libertad, pero solo se oye desde dentro."},
+    {q:"¿Por qué Bernarda le pega a Angustias en este acto?", a:"Porque la sorprende escuchando la conversación de los hombres desde el portón, el mismo día del funeral."}
+  ],
+  2: [
+    {q:"¿Qué están haciendo las hermanas al empezar el acto, y para quién?", a:"Cosen y bordan el ajuar de Angustias para su boda con Pepe el Romano."},
+    {q:"Angustias dice que Pepe se fue a una hora; otras lo oyeron irse mucho más tarde. ¿Por qué importa esa diferencia?", a:"Angustias dice la una y media; lo oyeron cerca de las cuatro. Pepe se queda con otra hermana después de hablar con Angustias: Adela.", cita:true},
+    {q:"¿Qué le aconseja Poncia a Adela sobre Pepe?", a:"Que deje en paz a su hermana y espere: Angustias es débil y puede morir en el primer parto; entonces Pepe se casaría con la más joven."},
+    {q:"¿Cómo responde Adela a los consejos de Poncia? ¿Qué muestra de su carácter?", a:"Que nadie va a detenerla y que hará con su cuerpo lo que quiera. Muestra decisión y desafío a toda autoridad.", cita:true},
+    {q:"¿Qué desaparece del cuarto de Angustias y quién lo tenía?", a:"El retrato de Pepe. Lo encuentran en la cama de Martirio, que dice que fue una broma."},
+    {q:"¿Qué revela el robo del retrato sobre Martirio?", a:"Que también desea a Pepe. Su envidia y su frustración la vuelven peligrosa para Adela."},
+    {q:"Los segadores pasan cantando por la calle. ¿Qué representan para las mujeres de la casa?", a:"La libertad y el deseo del mundo de fuera. Ellas solo pueden escucharlos detrás de la ventana.", cita:true},
+    {q:"¿Por qué Martirio no se casó con Enrique Humanes?", a:"Bernarda lo impidió porque el padre de él era gañán. Otra vez decide la clase social."},
+    {q:"¿Qué le pasa a la hija de la Librada al final del acto?", a:"Tuvo un hijo siendo soltera y lo mató para ocultarlo. El pueblo la arrastra para matarla."},
+    {q:"Ante el castigo a la hija de la Librada, ¿cómo reaccionan Bernarda y Adela? ¿Qué anuncia el gesto de Adela?", a:"Bernarda pide que la maten. Adela se coge el vientre y pide que la suelten: se identifica con ella y anuncia su propio final.", cita:true},
+    {q:"Poncia intenta avisar a Bernarda de lo que pasa en la casa. ¿Por qué Bernarda no la escucha?", a:"Por orgullo: confía en su vigilancia y le recuerda a Poncia que es su criada. No acepta que algo se le escape."}
+  ],
+  3: [
+    {q:"¿Quién visita a Bernarda al empezar el acto y qué sabemos de su vida?", a:"Prudencia. Su marido está peleado con la familia por una herencia y no perdona a su hija; ella se está quedando ciega y se refugia en la iglesia."},
+    {q:"Se oyen golpes contra la pared. ¿Qué animal es y qué puede simbolizar?", a:"El caballo garañón. Simboliza el deseo y la fuerza masculina encerrados; muchos lo leen como imagen de Pepe."},
+    {q:"¿Qué tiene de particular el anillo de Angustias y por qué es un mal presagio?", a:"Lleva perlas en vez de diamantes. Prudencia recuerda que en su tiempo las perlas significaban lágrimas.", cita:true},
+    {q:"Adela mira las estrellas. ¿Qué diferencia muestra esa escena entre Adela y Martirio?", a:"A Adela le fascina el cielo y lo que se mueve; a Martirio no le importa nada fuera de la casa. Una mira hacia fuera, la otra vigila hacia dentro.", cita:true},
+    {q:"María Josefa aparece de noche con una oveja en brazos. ¿Qué verdades dice?", a:"Que ninguna se va a casar y que Pepe las va a devorar a todas. Su «locura» le permite decir lo que nadie más dice."},
+    {q:"En el enfrentamiento final, ¿qué le confiesa Martirio a Adela?", a:"Que ella también quiere a Pepe. Deja de fingir y la trata como rival, no como hermana.", cita:true},
+    {q:"¿Qué hace Adela con el bastón de Bernarda y por qué es el momento clave de la obra?", a:"Lo rompe en dos. Es el fin simbólico de la autoridad de su madre: declara que solo Pepe manda en ella."},
+    {q:"Después del disparo, ¿qué dice Martirio sobre Pepe? ¿Es verdad? ¿Qué provoca?", a:"Da a entender que Pepe ha muerto. Es mentira: huyó en su jaca. Adela lo cree y se ahorca."},
+    {q:"Ante la muerte de Adela, ¿qué es lo primero que le preocupa a Bernarda?", a:"Las apariencias. Ordena decir que su hija murió virgen y que la vistan como a una doncella.", cita:true},
+    {q:"¿Con qué palabra de Bernarda termina la obra? ¿Dónde la habíamos oído antes y qué significa esa repetición?", a:"«¡Silencio!». Es también lo primero que dice al entrar en el Acto I. Estructura circular: nada cambia y la represión continúa."},
+    {q:"¿Quién tiene la culpa de la muerte de Adela? Elijan un culpable y den una prueba del texto.", a:"Respuesta abierta (Bernarda, Martirio, Pepe, el pueblo, la propia Adela). Vale si el equipo la sostiene con una línea concreta.", cita:true}
+  ]
+};
+
+/* {P} se reemplaza por el personaje del equipo */
+const VOCES = [
+  "Hablen como {P}: ¿qué quieres y qué te lo impide?",
+  "Hablen como {P}: ¿qué piensas de Pepe el Romano?",
+  "Hablen como {P}: defiéndete. ¿Por qué no eres culpable de lo que pasa en esta casa?",
+  "Hablen como {P}: si mañana pudieras salir de la casa, ¿qué harías?",
+  "Hablen como {P}: ¿qué secreto guardas y de quién lo escondes?"
+];
+
+const CASILLAS_VOZ = [4, 12, 19];
+const META = 23;
+const SEG_PREGUNTA = 60, SEG_VOZ = 30;
+const CLAVE = "bernarda-alba-juego-v2";
+
+/* ====== ESTADO ====== */
+
+let E = nuevoEstado();
+let cronoInt = null, relojInt = null;
+
+function nuevoEstado(){
+  return {fase:"inicio", estudiantes:ESTUDIANTES.slice(), ausentes:[], equipos:[], turno:0, usados:{1:[],2:[],3:[],v:[]}, finEn:null, minutos:35, ronda:0};
+}
+function guardar(){ try{ localStorage.setItem(CLAVE, JSON.stringify(E)); }catch(e){} }
+function cargar(){
+  try{
+    const s = JSON.parse(localStorage.getItem(CLAVE));
+    if(s && s.fase && Array.isArray(s.equipos) && Array.isArray(s.estudiantes)) E = s;
+  }catch(e){}
+}
+
+const $ = id => document.getElementById(id);
+function el(tag, cls, txt){ const n=document.createElement(tag); if(cls) n.className=cls; if(txt!==undefined) n.textContent=txt; return n; }
+function barajar(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function actoDe(pos){ return pos<=7 ? 1 : pos<=15 ? 2 : 3; }
+
+/* ====== INICIO ====== */
+
+function pintarInicio(){
+  const c=$("chips"); c.textContent="";
+  E.estudiantes.forEach(n=>{
+    const aus=E.ausentes.includes(n);
+    const g=el("span","chip"+(aus?" ausente":""));
+    const b=el("button","nombre",n);
+    b.title = aus ? "Ausente: toca para marcar presente" : "Presente: toca para marcar ausente";
+    b.onclick=()=>{
+      E.ausentes = aus ? E.ausentes.filter(x=>x!==n) : E.ausentes.concat(n);
+      E.equipos=[]; guardar(); pintarInicio();
+    };
+    const x=el("button","quitar","×");
+    x.title="Quitar a "+n+" de la lista"; x.setAttribute("aria-label","Quitar a "+n+" de la lista");
+    x.onclick=()=>{
+      E.estudiantes=E.estudiantes.filter(k=>k!==n); E.ausentes=E.ausentes.filter(k=>k!==n);
+      E.equipos=[]; guardar(); pintarInicio();
+    };
+    g.appendChild(b); g.appendChild(x); c.appendChild(g);
+  });
+  const pres=E.estudiantes.length-E.ausentes.length;
+  $("cuenta").textContent=pres+" presentes de "+E.estudiantes.length;
+  $("minutos").value = E.minutos;
+  const pe=$("panelEquipos");
+  if(!E.equipos.length){ pe.classList.add("oculto"); return; }
+  pe.classList.remove("oculto");
+  const cont=$("equipos"); cont.textContent="";
+  E.equipos.forEach(t=>{
+    const d=el("div","equipo");
+    const cab=el("div","cab"); cab.style.background=t.color;
+    cab.appendChild(el("small","","Casa de")); cab.appendChild(document.createTextNode(t.nombre));
+    const pj=PERSONAJES.find(x=>x.nombre===t.nombre); if(pj) cab.appendChild(el("i","",pj.lema));
+    const ul=el("ul"); t.miembros.forEach(m=>ul.appendChild(el("li","",m)));
+    d.appendChild(cab); d.appendChild(ul); cont.appendChild(d);
+  });
+}
+
+function sortear(){
+  const presentes = barajar(E.estudiantes.filter(n=>!E.ausentes.includes(n)));
+  if(presentes.length<2) return;
+  const n = Math.max(2, Math.min(PERSONAJES.length, Math.round(presentes.length/3)));
+  const pers = barajar(PERSONAJES).slice(0,n);
+  E.equipos = pers.map(p=>({nombre:p.nombre, color:p.color, miembros:[], pos:0}));
+  presentes.forEach((s,i)=>E.equipos[i%n].miembros.push(s));
+  guardar(); pintarInicio();
+}
+
+function pintarFichas(){
+  const c=$("fichas"); c.textContent="";
+  E.equipos.forEach(t=>{
+    const pj=PERSONAJES.find(x=>x.nombre===t.nombre); if(!pj) return;
+    const d=el("div","fp");
+    const cab=el("div","cab"); cab.style.background=pj.color;
+    cab.appendChild(el("small","","Casa de")); cab.appendChild(document.createTextNode(pj.nombre));
+    cab.appendChild(el("i","",t.miembros.join(" · ")));
+    const cu=el("div","cu");
+    const sec=(tit,nodo)=>{ cu.appendChild(el("h3","",tit)); cu.appendChild(nodo); };
+    sec("Quién es", el("p","",pj.quien));
+    sec("Qué quiere", el("p","",pj.quiere));
+    const ul=el("ul"); pj.habla.forEach(h=>ul.appendChild(el("li","",h))); sec("Cómo habla", ul);
+    sec("Tono", el("p","",pj.tono));
+    const fr=el("ul","fr"); pj.frases.forEach(h=>fr.appendChild(el("li","",h))); sec("Para empezar tus frases", fr);
+    d.appendChild(cab); d.appendChild(cu); c.appendChild(d);
+  });
+}
+
+function empezar(){
+  const m = parseInt($("minutos").value,10);
+  E.minutos = (m>=5 && m<=90) ? m : 35;
+  E.fase="juego"; E.turno=0; E.ronda=0; E.usados={1:[],2:[],3:[],v:[]};
+  E.equipos.forEach(t=>t.pos=0);
+  E.finEn = Date.now() + E.minutos*60000;
+  guardar(); mostrar();
+}
+
+/* ====== TABLERO ====== */
+
+function celda(pos){ // serpentina 8x3
+  const fila=Math.floor(pos/8), i=pos%8;
+  return {fila, col: fila%2===0 ? i+1 : 8-i};
+}
+
+function pintarTablero(){
+  const t=$("tablero"); t.textContent="";
+  const nombres=["Acto primero","Acto segundo","Acto tercero"], horas=["mediodía de verano","la tarde","la noche"];
+  for(let f=0;f<3;f++){
+    const r=el("div","acto-rot"); r.appendChild(el("b","",nombres[f])); r.appendChild(el("span","",horas[f]));
+    r.style.gridRow=String(f*2+1); t.appendChild(r);
+    const bd=el("div","banda b"+(f+1)); bd.style.gridRow=String(f*2+2); t.appendChild(bd);
+    for(let p=f*8;p<f*8+8;p++){
+      const {col}=celda(p);
+      let cls="casilla a"+(f+1), txt=String(p);
+      if(p===0){cls="casilla extremo"; txt="Salida";}
+      else if(p===META){cls="casilla extremo"; txt="Meta";}
+      else if(CASILLAS_VOZ.includes(p)){cls="casilla voz"; txt="Voz";}
+      const c=el("div",cls);
+      if(p<META) c.classList.add(p%8===7 ? "dd" : (f%2===0 ? "dr" : "dl"));
+      c.style.gridRow=String(f*2+2); c.style.gridColumn=String(col);
+      c.appendChild(el("div","num",txt));
+      const fs=el("div","fichas");
+      E.equipos.forEach((eq,i)=>{
+        if(eq.pos===p){
+          const fi=el("div","ficha"+(i===E.turno?" viva":""),eq.nombre.slice(0,2)); fi.style.background=eq.color; fi.title=eq.nombre;
+          if(i===E.turno) c.classList.add("activa");
+          fs.appendChild(fi);
+        }
+      });
+      c.appendChild(fs); t.appendChild(c);
+    }
+  }
+  const eq=E.equipos[E.turno];
+  const tu=$("turno"); tu.textContent=""; tu.style.background=eq.color;
+  tu.appendChild(el("small","","Turno de la casa de"));
+  tu.appendChild(el("div","nom",eq.nombre));
+  tu.appendChild(el("div","miem",eq.miembros.join(" · ")));
+  const m=$("marcador"); m.textContent="";
+  E.equipos.forEach((e,i)=>{
+    const li=el("li", i===E.turno?"es-turno":"");
+    const fi=el("div","ficha",e.nombre.slice(0,2)); fi.style.background=e.color;
+    li.appendChild(fi); li.appendChild(el("span","",e.nombre));
+    li.appendChild(el("span","pos", e.pos===META ? "Meta" : "casilla "+e.pos));
+    m.appendChild(li);
+  });
+}
+
+function sacar(tipo, lista){
+  let libres = lista.map((_,i)=>i).filter(i=>!E.usados[tipo].includes(i));
+  if(!libres.length){ E.usados[tipo]=[]; libres = lista.map((_,i)=>i); }
+  const i = libres[Math.floor(Math.random()*libres.length)];
+  E.usados[tipo].push(i);
+  return lista[i];
+}
+
+function tirar(){
+  const eq=E.equipos[E.turno];
+  const d=1+Math.floor(Math.random()*6);
+  $("btnDado").disabled=true;
+  const previa=eq.pos, destino=Math.min(META, eq.pos+d);
+  const dado=$("cara"); dado.classList.remove("rueda"); void dado.offsetWidth; dado.classList.add("rueda");
+  let n=0;
+  const gira=setInterval(()=>{
+    n++; pintarDado(n<7 ? 1+Math.floor(Math.random()*6) : d);
+    if(n<7) return;
+    clearInterval(gira);
+    const paso=setInterval(()=>{
+      if(eq.pos<destino){ eq.pos++; pintarTablero(); return; }
+      clearInterval(paso);
+      setTimeout(()=>{
+        if(CASILLAS_VOZ.includes(eq.pos)) abrirVoz(eq);
+        else abrirPregunta(eq, previa);
+      }, 450);
+    }, 220);
+  }, 85);
+}
+
+function pintarDado(n){
+  const on={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]}[n];
+  const d=$("cara"); d.textContent="";
+  for(let i=0;i<9;i++) d.appendChild(el("span", on.includes(i)?"on":""));
+}
+
+function siguienteTurno(){
+  E.turno=(E.turno+1)%E.equipos.length;
+  if(E.turno===0) E.ronda++;
+  guardar(); cerrarTarjeta(); pintarTablero();
+  $("btnDado").disabled=false;
+}
+
+/* ====== TARJETAS ====== */
+
+function arrancarCrono(seg){
+  clearInterval(cronoInt);
+  const c=$("crono"); let s=seg; c.textContent=s; c.classList.remove("cero");
+  const b=$("barra"); b.style.transition="none"; b.style.width="100%"; void b.offsetWidth;
+  b.style.transition="width "+seg+"s linear"; b.style.width="0%";
+  cronoInt=setInterval(()=>{ s--; c.textContent=Math.max(0,s); if(s<=0){ c.classList.add("cero"); clearInterval(cronoInt);} },1000);
+}
+function botones(lista){
+  const a=$("tAcc"); a.textContent="";
+  lista.forEach(([txt,cls,fn])=>{ const b=el("button",cls,txt); b.onclick=fn; a.appendChild(b); });
+  const primero=a.querySelector("button"); if(primero) primero.focus();
+}
+function cabecera(eq, acto){
+  $("tarjeta").style.borderTopColor=eq.color;
+  const te=$("tEquipo"); te.textContent="Casa de "+eq.nombre; te.style.background=eq.color;
+  $("tActo").textContent=acto;
+  $("tCita").classList.add("oculto"); $("tRobo").classList.add("oculto");
+  $("tResp").classList.add("oculto"); $("tAyuda").textContent="";
+  $("velo").classList.remove("oculto");
+}
+function cerrarTarjeta(){ clearInterval(cronoInt); $("velo").classList.add("oculto"); }
+function pararBarra(){ const b=$("barra"); b.style.width=getComputedStyle(b).width; b.style.transition="none"; }
+function revelar(p){ $("tRespTxt").textContent=p.a; $("tResp").classList.remove("oculto"); clearInterval(cronoInt); pararBarra(); }
+
+function abrirPregunta(eq, previa){
+  const acto=actoDe(eq.pos);
+  const p=sacar(acto, PREGUNTAS[acto]);
+  cabecera(eq, ["","Acto I","Acto II","Acto III"][acto]);
+  if(p.cita) $("tCita").classList.remove("oculto");
+  $("tPreg").textContent=p.q;
+  $("tAyuda").textContent = p.cita ? "Señalen la línea del texto que sostiene la respuesta." : (eq.pos===META ? "Pregunta final: si aciertan, ganan la partida." : "");
+  arrancarCrono(SEG_PREGUNTA);
+  guardar();
+  botones([
+    ["Correcta","ok",()=>{
+      revelar(p);
+      if(eq.pos===META){ botones([["Ver el resultado","",()=>terminar()]]); }
+      else botones([["Siguiente turno","",siguienteTurno]]);
+    }],
+    ["Incorrecta","mal",()=>{
+      eq.pos=previa; pintarTablero();
+      const sig=E.equipos[(E.turno+1)%E.equipos.length];
+      const tr=$("tRobo"); tr.textContent="Robo: casa de "+sig.nombre; tr.style.background=sig.color; tr.classList.remove("oculto");
+      $("tAyuda").textContent="La casa de "+eq.nombre+" vuelve a su casilla. La casa de "+sig.nombre+" puede robar la pregunta.";
+      arrancarCrono(30);
+      botones([
+        ["Robo acertado: "+sig.nombre+" avanza 1","ok",()=>{ sig.pos=Math.min(META-1, sig.pos+1); pintarTablero(); revelar(p); botones([["Siguiente turno","",siguienteTurno]]); }],
+        ["Nadie acierta","sec",()=>{ revelar(p); botones([["Siguiente turno","",siguienteTurno]]); }]
+      ]);
+    }]
+  ]);
+}
+
+function abrirVoz(eq){
+  const v=sacar("v", VOCES);
+  cabecera(eq, "Voz del personaje");
+  $("tPreg").textContent=v.replace("{P}", eq.nombre);
+  $("tAyuda").textContent="30 segundos, en primera persona. Si convencen a la clase, avanzan una casilla más.";
+  arrancarCrono(SEG_VOZ);
+  guardar();
+  botones([
+    ["Convence: avanza 1","ok",()=>{ eq.pos=Math.min(META-1, eq.pos+1); siguienteTurno(); }],
+    ["No convence: se queda","sec",siguienteTurno]
+  ]);
+}
+
+/* ====== RELOJ DE CLASE Y FINAL ====== */
+
+function tic(){
+  if(E.fase!=="juego" || !E.finEn) return;
+  const r=Math.max(0, Math.round((E.finEn-Date.now())/1000));
+  const mm=String(Math.floor(r/60)).padStart(2,"0"), ss=String(r%60).padStart(2,"0");
+  $("reloj").textContent=mm+":"+ss;
+  $("reloj").classList.toggle("fin", r===0);
+  $("aviso").classList.toggle("oculto", r>0);
+}
+
+function terminar(){
+  E.fase="final"; guardar(); cerrarTarjeta(); mostrar();
+}
+
+function pintarFinal(){
+  const orden=E.equipos.slice().sort((a,b)=>b.pos-a.pos);
+  const max=orden[0].pos;
+  const gan=orden.filter(t=>t.pos===max).map(t=>t.nombre);
+  $("panelGanador").style.background = gan.length>1 ? "#161412" : orden[0].color;
+  $("ganador").textContent = gan.length>1 ? "Empate: las casas de "+gan.join(" y ") : "Gana la casa de "+gan[0];
+  const p=$("podio"); p.textContent="";
+  orden.forEach(t=>{
+    const li=el("li");
+    const fi=el("div","ficha",t.nombre.slice(0,2)); fi.style.background=t.color;
+    li.appendChild(fi);
+    li.appendChild(el("span","", t.nombre+" — "+(t.pos===META?"Meta":"casilla "+t.pos)+" ("+t.miembros.join(", ")+")"));
+    p.appendChild(li);
+  });
+}
+
+/* ====== VISTAS ====== */
+
+function mostrar(){
+  $("vInicio").classList.toggle("oculto", E.fase!=="inicio");
+  $("vJuego").classList.toggle("oculto", E.fase!=="juego");
+  $("vCalent").classList.toggle("oculto", E.fase!=="calent");
+  if(E.fase==="calent") pintarFichas();
+  $("vFinal").classList.toggle("oculto", E.fase!=="final");
+  $("reloj").classList.toggle("oculto", E.fase!=="juego");
+  $("btnTerminar").classList.toggle("oculto", E.fase!=="juego");
+  $("btnNueva").classList.toggle("oculto", E.fase==="inicio");
+  if(E.fase==="inicio") pintarInicio();
+  if(E.fase==="juego"){ pintarTablero(); $("btnDado").disabled=false; tic(); }
+  if(E.fase==="final") pintarFinal();
+}
+
+$("btnSortear").onclick=sortear;
+$("btnEmpezar").onclick=empezar;
+$("btnEmpezar2").onclick=empezar;
+$("btnCalent").onclick=()=>{ E.fase="calent"; guardar(); mostrar(); window.scrollTo(0,0); };
+$("btnVolver").onclick=()=>{ E.fase="inicio"; guardar(); mostrar(); };
+$("btnImprimir").onclick=()=>window.print();
+$("btnDado").onclick=tirar;
+$("btnTerminar").onclick=terminar;
+$("btnNueva").onclick=()=>{
+  const aus=E.ausentes, est=E.estudiantes; E=nuevoEstado(); E.ausentes=aus; E.estudiantes=est; guardar(); cerrarTarjeta(); mostrar();
+};
+function agregar(){
+  const i=$("nuevo"); const n=i.value.trim().replace(/\s+/g," ");
+  if(!n || E.estudiantes.some(k=>k.toLowerCase()===n.toLowerCase())){ i.select(); return; }
+  E.estudiantes.push(n); E.equipos=[]; i.value=""; guardar(); pintarInicio(); i.focus();
+}
+$("btnAgregar").onclick=agregar;
+$("nuevo").onkeydown=e=>{ if(e.key==="Enter") agregar(); };
+$("btnTodos").onclick=()=>{ E.ausentes=[]; E.equipos=[]; guardar(); pintarInicio(); };
+$("btnLista").onclick=()=>{ E.estudiantes=ESTUDIANTES.slice(); E.ausentes=[]; E.equipos=[]; guardar(); pintarInicio(); };
+$("minutos").onchange=()=>{ const m=parseInt($("minutos").value,10); if(m>=5&&m<=90){E.minutos=m; guardar();} };
+
+pintarDado(1);
+cargar();
+if(E.fase!=="inicio" && !E.equipos.length) E=nuevoEstado();
+mostrar();
+relojInt=setInterval(tic,1000);
+</script>
+</body>
+</html>
