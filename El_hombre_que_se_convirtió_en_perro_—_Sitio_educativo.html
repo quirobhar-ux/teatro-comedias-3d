@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="broadsheet">
+  <title>El hombre que se convirtió en perro — Guía de análisis literario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500..800;1,400..700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces */
+      --background: #f7f3eb;
+      --surface-container-low: #efe8da;
+      --surface-container: #e6ddcc;
+      --surface-container-high: #ddd2be;
+
+      /* Ink */
+      --on-surface: #1a1817;
+      --on-surface-variant: #4d4845;
+
+      /* Rules */
+      --outline: #33302e;
+      --outline-variant: #cdc3b2;
+
+      /* Accents */
+      --primary: #990f3d;
+      --on-primary: #ffffff;
+      --primary-container: #f4dce2;
+      --on-primary-container: #6b0a2a;
+      --secondary: #0d7680;
+      --tertiary: #0f5499;
+      --error: #b3261e;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #990f3d;
+      --data-2: #0d7680;
+      --data-3: #0f5499;
+      --data-4: #9a6312;
+      --data-context: #bfb5a4;
+
+      /* Fonts */
+      --font-headline: 'Bitter', serif;
+      --font-body: 'Source Serif 4', serif;
+      --font-label: 'Source Sans 3', sans-serif;
+
+      /* Shape */
+      --rounded: 0;
+      --rounded-lg: 0;
+      --rounded-full: 0;
+
+      /* Style effects */
+      --rule-masthead: 3px double var(--on-surface);
+      --rule-ink: 1px solid var(--on-surface);
+      --rule-section: 2px solid var(--outline);
+      --rule-column: 1px solid var(--outline-variant);
+
+      /* Shared semantic & focus tokens */
+      --positive: #1b6440;
+      --positive-bg: #e1efe6;
+      --warning: #844e06;
+      --error-bg: #f8e2e0;
+      --focus: var(--primary);
+
+      /* Narrative Type Scale */
+      --display-size: clamp(2.35rem, 1.4rem + 3.4vw, 4.1rem);
+      --headline-size: clamp(1.65rem, 1.2rem + 1.8vw, 2.35rem);
+      --subhead-size: clamp(1.2rem, 1.05rem + 0.55vw, 1.45rem);
+      --body-size: clamp(1.0625rem, 1rem + 0.2vw, 1.15rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      font-optical-sizing: auto;
+      scroll-behavior: smooth;
+    }
+    header { position: static !important; }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-lg) var(--space-lg) var(--space-3xl);
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Typography */
+    h1 {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--display-size);
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      margin: 0 0 var(--space-md);
+      color: var(--on-surface);
+    }
+    h2 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--headline-size);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin: 0 0 var(--space-md);
+      color: var(--on-surface);
+    }
+    h3 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      line-height: 1.18;
+      margin: 0 0 var(--space-sm);
+      color: var(--on-surface);
+    }
+    p {
+      margin: 0 0 var(--space-md);
+      max-width: 66ch;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    .lede {
+      font-family: var(--font-body);
+      font-size: clamp(1.1875rem, 1.08rem + 0.35vw, 1.35rem);
+      line-height: 1.5;
+      color: var(--on-surface-variant);
+      max-width: 58ch;
+      margin-bottom: var(--space-md);
+    }
+
+    /* Masthead & Navigation */
+    .masthead-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm) var(--space-lg);
+      border-bottom: var(--rule-masthead);
+      padding-bottom: var(--space-sm);
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface);
+    }
+    .masthead-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      align-items: center;
+    }
+    .masthead-nav a {
+      color: var(--on-surface);
+      text-decoration: none;
+      padding: var(--space-xs) 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      transition: color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .masthead-nav a:hover {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .masthead {
+      border-bottom: var(--rule-ink);
+      padding-block: var(--space-lg);
+    }
+    .masthead-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      align-items: baseline;
+      margin-top: var(--space-md);
+    }
+
+    /* Broadsheet tags (bare teal uppercase on --background ONLY) */
+    .tag {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--secondary);
+      background: transparent;
+      padding: 0;
+      display: inline-block;
+    }
+
+    .section-label {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      margin-bottom: var(--space-xs);
+      display: block;
+    }
+
+    .section-open {
+      border-top: var(--rule-section);
+      padding-top: var(--space-md);
+    }
+
+    /* Ruled columns */
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border-bottom: var(--rule-column);
+      padding-bottom: var(--space-lg);
+    }
+    .columns > * {
+      border-left: var(--rule-column);
+      padding: var(--space-xs) var(--space-lg);
+      background: transparent;
+    }
+    .columns > :first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .columns > :last-child {
+      padding-right: 0;
+    }
+    .stat-label {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-xs);
+    }
+    .stat-value {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.75rem);
+      line-height: 1.15;
+      font-variant-numeric: lining-nums tabular-nums;
+      color: var(--on-surface);
+      margin-bottom: var(--space-xs);
+    }
+    .stat-note {
+      font-size: 0.9375rem;
+      line-height: 1.45;
+      color: var(--on-surface-variant);
+    }
+
+    /* Two-column editorial splits */
+    .editorial-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .editorial-split-equal {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    /* Pull quote between ink rules */
+    .pull-quote {
+      border-top: var(--rule-ink);
+      border-bottom: var(--rule-ink);
+      padding-block: var(--space-md);
+      margin-block: var(--space-md);
+    }
+    .pull-quote blockquote {
+      margin: 0 0 var(--space-xs);
+      font-family: var(--font-headline);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.55rem);
+      line-height: 1.32;
+      color: var(--on-surface);
+    }
+    .pull-quote figcaption {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    /* Interactive Stage Explorer (Circular Drama) */
+    .stage-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+      gap: var(--space-xl);
+      align-items: start;
+      border-top: var(--rule-column);
+      border-bottom: var(--rule-ink);
+      padding-block: var(--space-lg);
+    }
+    .stage-diagram-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .stage-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      border-top: var(--rule-column);
+    }
+    .stage-btn {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-bottom: var(--rule-column);
+      padding: var(--space-sm) var(--space-md);
+      min-height: 44px;
+      text-align: left;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: var(--space-sm);
+      align-items: center;
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: 0.975rem;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .stage-btn:hover {
+      background-color: var(--surface-container-low);
+    }
+    .stage-btn.is-active {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      font-weight: 600;
+    }
+    .stage-btn-num {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    .stage-btn-wage {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface-variant);
+    }
+    .stage-btn.is-active .stage-btn-wage {
+      color: var(--on-primary-container);
+    }
+
+    .stage-detail {
+      border-left: var(--rule-column);
+      padding-left: var(--space-xl);
+      container-type: inline-size;
+    }
+    .stage-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--rule-column);
+      margin-bottom: var(--space-md);
+    }
+    .meter-bar-track {
+      height: 8px;
+      background-color: var(--surface-container);
+      border: 1px solid var(--outline);
+      margin-top: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+    .meter-bar-fill {
+      height: 100%;
+      background-color: var(--primary);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+    .stage-nav-controls {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    /* Buttons */
+    .btn {
+      appearance: none;
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: var(--space-sm) var(--space-md);
+      min-height: 44px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background-color: var(--on-primary-container);
+    }
+    .btn-secondary {
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+      border-color: var(--outline);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--surface-container);
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* Technique Explorer */
+    .technique-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+      gap: 0;
+      border-top: var(--rule-ink);
+      border-bottom: var(--rule-ink);
+    }
+    .technique-card {
+      padding: var(--space-md) var(--space-lg);
+      border-right: var(--rule-column);
+      border-bottom: var(--rule-column);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .technique-card h3 {
+      margin: 0;
+      font-size: 1.1875rem;
+    }
+    .technique-quote {
+      font-style: italic;
+      color: var(--on-surface-variant);
+      border-left: 2px solid var(--primary);
+      padding-left: var(--space-sm);
+      margin-top: auto;
+      font-size: 0.96rem;
+    }
+
+    /* Table: Comparison of Acts / Conditions */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: var(--space-md);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-top: var(--rule-ink);
+      border-bottom: var(--rule-ink);
+      font-size: 0.975rem;
+    }
+    th {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface);
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--rule-ink);
+    }
+    td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--rule-column);
+      vertical-align: top;
+    }
+    tr:last-child td {
+      border-bottom: 0;
+    }
+    .num-col {
+      text-align: right;
+      font-variant-numeric: lining-nums tabular-nums;
+      font-family: var(--font-headline);
+      font-weight: 700;
+    }
+
+    /* Collapsible details */
+    details.inline-glossary {
+      border-top: var(--rule-column);
+      border-bottom: var(--rule-column);
+      padding-block: var(--space-sm);
+      margin-block: var(--space-md);
+    }
+    details.inline-glossary summary {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+    details.inline-glossary summary::before {
+      content: '+ ';
+      margin-right: var(--space-xs);
+    }
+    details.inline-glossary[open] summary::before {
+      content: '− ';
+    }
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+      padding-top: var(--space-sm);
+    }
+
+    /* Quiz & Seminar Questions Section */
+    .assessment-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--rule-ink);
+    }
+    .score-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .quiz-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-block: var(--space-md);
+    }
+    .filter-btn {
+      appearance: none;
+      background: transparent;
+      border: 1px solid var(--outline);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--space-xs) var(--space-md);
+      min-height: 44px;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .filter-btn:hover {
+      background-color: var(--surface-container-low);
+    }
+    .filter-btn.is-active {
+      background-color: var(--on-surface);
+      color: var(--background);
+    }
+
+    .quiz-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+    }
+    .question-item {
+      border-bottom: var(--rule-column);
+      padding-bottom: var(--space-lg);
+    }
+    .question-item:last-child {
+      border-bottom: 0;
+    }
+    .question-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+      margin-bottom: var(--space-xs);
+    }
+    .question-prompt {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.35;
+      margin-bottom: var(--space-md);
+      max-width: 72ch;
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+      max-width: 860px;
+    }
+    .option-btn {
+      appearance: none;
+      background-color: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      padding: var(--space-sm) var(--space-md);
+      min-height: 44px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      line-height: 1.45;
+      display: flex;
+      gap: var(--space-sm);
+      align-items: flex-start;
+      transition: background-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+    }
+    .option-btn:hover:not(:disabled) {
+      background-color: var(--surface-container);
+      box-shadow: inset 0 0 0 1px var(--outline);
+    }
+    .option-btn.is-correct {
+      background-color: var(--positive-bg);
+      box-shadow: inset 0 0 0 2px var(--positive);
+      color: var(--on-surface);
+    }
+    .option-btn.is-wrong {
+      background-color: var(--error-bg);
+      box-shadow: inset 0 0 0 2px var(--error);
+      color: var(--on-surface);
+    }
+    .option-letter {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      color: var(--primary);
+      padding-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .feedback-box {
+      margin-top: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--surface-container-low);
+      border-left: 3px solid var(--outline);
+      max-width: 74ch;
+      font-size: 0.96rem;
+    }
+    .feedback-box.is-correct {
+      border-left-color: var(--positive);
+    }
+    .feedback-box.is-wrong {
+      border-left-color: var(--error);
+    }
+    .feedback-status {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+    .feedback-box.is-correct .feedback-status { color: var(--positive); }
+    .feedback-box.is-wrong .feedback-status { color: var(--error); }
+
+    /* Essay Seminar Workshop */
+    .essay-panel {
+      background-color: var(--surface-container-low);
+      border-top: var(--rule-section);
+      border-bottom: var(--rule-ink);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    .essay-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-md);
+    }
+    .essay-card {
+      border-top: var(--rule-column);
+      padding-top: var(--space-md);
+    }
+    .essay-card:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+    label.field-label {
+      display: block;
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface);
+      margin-bottom: var(--space-xs);
+    }
+    textarea.essay-input {
+      width: 100%;
+      min-height: 112px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--on-surface);
+      resize: vertical;
+    }
+    textarea.essay-input:focus {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+      border-color: var(--primary);
+    }
+    .essay-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xs);
+    }
+    .save-status {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface-variant);
+    }
+    .rubric-box {
+      margin-top: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--background);
+      border-left: 2px solid var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .toolbar-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+      padding-top: var(--space-md);
+      border-top: var(--rule-ink);
+    }
+    .inline-notice {
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: var(--label-size);
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer / Colophon */
+    .colophon {
+      border-top: var(--rule-ink);
+      padding-top: var(--space-md);
+      font-size: 0.925rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* SVG styles */
+    .circle-svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+    }
+    .svg-node {
+      cursor: pointer;
+      transition: transform var(--dur-micro) var(--ease-out);
+    }
+    .svg-node:hover circle {
+      stroke: var(--primary);
+      stroke-width: 2.5;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @container (max-width: 480px) {
+      .stage-meta-row { flex-direction: column; gap: var(--space-xs); }
+    }
+
+    @media (max-width: 860px) {
+      .columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
+      .columns > * { border-left: 0; padding-left: 0; border-bottom: var(--rule-column); padding-bottom: var(--space-sm); }
+      .editorial-split,
+      .editorial-split-equal,
+      .stage-workspace {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .stage-detail {
+        border-left: 0;
+        padding-left: 0;
+        border-top: var(--rule-column);
+        padding-top: var(--space-md);
+      }
+      .options-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        grid-template-columns: minmax(0, 1fr);
+        padding: var(--space-md);
+        gap: var(--space-lg);
+      }
+      .columns {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .essay-panel {
+        padding: var(--space-md);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+
+    <!-- MASTHEAD -->
+    <header>
+      <div class="masthead-line">
+        <span>Suplemento de Literatura Hispanoamericana · Teatro del Siglo XX</span>
+        <nav class="masthead-nav" aria-label="Secciones de estudio">
+          <a href="#contexto">Contexto</a>
+          <a href="#arco">Arco circular</a>
+          <a href="#recursos">Recursos teatrales</a>
+          <a href="#cuestionario">Cuestionario</a>
+          <a href="#seminario">Preguntas de ensayo</a>
+        </nav>
+      </div>
+
+      <div class="masthead">
+        <span class="section-label">Osvaldo Dragún · Historias para ser contadas</span>
+        <h1>El hombre que se convirtió en perro</h1>
+        <p class="lede">
+          Guía de lectura crítica y preparación para el curso de Introducción a la literatura hispanoamericana: cómo una sátira vanguardista argentina convierte la pérdida del empleo en una metáfora implacable de la deshumanización urbana.
+        </p>
+        <div class="masthead-meta">
+          <span class="tag">Vanguardismo y Teatro del Absurdo</span>
+          <span class="tag">Sátira sociopolítica</span>
+          <span class="tag">Estructura circular</span>
+          <span class="tag">Río de la Plata</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- KEY FIGURES BAR -->
+    <section aria-label="Datos fundamentales de la obra">
+      <div class="columns">
+        <div>
+          <div class="stat-label">Colección narrativa</div>
+          <div class="stat-value">3.ª historia</div>
+          <div class="stat-note">Forma parte de la serie teatral <em>Historias para ser contadas</em>, presentada por un elenco itinerante en la plaza.</div>
+        </div>
+        <div>
+          <div class="stat-label">Salario inicial vs. segundo</div>
+          <div class="stat-value">$10 → $15</div>
+          <div class="stat-note">Pesos diarios ($450 al mes) por ladrar como sereno; una ilusión de ascenso que mantiene la miseria.</div>
+        </div>
+        <div>
+          <div class="stat-label">Lealtad del perro previo</div>
+          <div class="stat-value">25 y 35 años</div>
+          <div class="stat-note">Años que sirvieron los perros guardianes muertos antes de que el protagonista los reemplazara.</div>
+        </div>
+        <div>
+          <div class="stat-label">Personajes en escena</div>
+          <div class="stat-value">4 actores</div>
+          <div class="stat-note">Actor Primero, Segundo, Tercero y Actriz; rotan entre narradores, jefes, veterinario, coro y transeúntes.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: CONTEXTO Y TESIS LITERARIA -->
+    <section id="contexto" class="section-open reveal">
+      <span class="section-label">I · Contexto estético y tesis central</span>
+      <h2>No es un relato fantástico ni literal: es una parábola sobre el valor humano frente al dinero</h2>
+
+      <div class="editorial-split">
+        <div>
+          <p>
+            Escrita por el dramaturgo argentino Osvaldo Dragún dentro del movimiento vanguardista del siglo XX y la corriente del <strong>teatro del absurdo</strong>, «El hombre que se convirtió en perro» no busca provocar empatía realista ni narrar una metamorfosis biológica. La transformación funciona como una <strong>alegoría satírica</strong>: denuncia la humillación sistemática que sufre el trabajador común en una sociedad urbanizada moderna donde el dinero desplaza a la dignidad.
+          </p>
+          <p>
+            En lugar de encerrar la acción tras un telón ilusionista, Dragún emplea el <strong>metateatro</strong>. Desde el primer parlamento, los actores le hablan al público y señalan el banco de la plaza «allí, señor, donde usted trataba hoy de adivinar el secreto de una hoja». Esta ruptura de la cuarta pared impide que el espectador sea un consumidor pasivo: lo obliga a pensar analíticamente y a preguntarse si él mismo forma parte de esa maquinaria laboral.
+          </p>
+          <p>
+            El tono oscila de manera deliberada entre el humor grotesco y la tragedia cotidiana. En una lectura silenciosa la comicidad puede pasar inadvertida, pero las <strong>acotaciones entre paréntesis</strong> —el clarín fingido para anunciar al patrón, el tartamudeo del veterinario, la rima artificiosa del director de la perrera— revelan una farsa exagerada cuyo propósito es condenar la indiferencia social y económica.
+          </p>
+        </div>
+
+        <div>
+          <figure class="pull-quote">
+            <blockquote>«Y yo, ¿qué les puedo decir? No sé si soy hombre o perro. Y creo que ni siquiera ustedes podrán decírmelo al final.»</blockquote>
+            <figcaption>Actor Primero · Ruptura de la cuarta pared y crisis existencialista</figcaption>
+          </figure>
+
+          <details class="inline-glossary">
+            <summary>Glosario rioplatense y teatral indispensable para el curso</summary>
+            <div class="glossary-grid">
+              <div>
+                <strong>Sereno</strong>
+                <p class="stat-note">Vigilante o guardia nocturno; un empleo pesado al que el protagonista aspira como último recurso antes de reemplazar al perro.</p>
+              </div>
+              <div>
+                <strong>Casilla y perrera</strong>
+                <p class="stat-note">La <em>casilla</em> es la pequeña casa del perro guardián; la <em>perrera</em> es el recinto municipal donde encierran a los perros callejeros.</p>
+              </div>
+              <div>
+                <strong>Voseo argentino</strong>
+                <p class="stat-note">Regionalismos del Cono Sur como <em>divertite</em>, <em>te acordás</em>, <em>podés</em> y <em>vos</em> que anclan la fábula en Buenos Aires y le otorgan autenticidad.</p>
+              </div>
+              <div>
+                <strong>Plantar / Huelga</strong>
+                <p class="stat-note"><em>Plantar</em> equivale a renunciar o dejar el trabajo; la <em>huelga</em> es el paro laboral de los obreros reprimido con despidos punitivos.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ARCO DRAMÁTICO CIRCULAR INTERACTIVO -->
+    <section id="arco" class="section-open reveal">
+      <span class="section-label">II · Estructura circular y progresión de la metamorfosis</span>
+      <h2>La obra termina exactamente donde empieza: un ciclo de miseria sin salida</h2>
+      <p>
+        El relato inicia cuando los supuestos amigos visitan a María y descubren que el protagonista está en la perrera, y cierra con exactamente el mismo diálogo dos años después. Recorre las ocho estaciones dramáticas para observar cómo las necesidades económicas empujan al Actor Primero desde la búsqueda desesperada de empleo hasta la pérdida total de su postura erguida y su lenguaje humano.
+      </p>
+
+      <div class="stage-workspace">
+        <!-- Left column: SVG Circular Diagram + List -->
+        <div class="stage-diagram-wrap">
+          <svg class="circle-svg" viewBox="0 0 320 320" role="img" aria-label="Diagrama circular de las ocho estaciones dramáticas de la obra">
+            <circle cx="160" cy="160" r="118" fill="none" stroke="var(--outline-variant)" stroke-width="2" stroke-dasharray="4 4"></circle>
+            <path d="M 160 42 A 118 118 0 1 1 154 42.2" fill="none" stroke="var(--outline)" stroke-width="1.5"></path>
+            <polygon points="154,36 164,42 154,48" fill="var(--primary)"></polygon>
+            <text x="160" y="148" text-anchor="middle" font-family="var(--font-label)" font-size="11" font-weight="700" fill="var(--on-surface-variant)" letter-spacing="1.2">ESTRUCTURA CIRCULAR</text>
+            <text id="svg-center-title" x="160" y="170" text-anchor="middle" font-family="var(--font-headline)" font-size="16" font-weight="700" fill="var(--on-surface)">Estación 01</text>
+            <text id="svg-center-sub" x="160" y="190" text-anchor="middle" font-family="var(--font-label)" font-size="11" font-weight="700" fill="var(--primary)">PRÓLOGO · PLAZA</text>
+            <g id="svg-nodes"></g>
+          </svg>
+
+          <div class="stage-list" id="stage-list" role="tablist" aria-label="Estaciones de la trama"></div>
+        </div>
+
+        <!-- Right column: Active station detail -->
+        <div class="stage-detail" id="stage-detail" aria-live="polite">
+          <span class="tag" id="detail-phase">Fase inicial</span>
+          <h3 id="detail-title">01. El banco de la plaza y el distanciamiento</h3>
+
+          <div class="stage-meta-row">
+            <div>
+              <span class="stat-label">Estado salarial / material</span>
+              <div id="detail-wage"><strong>Sin empleo (3 meses)</strong></div>
+            </div>
+            <div>
+              <span class="stat-label">Recurso literario clave</span>
+              <div id="detail-device"><strong>Coro griego y pretérito</strong></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="stat-label">Grado de deshumanización percibido</span>
+            <div class="meter-bar-track" aria-hidden="true">
+              <div class="meter-bar-fill" id="detail-meter" style="width: 12%;"></div>
+            </div>
+          </div>
+
+          <p id="detail-summary"></p>
+          <p id="detail-analysis"></p>
+
+          <figure class="pull-quote">
+            <blockquote id="detail-quote"></blockquote>
+            <figcaption id="detail-quote-note"></figcaption>
+          </figure>
+
+          <div class="stage-nav-controls">
+            <button type="button" class="btn btn-secondary" id="prev-stage-btn" onclick="stepStage(-1)">← Estación anterior</button>
+            <button type="button" class="btn btn-primary" id="next-stage-btn" onclick="stepStage(1)">Siguiente estación →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table: Fábrica 1 vs Fábrica 2 -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Etapa laboral</th>
+              <th>Antecesor</th>
+              <th class="num-col">Pago diario</th>
+              <th>Condiciones de vida y vivienda</th>
+              <th>Efecto en la pareja y la identidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primera fábrica</strong><br><span class="stat-note">Aceptación inicial</span></td>
+              <td>Perro del sereno (25 años de lealtad)</td>
+              <td class="num-col">$10</td>
+              <td>Casilla estrecha («le aprieta aquí»), comida de perro y promesa falsa de ascenso si alguien muere o se jubila.</td>
+              <td>El alcohol como escape; inconscientemente se pone en cuatro patas junto a María tras recordar un tango y un clavel.</td>
+            </tr>
+            <tr>
+              <td><strong>Segunda fábrica</strong><br><span class="stat-note">Tras renunciar («plantar»)</span></td>
+              <td>Perro del sereno (35 años de lealtad)</td>
+              <td class="num-col">$15</td>
+              <td>$450 mensuales no alcanzan para el alquiler: él vive en la casilla y come el hueso; María va a una pieza compartida y recibe la carne.</td>
+              <td>Intimidad en la plaza; embarazo vivido con terror («tengo miedo que sea… perro»). Quiebre irreversible y huida a la calle.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 3: RECURSOS DEL TEATRO DEL ABSURDO -->
+    <section id="recursos" class="section-open reveal">
+      <span class="section-label">III · Caja de herramientas para el examen</span>
+      <h2>Seis estrategias dramáticas que definen el estilo vanguardista de Dragún</h2>
+      <p>
+        Al analizar la obra en clase o en un ensayo universitario, conviene distinguir cómo la forma teatral refuerza la crítica social. Estas seis técnicas articulan el choque entre el orden burgués-capitalista y la vulnerabilidad del individuo.
+      </p>
+
+      <div class="technique-grid">
+        <article class="technique-card">
+          <span class="section-label">01 · Ruptura de ilusión</span>
+          <h3>Metateatro y cuarta pared</h3>
+          <p>Los actores asumen abiertamente su rol de narradores frente al público. Esto rompe la identificación emocional pasiva para exigir una postura crítica sobre nuestra propia realidad laboral.</p>
+          <p class="technique-quote">«¿O alguien a quien le hayan ofrecido el empleo del perro del sereno?» — Actor Tercero al público.</p>
+        </article>
+
+        <article class="technique-card">
+          <span class="section-label">02 · Deshumanización nominal</span>
+          <h3>Anonimato y múltiples roles</h3>
+          <p>Ningún personaje salvo María lleva nombre propio: se identifican como Actor Primero, Segundo, Tercero y Actriz. Al cambiar de papel sin salir de escena (amigos, jefes, veterinario, policías), encarnan todo el sistema social.</p>
+          <p class="technique-quote">Los mismos «amigos» que narran la tragedia actúan como los patrones que le exigen ladrar.</p>
+        </article>
+
+        <article class="technique-card">
+          <span class="section-label">03 · Tradición clásica adaptada</span>
+          <h3>El coro griego y la distancia temporal</h3>
+          <p>Cuando los actores hablan al unísono («estaba muy triste», «el pobre», «loado sea»), funcionan como un coro griego. Sin embargo, el uso del pretérito y del imperfecto («era nuestro amigo») delata su frialdad y falta de solidaridad real.</p>
+          <p class="technique-quote">«Él buscaba trabajo y nosotros éramos actores» — contraste que marca indiferencia.</p>
+        </article>
+
+        <article class="technique-card">
+          <span class="section-label">04 · Sintaxis fragmentada</span>
+          <h3>Diálogo confundido, elipsis y acotaciones</h3>
+          <p>Las interrupciones constantes («¿Torno? —No. —¿Mecánico? —No.») y las elipsis reflejan la imposibilidad de comunicarse con un poder sordo. Las acotaciones dictan la violencia simbólica del gesto físico.</p>
+          <p class="technique-quote">(Como si tocara un clarín) para el patrón vs. (En cuatro patas) para el obrero.</p>
+        </article>
+
+        <article class="technique-card">
+          <span class="section-label">05 · Denuncia indirecta</span>
+          <h3>Doble crítica social y humor grotesco</h3>
+          <p>La negativa a darle el puesto de los obreros despedidos por la huelga («quedarán vacantes como castigo») denuncia la represión sindical. El humor del directorio que «ayuda a su familia» con $10 al día subraya la hipocresía utilitaria.</p>
+          <p class="technique-quote">«No come más que el muerto, debemos ayudar a su familia.»</p>
+        </article>
+
+        <article class="technique-card">
+          <span class="section-label">06 · Imágenes poéticas</span>
+          <h3>Simbolismo de la primavera y el clavel</h3>
+          <p>Frente al paso mecánico de las estaciones, el protagonista grita que nunca tuvo primavera (juventud, esperanza, renacer), y sus amigos omiten esa estación después. El clavel simboliza el amor humano truncado por la animalización.</p>
+          <p class="technique-quote">«¡Mentira! ¡Nunca tuve primavera!» / «Un día me trajiste un clavel… ¿Qué estás haciendo en cuatro patas?»</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CUESTIONARIO INTERACTIVO DE OPCIÓN MÚLTIPLE -->
+    <section id="cuestionario" class="section-open reveal">
+      <div class="assessment-header">
+        <div>
+          <span class="section-label">IV · Autoevaluación de lectura</span>
+          <h2>Preguntas de comprensión y análisis literario</h2>
+        </div>
+        <div class="score-panel">
+          <div>
+            <div class="stat-label">Aciertos verificados</div>
+            <div class="stat-value" id="quiz-score-display">0 / 8</div>
+          </div>
+          <div>
+            <div class="stat-label">Respondidas</div>
+            <div class="stat-value" id="quiz-progress-display">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: var(--space-md);">
+        Selecciona una respuesta en cada reactivo para comprobar tu dominio del texto dramático, los recursos del teatro del absurdo y la crítica sociopolítica. Tu avance se guarda automáticamente.
+      </p>
+
+      <div class="quiz-filter-row" role="group" aria-label="Filtrar preguntas por enfoque">
+        <button type="button" class="filter-btn is-active" data-filter="todas" onclick="filterQuiz('todas', this)">Todas (8)</button>
+        <button type="button" class="filter-btn" data-filter="estructura" onclick="filterQuiz('estructura', this)">Estructura y género</button>
+        <button type="button" class="filter-btn" data-filter="simbolismo" onclick="filterQuiz('simbolismo', this)">Simbolismo y lenguaje</button>
+        <button type="button" class="filter-btn" data-filter="critica" onclick="filterQuiz('critica', this)">Crítica social</button>
+      </div>
+
+      <div class="quiz-list" id="quiz-container"></div>
+    </section>
+
+    <!-- SECTION 5: PREGUNTAS DE SEMINARIO Y ENSAYO -->
+    <section id="seminario" class="section-open reveal">
+      <span class="section-label">V · Taller de interpretación crítica</span>
+      <h2>Preguntas abiertas para discusión en seminario o examen parcial</h2>
+      <p>
+        Redacta tu borrador analítico para cada interrogante. Puedes desplegar los criterios de evaluación después de escribir para contrastar tu tesis con los argumentos fundamentales de la obra.
+      </p>
+
+      <div class="essay-panel">
+        <div class="essay-grid" id="essay-container"></div>
+
+        <div class="toolbar-footer">
+          <div class="inline-notice" id="action-status" aria-live="polite">Listo para registrar tus respuestas.</div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+            <button type="button" class="btn btn-secondary" onclick="exportStudyGuide()">Exportar guía de estudio (.txt)</button>
+            <button type="button" class="btn btn-secondary" id="reset-progress-btn" onclick="resetAllProgress(this)">Reiniciar progreso</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLOPHON / SOURCES -->
+    <footer class="colophon">
+      <p>
+        <strong>Nota de fuentes y contexto académico:</strong> Síntesis literaria, citas dramáticas y análisis de recursos teatrales elaborados a partir del análisis pedagógico de Carina Spanish sobre la obra <em>El hombre que se convirtió en perro</em> (incluida en <em>Historias para ser contadas</em>) del dramaturgo argentino Osvaldo Dragún. Preparado como material de estudio para Introducción a la literatura hispanoamericana.
+      </p>
+    </footer>
+
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    const STAGES = [
+      {
+        id: 1,
+        shortTitle: `El banco de la plaza`,
+        phase: `Prólogo y distanciamiento`,
+        wage: `Sin empleo (3 meses)`,
+        device: `Metateatro, pretérito y coro`,
+        dehumanization: 12,
+        summary: `Los Actores 2 y 3 y la Actriz presentan la «tercera historia» de la noche señalando la misma banca donde está sentado el espectador. Presentan al Actor Primero en pasado («fue nuestro amigo»), revelando que buscaba trabajo y despertaba gritando por las noches.`,
+        analysis: `El uso del imperfecto y el pretérito («él buscaba trabajo y nosotros éramos actores») marca una frontera ética: los amigos se declaran ajenos a su angustia. La antítesis entre «soñar con la vida» y «despertar gritando» enlaza el drama con la tradición existencial.`,
+        quote: `«Paso el tiempo: el otoño, el verano, la primavera… —¡Mentira! ¡Nunca tuve primavera!»`,
+        quoteNote: `Simbolismo: la primavera representa juventud, alegría y renacer negados al desempleado.`
+      },
+      {
+        id: 2,
+        shortTitle: `Fábrica I y el clarín del patrón`,
+        phase: `Inicio de la degradación`,
+        wage: `$10 diarios + casilla`,
+        device: `Acotación satírica y pausa`,
+        dehumanization: 28,
+        summary: `Tras leer «NO HAY VACANTES», el protagonista propone oficios humanos (tornero, mecánico) que le son negados a gritos, hasta ofrecerse como sereno nocturno. La Actriz anuncia al patrón imitando un clarín real; este le ofrece reemplazar al perro guardián muerto tras 25 años de servicio.`,
+        analysis: `El clarín parodia las jerarquías de clase (el jefe tratado como realeza, el obrero como animal). Cuando le preguntan «¿Sabe ladrar?», la pausa del Actor Primero simboliza el último esfuerzo por conservar su dignidad antes de emitir su primer «Guau, guau».`,
+        quote: `«Como ven, ganaba diez pesos más que el perro verdadero.»`,
+        quoteNote: `Ironía de los patrones, que celebran la explotación como un acto de generosidad.`
+      },
+      {
+        id: 3,
+        shortTitle: `Alcohol, promesa y entrenamiento`,
+        phase: `Domesticación laboral`,
+        wage: `$10 diarios`,
+        device: `Voseo y diálogo utilitario`,
+        dehumanization: 45,
+        summary: `El hombre vuelve borracho a casa para evadir la vergüenza de no cumplir el rol tradicional de proveedor. Consuela a María prometiéndole que si alguien muere, se jubila o es despedido ocupará su puesto. En el trabajo lo obligan a meterse en una casilla diminuta y responder solo con ladridos.`,
+        analysis: `Sus patrones practican ejercicios mientras pasan corriendo, sigilosamente o agachados para adiestrarlo. Justifican el pago con frialdad contable: «no come más que el muerto, debemos ayudar a su familia», exhibiendo una falsa empatía capitalista.`,
+        quote: `«No me diga sí; tiene que empezar a acostumbrarse. Dígame guau, guau.»`,
+        quoteNote: `Supresión deliberada del lenguaje humano como condición para conservar el salario.`
+      },
+      {
+        id: 4,
+        shortTitle: `El clavel, el tango y la huelga`,
+        phase: `Invasión de la vida íntima`,
+        wage: `$10 (tras 5–6 meses)`,
+        device: `Acotaciones y doble crítica`,
+        dehumanization: 60,
+        summary: `En una escena doméstica con María mientras recuerdan su tango y un clavel romántico, el protagonista se agacha inconscientemente en cuatro patas, horrorizando a su esposa. Desesperado, reclama un puesto humano ante las muertes, jubilaciones y despidos por huelga en la fábrica.`,
+        analysis: `La respuesta del jefe —que los puestos de los huelguistas «quedarán vacantes como castigo»— constituye una doble denuncia: contra la explotación individual del hombre-perro y contra la represión colectiva de los trabajadores organizados. Tras meses de dilaciones («espera un tiempito más»), el hombre renuncia («¡Y planté!»).`,
+        quote: `«¡Esto no lo aguanto más! […] Me dijeron que uno se jubiló… —Sí, pero pensamos cerrar esta sección.»`,
+        quoteNote: `El diminutivo «tiempito» oculta una postergación indefinida de sus derechos.`
+      },
+      {
+        id: 5,
+        shortTitle: `La noche feliz y el reflejo de miedo`,
+        phase: `Falsa recuperación`,
+        wage: `Desempleado otra vez`,
+        device: `Contraste lírico y trauma`,
+        dehumanization: 50,
+        summary: `Libre del empleo humillante, pasea románticamente con María nombrando las flores y las estrellas. Sin embargo, cuando intenta besarle la mano, ella la retira asustada gritando «¡No me muerdas!». A la mañana siguiente debe volver a buscar trabajo.`,
+        analysis: `Aunque el protagonista recobra temporalmente su condición humana, la transformación ya ha dejado una huella psicológica irreversible en su matrimonio. La economía tampoco permite tregua: la dignidad sin sustento resulta insostenible al amanecer.`,
+        quote: `«¡No me muerdas! —No te iba a morder, te iba a besar, María.»`,
+        quoteNote: `El trauma de la animalización destruye la intimidad incluso fuera de la fábrica.`
+      },
+      {
+        id: 6,
+        shortTitle: `Fábrica II y la división del hueso`,
+        phase: `Normalización de la miseria`,
+        wage: `$15 diarios ($450/mes)`,
+        device: `Elipsis y coro burlón`,
+        dehumanization: 75,
+        summary: `En otro establecimiento acaba de morir el perro del sereno tras 35 años. Vuelve a aceptar, ahora por $15 diarios. Como $450 al mes no alcanzan para pagar el alquiler ni la comida, él se muda a la casilla y María a una pieza con otras cuatro o cinco muchachas; él come el hueso y le lleva la carne.`,
+        analysis: `La subida de $10 a $15 parodia la idea de progreso salarial: el directorio aprueba la solución miserable mientras el coro exclama «¡loado sea!». La elipsis tras «como no nos alcanza tampoco para comer…» obliga al lector a inferir la extrema precariedad.`,
+        quote: `«Andar en cuatro patas no era muy diferente de andar en dos. La casilla ya me parecía más grande.»`,
+        quoteNote: `Proceso de acostumbramiento e internalización de la condición infrahumana.`
+      },
+      {
+        id: 7,
+        shortTitle: `El embarazo, la calle y la mordida`,
+        phase: `Quiebre existencial definitivo`,
+        wage: `Pérdida de la postura humana`,
+        device: `Susurro, elipsis y crisis física`,
+        dehumanization: 95,
+        summary: `Tras una noche de intimidad, María llora en la plaza al saber que espera un hijo: susurra que teme parir un «perro». El protagonista huye aterrado y descubre que ya le duele la cintura si intenta erguirse. En la calle es tachado de loco o borracho, y muerde a un transeúnte que intenta levantarlo.`,
+        analysis: `La escena callejera expone la indolencia urbana: ante la crisis ajena, los ciudadanos delegan el problema en médicos o policías. Al morder la mano compasiva, Dragún demuestra que la degradación prolongada se vuelve irreversible tanto física como mentalmente.`,
+        quote: `«¿Sabe cuántas cosas hermosas hay para ver de pie? […] Comienza a pararse y de repente: ¡Guau, guau!»`,
+        quoteNote: `El cuerpo ya no responde al deseo de dignidad; el instinto animal impuesto prevalece.`
+      },
+      {
+        id: 8,
+        shortTitle: `La perrera y el epílogo al público`,
+        phase: `Cierre circular y acusación`,
+        wage: `Encerrado en la perrera`,
+        device: `Rima grotesca y apelación directa`,
+        dehumanization: 100,
+        summary: `Se cierra el círculo inicial: tras dos años sin verlo, María confirma que está en la perrera, donde el Director (en rima absurda) y el Veterinario (tartamudeando) certifican que «es un perro». Luego los actores ven pasar a un boxeador analfabeto, un conscripto y un policía, y finalmente interpelan al público.`,
+        analysis: `Las figuras finales ilustran a sectores populares privados de educación o instrumentalizados por el Estado. Al preguntar si entre los espectadores hay una mujer que tema tener un hijo perro o alguien a quien le hayan ofrecido el puesto del sereno, Dragún traslada el conflicto de la ficción al presente del lector.`,
+        quote: `«Si entre ustedes hay alguno a quien quieran convertir en perro como a nuestro amigo… bueno, esa es otra historia.»`,
+        quoteNote: `Apertura moral: la obra termina, pero el problema continúa en la sociedad real.`
+      }
+    ];
+
+    const QUIZ_QUESTIONS = [
+      {
+        id: `q1`,
+        category: `estructura`,
+        categoryLabel: `Estructura y género`,
+        prompt: `¿Qué función cumple la ruptura de la cuarta pared cuando los actores señalan la banca del espectador al inicio de la obra?`,
+        options: [
+          `Crear suspenso policial sobre quién mató al perro del sereno.`,
+          `Romper la ilusión realista para que el público reflexione críticamente y reconozca que la historia puede ocurrirle a cualquiera.`,
+          `Demostrar que los personajes poseen poderes sobrenaturales propios del realismo mágico.`,
+          `Justificar la falta de escenografía mediante un monólogo cómico sin intención social.`
+        ],
+        correctIndex: 1,
+        explanation: `En el metateatro de Osvaldo Dragún, hablarle directamente a la audiencia quiebra la distancia pasiva del teatro clásico e invita a pensar analíticamente sobre la explotación cotidiana.`
+      },
+      {
+        id: `q2`,
+        category: `simbolismo`,
+        categoryLabel: `Simbolismo y lenguaje`,
+        prompt: `Cuando los amigos narran el paso del tiempo, ¿por qué el Actor Primero grita «¡Mentira! ¡Nunca tuve primavera!» y los narradores omiten esa estación en el siguiente recuento?`,
+        options: [
+          `Porque la obra transcurre en una región ecuatorial sin cambios estacionales.`,
+          `Porque la primavera simboliza alegría, juventud y renacer —valores negados al desempleado—, y los amigos evaden su dolor saltándola deliberadamente.`,
+          `Porque el protagonista trabajó como sereno únicamente durante los meses de verano.`,
+          `Porque los actores olvidan sus líneas debido al estilo improvisado del diálogo confundido.`
+        ],
+        correctIndex: 1,
+        explanation: `La primavera funciona como símbolo vital; al suprimirla en la segunda enumeración («el otoño, el invierno, el verano»), los supuestos amigos confirman su distanciamiento emocional frente al sufrimiento del protagonista.`
+      },
+      {
+        id: `q3`,
+        category: `critica`,
+        categoryLabel: `Crítica social`,
+        prompt: `¿Qué revela el contraste verbal «él buscaba trabajo y nosotros éramos actores» junto con el uso del pretérito («fue nuestro amigo»)?`,
+        options: [
+          `Una profunda solidaridad gremial entre artistas y obreros fabriles.`,
+          `Que el protagonista falleció antes de que comenzara la representación teatral.`,
+          `El distanciamiento emocional y la indiferencia de los narradores, quienes separan su identidad del drama económico del amigo.`,
+          `Que los actores son en realidad familiares cercanos de María.`
+        ],
+        correctIndex: 2,
+        explanation: `El tiempo pasado y la oposición reiterada («nosotros éramos actores») subrayan que se desligaron de su problema en lugar de ayudarlo.`
+      },
+      {
+        id: `q4`,
+        category: `critica`,
+        categoryLabel: `Crítica social`,
+        prompt: `¿Por qué la respuesta del patrón ante los obreros despedidos por la huelga («sus puestos quedarán vacantes como castigo») representa una «doble crítica»?`,
+        options: [
+          `Critica tanto la negación del ascenso prometido al protagonista como la represión patronal contra trabajadores que protestan por sus derechos.`,
+          `Denuncia que los perros guardianes eran más eficientes que los obreros sindicalizados.`,
+          `Cuestiona únicamente la pereza de los empleados que abandonaron la fábrica sin motivo.`,
+          `Muestra que el protagonista prefirió quedarse como perro para no involucrarse en conflictos.`
+        ],
+        correctIndex: 0,
+        explanation: `Por un lado expone que la promesa de movilidad laboral era falsa; por otro, exhibe un sistema vengativo que castiga el derecho a la huelga.`
+      },
+      {
+        id: `q5`,
+        category: `simbolismo`,
+        categoryLabel: `Simbolismo y lenguaje`,
+        prompt: `¿Qué significado tiene la acotación «(como si tocara un clarín)» realizada por la Actriz al anunciar la entrada del patrón en la fábrica?`,
+        options: [
+          `Indica que la fábrica era en realidad un cuartel militar argentino.`,
+          `Parodia la entrada ceremonial de la realeza medieval para satirizar la desigualdad entre la clase patronal y el trabajador humillado.`,
+          `Señala que el protagonista disfrutaba de la música clásica durante su jornada.`,
+          `Marca el inicio de una pausa romántica entre María y su esposo.`
+        ],
+        correctIndex: 1,
+        explanation: `Las acotaciones en Dragún refuerzan la sátira: mientras al patrón se le rinde tributo casi monárquico, al trabajador desempleado se le pregunta si sabe ladrar.`
+      },
+      {
+        id: `q6`,
+        category: `critica`,
+        categoryLabel: `Crítica social`,
+        prompt: `En la segunda fábrica le pagan $15 diarios en lugar de $10. ¿Qué critica Dragún mediante este aparente aumento salarial?`,
+        options: [
+          `Que la perseverancia individual siempre garantiza el ascenso de clase social.`,
+          `Que el salario mínimo de Buenos Aires en el siglo XX era suficiente para sostener a una familia.`,
+          `La ilusión de progreso dentro de un sistema miserable: $450 al mes siguen sin alcanzar para el alquiler ni la comida, forzando una vida infrahumana.`,
+          `Que los perros de 35 años valían exactamente un cincuenta por ciento más que los de 25.`
+        ],
+        correctIndex: 2,
+        explanation: `Aunque los jefes celebran el aumento dando vueltas, el sueldo sigue condenando al protagonista a dormir en la casilla y a comer huesos mientras María comparte una pieza con desconocidas.`
+      },
+      {
+        id: `q7`,
+        category: `estructura`,
+        categoryLabel: `Estructura y género`,
+        prompt: `¿Por qué es significativa la estructura circular de la obra, que empieza y termina con los amigos preguntándole a María dónde está su esposo?`,
+        options: [
+          `Sugiere que la historia fue un sueño nocturno del Actor Primero en la plaza.`,
+          `Refuerza visual y estructuralmente el ciclo inescapable de pobreza y deshumanización que se repite de una generación a otra.`,
+          `Permite que el espectador elija un final optimista al concluir la tercera historia.`,
+          `Imita la estructura clásica de cinco actos del teatro barroco español.`
+        ],
+        correctIndex: 1,
+        explanation: `Al cerrar exactamente donde comenzó —con el hombre encerrado en la perrera y aislado de su esposa y amigos—, la forma circular encarna un callejón socioeconómico sin salida.`
+      },
+      {
+        id: `q8`,
+        category: `estructura`,
+        categoryLabel: `Estructura y género`,
+        prompt: `Hacia el final, ¿qué simboliza la aparición sucesiva del boxeador analfabeto, el conscripto y el policía justo antes de interpelar al público («y pasaron ustedes»)?`,
+        options: [
+          `Los tres oficios ideales a los que debería postular el protagonista tras salir de la perrera.`,
+          `La falta de educación, el conformismo y la instrumentalización de fuerzas de control social frente a la pasividad de la audiencia.`,
+          `Un homenaje a los deportes populares y a la seguridad pública de la ciudad.`,
+          `La llegada de las autoridades que finalmente rescatan al protagonista de la perrera.`
+        ],
+        correctIndex: 1,
+        explanation: `Dragún señala cómo el conformismo («no importaba que no supiera leer porque era boxeador») y el control estatal moldean ciudadanos obedientes, para luego confrontar al propio público con su responsabilidad ética.`
+      }
+    ];
+
+    const ESSAY_PROMPTS = [
+      {
+        id: `e1`,
+        title: `1. Sátira y humor grotesco frente al drama social`,
+        question: `¿De qué manera utiliza Osvaldo Dragún recursos cómicos y exagerados (el clarín, la rima del director de la perrera, el tartamudeo del veterinario) sin debilitar la gravedad de la denuncia sociopolítica?`,
+        rubric: `Puntos clave esperados: Identificar la estética del Teatro del Absurdo; explicar cómo la exageración impide la compasión sentimental fácil («pobrecitos») y genera distanciamiento crítico; analizar la ironía de profesionales (veterinario, director) que validan lo absurdo y niegan la humanidad del obrero.`
+      },
+      {
+        id: `e2`,
+        title: `2. El papel de las acotaciones y la transformación física`,
+        question: `Analiza la evolución corporal del Actor Primero desde la pausa previa a su primer ladrido hasta el momento en que le duele la cintura al intentar pararse. ¿Qué comunica el texto sobre los límites entre la necesidad económica y la identidad humana?`,
+        rubric: `Puntos clave esperados: Señalar la pausa inicial como último resquicio de dignidad; rastrear la invasión del ámbito privado (ponerse en cuatro patas junto a María); explicar la internalización física y psicológica de la opresión hasta morder a quien intenta ayudarlo.`
+      },
+      {
+        id: `e3`,
+        title: `3. Anonimato nominal, roles múltiples y coro griego`,
+        question: `Salvo María, los personajes carecen de nombre propio y los Actores Segundo y Tercero interpretan simultáneamente a amigos, patrones, médicos, policías y coro. ¿Cómo refuerza esta convención escénica el mensaje universal de la obra?`,
+        rubric: `Puntos clave esperados: Explicar que la ausencia de nombres despersonaliza pero también universaliza (cualquier espectador podría ocupar ese lugar); mostrar cómo el cambio de roles demuestra que la indiferencia cotidiana de los «amigos» y el abuso patronal forman parte del mismo entramado social.`
+      },
+      {
+        id: `e4`,
+        title: `4. La maternidad amenazada y la herencia de la miseria`,
+        question: `Interpreta la confesión susurrada de María («tengo miedo que sea… perro») y conéctala con la interpelación final a las mujeres del público. ¿Por qué el embarazo, en lugar de traer alegría, desencadena la ruptura definitiva?`,
+        rubric: `Puntos clave esperados: Analizar la inversión simbólica de la maternidad; explicar la angustia ante la transmisión intergeneracional de la pobreza y la humillación; vincular el susurro y la elipsis con el epílogo metateatral dirigido a la audiencia.`
+      }
+    ];
+
+    let appState = {
+      activeStageId: 1,
+      quizFilter: `todas`,
+      quizAnswers: {},
+      essayDrafts: {},
+      openRubrics: {}
+    };
+
+    function getCompletedStagesList() {
+      return Object.keys(appState.quizAnswers).length;
+    }
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState(appState);
+        } catch (err) {
+          // Ignore transient host persistence errors
+        }
+      }
+    }
+
+    function renderCircularDiagram() {
+      const nodesGroup = document.getElementById(`svg-nodes`);
+      const centerTitle = document.getElementById(`svg-center-title`);
+      const centerSub = document.getElementById(`svg-center-sub`);
+      if (!nodesGroup) return;
+
+      const cx = 160;
+      const cy = 160;
+      const radius = 118;
+      let html = ``;
+
+      STAGES.forEach((stage, idx) => {
+        const angle = (-Math.PI / 2) + (idx * (2 * Math.PI / STAGES.length));
+        const x = cx + radius * Math.cos(angle);
+        const y = cy + radius * Math.sin(angle);
+        const isActive = stage.id === appState.activeStageId;
+        const fill = isActive ? `var(--primary)` : `var(--background)`;
+        const stroke = isActive ? `var(--primary)` : `var(--on-surface)`;
+        const textFill = isActive ? `var(--on-primary)` : `var(--on-surface)`;
+
+        html += `
+          <g class="svg-node" role="button" tabindex="0" aria-label="Estación ${stage.id}: ${stage.shortTitle}" onclick="selectStage(${stage.id})" onkeydown="handleStageKey(event, ${stage.id})">
+            <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="18" fill="${fill}" stroke="${stroke}" stroke-width="2"></circle>
+            <text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="middle" font-family="var(--font-label)" font-size="12" font-weight="700" fill="${textFill}">${stage.id < 10 ? `0${stage.id}` : stage.id}</text>
+          </g>
+        `;
+      });
+
+      nodesGroup.innerHTML = html;
+
+      const current = STAGES.find((s) => s.id === appState.activeStageId) || STAGES[0];
+      if (centerTitle) centerTitle.textContent = `Estación 0${current.id}`;
+      if (centerSub) centerSub.textContent = current.phase.toUpperCase();
+    }
+
+    function renderStageList() {
+      const listEl = document.getElementById(`stage-list`);
+      if (!listEl) return;
+
+      listEl.innerHTML = STAGES.map((stage) => {
+        const activeClass = stage.id === appState.activeStageId ? ` is-active` : ``;
+        const selectedAttr = stage.id === appState.activeStageId ? `true` : `false`;
+        return `
+          <button type="button" class="stage-btn${activeClass}" role="tab" aria-selected="${selectedAttr}" onclick="selectStage(${stage.id})">
+            <span class="stage-btn-num">0${stage.id}</span>
+            <span>${stage.shortTitle}</span>
+            <span class="stage-btn-wage">${stage.wage}</span>
+          </button>
+        `;
+      }).join(``);
+    }
+
+    function renderStageDetail() {
+      const stage = STAGES.find((s) => s.id === appState.activeStageId) || STAGES[0];
+      const phaseEl = document.getElementById(`detail-phase`);
+      const titleEl = document.getElementById(`detail-title`);
+      const wageEl = document.getElementById(`detail-wage`);
+      const deviceEl = document.getElementById(`detail-device`);
+      const meterEl = document.getElementById(`detail-meter`);
+      const summaryEl = document.getElementById(`detail-summary`);
+      const analysisEl = document.getElementById(`detail-analysis`);
+      const quoteEl = document.getElementById(`detail-quote`);
+      const quoteNoteEl = document.getElementById(`detail-quote-note`);
+      const prevBtn = document.getElementById(`prev-stage-btn`);
+      const nextBtn = document.getElementById(`next-stage-btn`);
+
+      if (phaseEl) phaseEl.textContent = stage.phase;
+      if (titleEl) titleEl.textContent = `0${stage.id}. ${stage.shortTitle}`;
+      if (wageEl) wageEl.innerHTML = `<strong>${stage.wage}</strong>`;
+      if (deviceEl) deviceEl.innerHTML = `<strong>${stage.device}</strong>`;
+      if (meterEl) meterEl.style.width = `${stage.dehumanization}%`;
+      if (summaryEl) summaryEl.textContent = stage.summary;
+      if (analysisEl) analysisEl.textContent = stage.analysis;
+      if (quoteEl) quoteEl.textContent = stage.quote;
+      if (quoteNoteEl) quoteNoteEl.textContent = stage.quoteNote;
+
+      if (prevBtn) prevBtn.disabled = stage.id === 1;
+      if (nextBtn) nextBtn.disabled = stage.id === STAGES.length;
+    }
+
+    function selectStage(stageId) {
+      appState.activeStageId = stageId;
+      renderCircularDiagram();
+      renderStageList();
+      renderStageDetail();
+      persistState();
+    }
+
+    function stepStage(delta) {
+      const nextId = Math.max(1, Math.min(STAGES.length, appState.activeStageId + delta));
+      selectStage(nextId);
+    }
+
+    function handleStageKey(event, stageId) {
+      if (event.key === `Enter` || event.key === ` `) {
+        event.preventDefault();
+        selectStage(stageId);
+      }
+    }
+
+    function updateQuizStats() {
+      const total = QUIZ_QUESTIONS.length;
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      QUIZ_QUESTIONS.forEach((q) => {
+        const chosen = appState.quizAnswers[q.id];
+        if (typeof chosen === `number`) {
+          answeredCount += 1;
+          if (chosen === q.correctIndex) correctCount += 1;
+        }
+      });
+
+      const scoreEl = document.getElementById(`quiz-score-display`);
+      const progressEl = document.getElementById(`quiz-progress-display`);
+      if (scoreEl) scoreEl.textContent = `${correctCount} / ${total}`;
+      if (progressEl) progressEl.textContent = `${Math.round((answeredCount / total) * 100)}%`;
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById(`quiz-container`);
+      if (!container) return;
+
+      const letters = [`A`, `B`, `C`, `D`];
+      const filtered = appState.quizFilter === `todas`
+        ? QUIZ_QUESTIONS
+        : QUIZ_QUESTIONS.filter((q) => q.category === appState.quizFilter);
+
+      container.innerHTML = filtered.map((q) => {
+        const globalNum = QUIZ_QUESTIONS.findIndex((item) => item.id === q.id) + 1;
+        const selected = appState.quizAnswers[q.id];
+        const hasAnswered = typeof selected === `number`;
+        const isCorrect = hasAnswered && selected === q.correctIndex;
+
+        const optionsHtml = q.options.map((opt, idx) => {
+          let stateClass = ``;
+          if (hasAnswered) {
+            if (idx === q.correctIndex) stateClass = ` is-correct`;
+            else if (idx === selected) stateClass = ` is-wrong`;
+          }
+          return `
+            <button type="button" class="option-btn${stateClass}" onclick="answerQuestion('${q.id}', ${idx})" aria-pressed="${selected === idx ? `true` : `false`}">
+              <span class="option-letter">${letters[idx]}</span>
+              <span>${opt}</span>
+            </button>
+          `;
+        }).join(``);
+
+        const feedbackHtml = hasAnswered ? `
+          <div class="feedback-box ${isCorrect ? `is-correct` : `is-wrong`}">
+            <span class="feedback-status">${isCorrect ? `Respuesta correcta` : `Revisa el enfoque analítico`}</span>
+            <span>${q.explanation}</span>
+          </div>
+        ` : ``;
+
+        return `
+          <article class="question-item" id="question-${q.id}">
+            <div class="question-meta">
+              <span class="section-label" style="margin-bottom: 0;">Pregunta 0${globalNum}</span>
+              <span class="tag">${q.categoryLabel}</span>
+            </div>
+            <div class="question-prompt">${q.prompt}</div>
+            <div class="options-grid">
+              ${optionsHtml}
+            </div>
+            ${feedbackHtml}
+          </article>
+        `;
+      }).join(``);
+
+      updateQuizStats();
+    }
+
+    function answerQuestion(questionId, optionIndex) {
+      appState.quizAnswers[questionId] = optionIndex;
+      renderQuiz();
+      persistState();
+    }
+
+    function filterQuiz(category, btnEl) {
+      appState.quizFilter = category;
+      document.querySelectorAll(`.filter-btn`).forEach((btn) => {
+        btn.classList.remove(`is-active`);
+      });
+      if (btnEl) btnEl.classList.add(`is-active`);
+      renderQuiz();
+      persistState();
+    }
+
+    function renderEssays() {
+      const container = document.getElementById(`essay-container`);
+      if (!container) return;
+
+      container.innerHTML = ESSAY_PROMPTS.map((item) => {
+        const draftVal = appState.essayDrafts[item.id] || ``;
+        const rubricOpen = Boolean(appState.openRubrics[item.id]);
+        const wordCount = draftVal.trim() ? draftVal.trim().split(/\s+/).length : 0;
+
+        return `
+          <div class="essay-card">
+            <h3>${item.title}</h3>
+            <p>${item.question}</p>
+            <label class="field-label" for="essay-${item.id}">Tu borrador analítico (se guarda automáticamente)</label>
+            <textarea class="essay-input" id="essay-${item.id}" oninput="handleEssayInput('${item.id}', this.value)" placeholder="Escribe aquí tu tesis, citas clave y análisis…">${draftVal}</textarea>
+            <div class="essay-actions">
+              <span class="save-status" id="essay-count-${item.id}">${wordCount} palabras redactadas</span>
+              <button type="button" class="btn btn-secondary" onclick="toggleRubric('${item.id}')">${rubricOpen ? `Ocultar criterios esperados` : `Ver criterios esperados`}</button>
+            </div>
+            ${rubricOpen ? `<div class="rubric-box"><strong>Criterios de análisis:</strong> ${item.rubric}</div>` : ``}
+          </div>
+        `;
+      }).join(``);
+    }
+
+    function handleEssayInput(essayId, value) {
+      appState.essayDrafts[essayId] = value;
+      const countEl = document.getElementById(`essay-count-${essayId}`);
+      const statusEl = document.getElementById(`action-status`);
+      const wordCount = value.trim() ? value.trim().split(/\s+/).length : 0;
+      if (countEl) countEl.textContent = `${wordCount} palabras redactadas`;
+      if (statusEl) statusEl.textContent = `Borrador guardado en sesión.`;
+      persistState();
+    }
+
+    function toggleRubric(essayId) {
+      appState.openRubrics[essayId] = !appState.openRubrics[essayId];
+      renderEssays();
+      persistState();
+    }
+
+    function exportStudyGuide() {
+      const letters = [`A`, `B`, `C`, `D`];
+      let lines = [
+        `GUÍA DE ESTUDIO — EL HOMBRE QUE SE CONVIRTIÓ EN PERRO (OSVALDO DRAGÚN)`,
+        `Curso: Introducción a la literatura hispanoamericana`,
+        `======================================================================`,
+        ``,
+        `1. RESULTADOS DEL CUESTIONARIO DE COMPRENSIÓN:`
+      ];
+
+      let score = 0;
+      QUIZ_QUESTIONS.forEach((q, index) => {
+        const chosen = appState.quizAnswers[q.id];
+        const answered = typeof chosen === `number`;
+        if (answered && chosen === q.correctIndex) score += 1;
+        lines.push(`${index + 1}. ${q.prompt}`);
+        lines.push(`   Tu respuesta: ${answered ? `${letters[chosen]} — ${q.options[chosen]}` : `Sin responder`}`);
+        lines.push(`   Clave correcta: ${letters[q.correctIndex]} — ${q.options[q.correctIndex]}`);
+        lines.push(`   Explicación: ${q.explanation}`);
+        lines.push(``);
+      });
+
+      lines.push(`Puntaje total: ${score} / ${QUIZ_QUESTIONS.length}`);
+      lines.push(``);
+      lines.push(`2. BORRADORES DE SEMINARIO Y ENSAYO:`);
+
+      ESSAY_PROMPTS.forEach((item) => {
+        const draft = appState.essayDrafts[item.id] ? appState.essayDrafts[item.id].trim() : `(Sin redacción registrada)`;
+        lines.push(`${item.title}`);
+        lines.push(`Consigna: ${item.question}`);
+        lines.push(`Borrador del estudiante: ${draft}`);
+        lines.push(``);
+      });
+
+      const content = lines.join(`\n`);
+      const statusEl = document.getElementById(`action-status`);
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: content,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: `guia_estudio_el_hombre_perro.txt`
+        });
+        if (statusEl) statusEl.textContent = `Guía de estudio exportada (.txt).`;
+      } else {
+        if (statusEl) statusEl.textContent = `Exportación disponible en el entorno de Notebook.`;
+      }
+    }
+
+    function resetAllProgress(btn) {
+      const statusEl = document.getElementById(`action-status`);
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `Confirmar reinicio`;
+        if (statusEl) statusEl.textContent = `Haz clic nuevamente para borrar tus respuestas y borradores.`;
+        return;
+      }
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.textContent = `Reiniciar progreso`;
+      }
+
+      appState = {
+        activeStageId: 1,
+        quizFilter: `todas`,
+        quizAnswers: {},
+        essayDrafts: {},
+        openRubrics: {}
+      };
+
+      document.querySelectorAll(`.filter-btn`).forEach((el) => {
+        el.classList.toggle(`is-active`, el.dataset.filter === `todas`);
+      });
+
+      renderCircularDiagram();
+      renderStageList();
+      renderStageDetail();
+      renderQuiz();
+      renderEssays();
+      persistState();
+      if (statusEl) statusEl.textContent = `Progreso reiniciado por completo.`;
+    }
+
+    function setupScrollReveal() {
+      const reveals = document.querySelectorAll(`.reveal`);
+      if (!(`IntersectionObserver` in window)) {
+        reveals.forEach((el) => el.classList.add(`is-visible`));
+        return;
+      }
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(`is-visible`);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      reveals.forEach((el) => observer.observe(el));
+    }
+
+    async function initApp() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (typeof saved.activeStageId === `number`) appState.activeStageId = saved.activeStageId;
+            if (typeof saved.quizFilter === `string`) appState.quizFilter = saved.quizFilter;
+            if (saved.quizAnswers && typeof saved.quizAnswers === `object`) appState.quizAnswers = saved.quizAnswers;
+            if (saved.essayDrafts && typeof saved.essayDrafts === `object`) appState.essayDrafts = saved.essayDrafts;
+            if (saved.openRubrics && typeof saved.openRubrics === `object`) appState.openRubrics = saved.openRubrics;
+          }
+        } catch (err) {
+          // Proceed with fresh state
+        }
+      }
+
+      document.querySelectorAll(`.filter-btn`).forEach((btn) => {
+        btn.classList.toggle(`is-active`, btn.dataset.filter === appState.quizFilter);
+      });
+
+      renderCircularDiagram();
+      renderStageList();
+      renderStageDetail();
+      renderQuiz();
+      renderEssays();
+      setupScrollReveal();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
